@@ -1,0 +1,50 @@
+{
+  "engine": "ml-system-card-local",
+  "run_id": "run-2026-03-11-10-28-37",
+  "base_sha": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+  "changed_paths": [
+    "$.business.executiveSummary",
+    "$.business.hazardousUseCases",
+    "$.business.intendedUse",
+    "$.business.nonGoals",
+    "$.business.outOfScopeUse",
+    "$.business.useCase",
+    "$.business.userPopulations",
+    "$.devInsight.architecture.dataFlow",
+    "$.devInsight.architecture.depsSummary",
+    "$.devInsight.architecture.publicApis",
+    "$.devInsight.codeOverview.components",
+    "$.devInsight.codeOverview.entrypoints",
+    "$.devInsight.codeOverview.languages",
+    "$.devInsight.qualitySignals.complexityHints",
+    "$.governance.policies",
+    "$.meta.links",
+    "$.meta.maturity",
+    "$.meta.owners",
+    "$.meta.title",
+    "$.mlCore.artifactURIs",
+    "$.mlCore.baselines",
+    "$.mlCore.datasets",
+    "$.mlCore.failureModes",
+    "$.mlCore.features",
+    "$.mlCore.problem",
+    "$.mlCore.training",
+    "$.provenance.changelog[0]"
+  ],
+  "low_confidence_rows_only": [
+    {
+      "path": "$.mlCore.qualities",
+      "confidence": 0.6,
+      "sources": [
+        "notebooks/02-model.ipynb#L100-L220",
+        "notebooks/03-evaluation.ipynb#L120-L220",
+        "src/bhm_at_scale/utils.py#L1-L120"
+      ],
+      "disposition": "rejected"
+    }
+  ],
+  "yaml_hash": "0850621f813948ddc91347fa9e57a7a44a20040f9206b6acceb9dc791c9e0337",
+  "schema_id": "https://ml-system-card.dev/schema/v1",
+  "coverage_non_null": 1,
+  "timestamp": "2026-03-11T10:48:57.909Z"
+}

@@ -1,0 +1,2077 @@
+{
+  "meta": {
+    "runId": "run-2026-03-11-10-28-37",
+    "baseSha": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+    "schemaVersion": "1.0.0",
+    "thresholds": {
+      "ok": 0.8,
+      "warn": 0.65
+    },
+    "provenance": {
+      "promptId": "reasoner.v1",
+      "model": "gpt-5.1",
+      "generatedAt": "2026-03-11T10:45:32.897Z"
+    },
+    "telemetry": {
+      "latencyMs": 772443.2316710005,
+      "tokens": {
+        "prompt": 84372,
+        "completion": 45120,
+        "total": 129492
+      },
+      "retries": 0
+    },
+    "passTelemetry": {
+      "extractor": {
+        "promptTokens": 28826,
+        "completionTokens": 13963,
+        "latencyMs": 236476.133288
+      },
+      "reasoner": {
+        "promptTokens": 14054,
+        "completionTokens": 19290,
+        "latencyMs": 277260.06509600003
+      },
+      "verifier": {
+        "promptTokens": 32294,
+        "completionTokens": 7063,
+        "latencyMs": 141153.4592990002
+      },
+      "notes": {
+        "promptTokens": 9198,
+        "completionTokens": 4804,
+        "latencyMs": 117553.57398800028
+      }
+    }
+  },
+  "facts": [
+    {
+      "jsonPath": "$.mlCore.qualities",
+      "jsonPointer": "/mlCore/qualities",
+      "proposedValue": [
+        "The Gamma-Poisson hierarchical structure allows sharing of statistical strength across stores, yielding reasonable coefficient estimates even for stores with few observations, as demonstrated by local_guide and coefficient comparisons in the modelling notebook.",
+        "Posterior predictive samples are summarized into means and credible intervals (5%, 25%, 75%, 95%), providing uncertainty estimates for sales forecasts rather than point predictions only.",
+        "Global effects such as weekday and promotion impacts are visualized and compared to per-store mean effects, supporting interpretability of how the model uses key features."
+      ],
+      "source": {
+        "kind": "inferred"
+      },
+      "repoSources": [
+        {
+          "path": "notebooks/02-model.ipynb",
+          "startLine": 100,
+          "endLine": 220,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "notebooks/03-evaluation.ipynb",
+          "startLine": 120,
+          "endLine": 220,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/utils.py",
+          "startLine": 1,
+          "endLine": 120,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.6,
+      "gate": "Require",
+      "verifierNotes": "Only part of the described qualities are supported by the snippets. utils.summary() clearly computes mean and 5/25/75/95 percentiles over predictive samples, matching the second bullet about uncertainty summaries. notebooks/03-evaluation.ipynb shows visualization of global weekday effects and a markdown heading about comparing with mean effects of individual stores, partially supporting the third bullet but with no evidence about promotion impacts. There is no concrete evidence in the provided ranges for the first bullet: nothing shows that the Gamma-Poisson hierarchy improves estimates for low-data stores or that local_guide is used for such comparisons. Because the fact is a single compound value (array) and some elements are unsupported, it must be marked invalid as a whole. [System] Skipped due to schema validation error during apply."
+    }
+  ],
+  "patch": [
+    {
+      "op": "add",
+      "path": "/stakeholderNotes",
+      "value": {
+        "data-engineer": {
+          "textMd": "",
+          "overview": "The system ingests raw Rossmann Store Sales CSVs (e.g., store.csv, train.csv) from Kaggle into a structured preprocessing pipeline [$.devInsight.architecture.dataFlow]. Processed data feeds a Bayesian hierarchical model implemented in Python, with the environment managed via Conda (environment.yaml, environment.lock.yaml) [$.devInsight.architecture.depsSummary]. The primary implementation language is Python, with Jupyter notebooks used for experimentation and walkthroughs [$.devInsight.codeOverview.languages]. Execution commonly occurs via the notebooks in notebooks/ for preprocessing, model training, and evaluation, backed by the bhm_at_scale Python package [$.devInsight.codeOverview.entrypoints⚠️].",
+          "changes": "- No significant updates detected in the documented data flow between raw Kaggle CSVs and the modeling pipeline [$.devInsight.architecture.dataFlow].\n- No significant updates detected in the core dependency stack (Python + Conda-managed environment) [$.devInsight.architecture.depsSummary].\n- No significant updates detected in primary implementation languages (Python, with Jupyter notebooks for workflows) [$.devInsight.codeOverview.languages].",
+          "confidence": 0.4
+        },
+        "data-scientist": {
+          "textMd": "",
+          "overview": "The system implements ⚠️ scalable Bayesian hierarchical modelling for retail sales forecasting (see $.business.executiveSummary, $.business.useCase). Its primary role is ⚠️ a research and educational example rather than a production-grade service (see $.business.intendedUse, $.business.nonGoals). Intended users are ⚠️ data scientists and researchers working on hierarchical time series models (see $.business.userPopulations). The card also outlines ⚠️ discouraged and out-of-scope deployments, particularly direct use in production or safety‑critical settings without further validation (see $.business.hazardousUseCases, $.business.outOfScopeUse).",
+          "changes": "- ⚠️ Clarified or expanded the high-level project description in $.business.executiveSummary.\n- ⚠️ Updated intended research/educational positioning in $.business.intendedUse and constraints in $.business.nonGoals.\n- ⚠️ Refined examples of primary use cases in $.business.useCase (retail sales forecasting with Bayesian hierarchical models).\n- ⚠️ Adjusted descriptions of hazardous or out-of-scope scenarios in $.business.hazardousUseCases and $.business.outOfScopeUse.\n- ⚠️ Slightly revised the description of target user groups in $.business.userPopulations to emphasize data-science-oriented usage.",
+          "confidence": 0.1
+        },
+        "domain-expert": {
+          "textMd": "",
+          "overview": "This system appears to focus on scalable Bayesian hierarchical modelling for retail sales forecasting ⚠️ (see $.business.executiveSummary, $.business.useCase). The primary role is likely research and education, not production deployment ⚠️ (see $.business.intendedUse, $.business.nonGoals). Anticipated users seem to be data scientists and researchers exploring hierarchical models and retail demand patterns ⚠️ (see $.business.userPopulations). Certain uses—especially direct deployment in safety‑critical or legally regulated contexts—are likely flagged as hazardous or out of scope ⚠️ (see $.business.hazardousUseCases, $.business.outOfScopeUse).",
+          "changes": "- No significant updates detected in the business-related fields for this stakeholder (see $.business.*).⚠️",
+          "confidence": 0.1
+        },
+        "governance-compliance-ethics-officer": {
+          "textMd": "",
+          "overview": "The ML system’s governance framework, as documented in $.governance.policies, currently emphasizes open-source licensing obligations. The source code is licensed under the GNU General Public License v2.0 or later, which requires that derivative works and redistributions preserve the same license and provide access to source code. This licensing choice affects downstream compliance, including obligations for any integrated or redistributed components, and should be reflected in internal governance, third‑party risk assessments, and contractual terms with external partners.",
+          "changes": "- $.governance.policies now explicitly states that the source code is licensed under the GNU General Public License v2.0 or later.\n- Governance, compliance, and ethics oversight should ensure that GPLv2-or-later obligations (e.g., source disclosure and copyleft requirements) are incorporated into organizational policies for reuse, modification, and distribution of this system.\n- Review existing integration and deployment practices to confirm that they do not conflict with GPLv2-or-later terms, especially in mixed-licensing environments.",
+          "confidence": 0.96
+        },
+        "governance-officer": {
+          "textMd": "",
+          "overview": "The ML System Card’s governance section documents the project’s licensing and policy framework. In particular, it records that the system’s source code is distributed under the GNU General Public License v2.0 or later, as specified in $.governance.policies. For governance officers, this implies strong copyleft obligations for derivative works and redistribution. The policy entry can be used to align compliance reviews, third‑party integration checks, and legal disclosures with the project’s chosen open‑source licensing model.",
+          "changes": "- $.governance.policies now explicitly states that the source code is licensed under the GNU General Public License v2.0 or later.\n- This makes the copyleft licensing terms more transparent within the ML System Card, supporting governance reviews and compliance documentation.\n- Governance processes that depend on clear license metadata (e.g., supplier checks, reuse approvals) can now reference $.governance.policies as the canonical in‑card record of the project’s licensing status.",
+          "confidence": 0.96
+        },
+        "ml-engineer": {
+          "textMd": "",
+          "overview": "The system trains and evaluates a Bayesian hierarchical model for Rossmann store sales forecasting. According to $.devInsight.architecture.dataFlow, raw CSVs are downloaded, preprocessed into structured features, and stored in intermediate directories before modeling. $.devInsight.architecture.depsSummary describes a Python-based environment managed via Conda, with scientific computing and probabilistic modeling libraries. $.devInsight.codeOverview.languages confirms Python as the primary implementation language for both core library code and Jupyter-based experimentation.",
+          "changes": "- $.devInsight.architecture.dataFlow now documents the end-to-end flow from raw Rossmann CSVs through preprocessing stages into model-ready data.\n- $.devInsight.architecture.depsSummary adds an explicit summary of the Python/Conda environment and key ML/statistics dependencies.\n- ⚠️ $.devInsight.codeOverview.entrypoints describes notebook-driven workflows and possible CLI/module entrypoints for running preprocessing, training, and evaluation.\n- $.devInsight.codeOverview.languages explicitly records Python as the main language for the system.\n- ⚠️ $.devInsight.qualitySignals.complexityHints flags JAX-based training loop complexity and suggests attention to performance and readability in ModelHandler internals.",
+          "confidence": 0.4
+        },
+        "product-manager": {
+          "textMd": "",
+          "overview": "The system applies Bayesian hierarchical modelling ⚠️ to forecast daily store-level retail sales ⚠️. It is positioned primarily as a research and educational example of scalable probabilistic forecasting, not a production-grade service ⚠️ (see $.business.intendedUse, $.business.nonGoals). Hazardous / out-of-scope usage includes safety-critical or legally binding decisions based directly on this research code or its raw outputs ⚠️ (see $.business.hazardousUseCases, $.business.outOfScopeUse). Intended users are data scientists and researchers working with Bayesian hierarchical models and retail demand data ⚠️ (see $.business.userPopulations).",
+          "changes": "- ⚠️ docs/ml_system_card.yaml was modified, likely affecting business-level descriptions (e.g., $.business.executiveSummary, $.business.useCase, $.business.intendedUse, $.business.nonGoals, $.business.hazardousUseCases, $.business.outOfScopeUse, $.business.userPopulations), but specific content changes versus the prior baseline are not available from this run.\n- No further significant, clearly identifiable updates to product-facing system behavior can be derived from the provided metadata alone ⚠️.",
+          "confidence": 0.1
+        },
+        "project-manager": {
+          "textMd": "",
+          "overview": "This ML system card’s business section ⚠️describes a Bayesian hierarchical modeling solution for retail-scale forecasting (see $.business.useCase). It is ⚠️positioned primarily as a research and educational example rather than a production-grade service (see $.business.intendedUse, $.business.nonGoals). The card ⚠️identifies data scientists and researchers as key users (see $.business.userPopulations) and highlights ⚠️restricted or out-of-scope deployments, especially in safety-critical or high-stakes operational settings (see $.business.hazardousUseCases, $.business.outOfScopeUse).",
+          "changes": "- No significant updates detected in the business-focused fields for this run.\n- Content in $.business.executiveSummary, $.business.useCase, $.business.intendedUse, $.business.nonGoals, $.business.outOfScopeUse, and $.business.userPopulations appears consistent with prior intent descriptions ⚠️(based on limited change signals).\n- No newly documented hazardous or prohibited use cases were identified in $.business.hazardousUseCases ⚠️.\n- No new target user populations or business goals were added in this update ⚠️.",
+          "confidence": 0.1
+        },
+        "software-developer": {
+          "textMd": "",
+          "overview": "This system provides scalable Bayesian hierarchical modelling for retail sales forecasting ⚠️. According to $.business.executiveSummary, it focuses on daily, store-level sales predictions for a retail chain ⚠️. The primary intent, per $.business.intendedUse, is research and education rather than a production-ready service ⚠️. The main use case in $.business.useCase is exploring and demonstrating forecasting workflows, not live deployment ⚠️. Target users from $.business.userPopulations are data scientists and researchers working with Bayesian hierarchical models and large-scale retail data ⚠️.",
+          "changes": "- $.business.executiveSummary now describes the project as scalable Bayesian hierarchical modelling for retail sales forecasting, emphasizing research orientation ⚠️.\n- $.business.intendedUse clarifies that usage is for research/educational examples, not production forecasting services ⚠️.\n- $.business.useCase highlights daily store-level sales forecasting for a retail chain as the canonical example ⚠️.\n- $.business.userPopulations specifies data scientists and researchers as primary users ⚠️.\n- $.business.nonGoals and $.business.outOfScopeUse explicitly exclude production-grade deployment or direct use in safety-/legally-critical contexts ⚠️.\n- $.business.hazardousUseCases warns against using this research code or outputs in safety-critical or high-stakes decision settings without additio",
+          "confidence": 0.1
+        },
+        "ux-researcher": {
+          "textMd": "",
+          "overview": "This system ⚠️implements Bayesian hierarchical modelling at scale for retail sales forecasting (see $.business.executiveSummary, $.business.useCase). It is ⚠️positioned primarily as a research and educational example rather than a production service (see $.business.intendedUse, $.business.nonGoals). The ⚠️intended users are data scientists and researchers exploring Bayesian methods and scalable probabilistic modelling (see $.business.userPopulations). Hazardous and out-of-scope usage includes ⚠️direct application in safety-critical, legal, or high-stakes operational settings without rigorous validation and integration into production-grade workflows (see $.business.hazardousUseCases, $.business.outOfScopeUse).",
+          "changes": "- ⚠️Business framing for the project’s purpose and positioning as research/educational material is captured under $.business.executiveSummary and $.business.intendedUse, but specific edits versus baseline are not determinable from this run.\n- ⚠️Clarifications around non-goals and out-of-scope scenarios (e.g., production deployment without hardening) are documented under $.business.nonGoals and $.business.outOfScopeUse; exact textual changes are unknown.\n- ⚠️User populations and hazardous use cases appear defined in $.business.userPopulations and $.business.hazardousUseCases, but any recent adjustments to these descriptions cannot be reliably identified.\n\nIf precise diffs are required, please review docs/ml_system_card.yaml directly.",
+          "confidence": 0.1
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/meta/maturity",
+      "value": "PoC"
+    },
+    {
+      "op": "replace",
+      "path": "/meta/title",
+      "value": "Bayesian Hierarchical Modelling at Scale"
+    },
+    {
+      "op": "add",
+      "path": "/meta/owners/-",
+      "value": {
+        "name": "Florian Wilhelm",
+        "role": "Author and Maintainer"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/meta/links/repo",
+      "value": "https://github.com/FlorianWilhelm/bhm-at-scale"
+    },
+    {
+      "op": "add",
+      "path": "/meta/links/demo",
+      "value": ""
+    },
+    {
+      "op": "add",
+      "path": "/meta/links/dataset",
+      "value": "https://www.kaggle.com/pratyushakar/rossmann-store-sales"
+    },
+    {
+      "op": "add",
+      "path": "/business/executiveSummary",
+      "value": "This project implements Bayesian hierarchical modelling at scale for retail sales forecasting. Using NumPyro on top of JAX, it fits a Gamma-Poisson hierarchical model over thousands of stores and days in the Rossmann Store Sales dataset from Kaggle. The pipeline downloads raw store and sales CSVs, performs feature engineering and dummy-encoding in pandas, and converts them into a time-series cube suitable for vectorized probabilistic inference. The resulting model captures global and store-specific effects (such as weekday, promotions, and holidays), produces posterior predictive distributions, and is compared against a conventional linear regression baseline."
+    },
+    {
+      "op": "add",
+      "path": "/business/intendedUse",
+      "value": "The primary intended use is as a research and educational example of scalable Bayesian hierarchical modelling for count time-series, demonstrating how to implement a Gamma-Poisson hierarchical model with NumPyro and JAX on the Rossmann store-level sales task. It is designed for experimentation in notebooks rather than for direct production deployment."
+    },
+    {
+      "op": "add",
+      "path": "/business/useCase",
+      "value": "Forecasting daily store-level sales for a retail chain using a Bayesian hierarchical Gamma-Poisson model, trained on the Rossmann Store Sales Kaggle dataset, to capture both global effects (such as weekday and promotions) and store-specific patterns."
+    },
+    {
+      "op": "add",
+      "path": "/business/nonGoals/-",
+      "value": "Providing a fully production-ready forecasting service or API for retail operations."
+    },
+    {
+      "op": "add",
+      "path": "/business/nonGoals/-",
+      "value": "Building a generic forecasting platform applicable to arbitrary domains beyond the Rossmann Store Sales example."
+    },
+    {
+      "op": "add",
+      "path": "/business/nonGoals/-",
+      "value": "Delivering a comprehensive MLOps stack with monitoring, retraining, and automated deployment; the focus is on modelling and experimentation in notebooks."
+    },
+    {
+      "op": "add",
+      "path": "/business/outOfScopeUse/-",
+      "value": "Directly deploying this example codebase in a production environment without additional engineering, testing, and monitoring."
+    },
+    {
+      "op": "add",
+      "path": "/business/outOfScopeUse/-",
+      "value": "Using the model outside the context of historical store-level sales data with similar structure to the Rossmann Store Sales dataset, for example on domains with very different feature semantics."
+    },
+    {
+      "op": "add",
+      "path": "/business/outOfScopeUse/-",
+      "value": "Treating the example changelog and documentation templates as production governance records without project-specific adaptation."
+    },
+    {
+      "op": "add",
+      "path": "/business/userPopulations/-",
+      "value": "Data scientists and researchers interested in Bayesian hierarchical modelling and probabilistic programming with NumPyro and JAX."
+    },
+    {
+      "op": "add",
+      "path": "/business/userPopulations/-",
+      "value": "Machine learning practitioners who want to study scalable approaches to count time-series forecasting on retail sales data."
+    },
+    {
+      "op": "add",
+      "path": "/business/userPopulations/-",
+      "value": "Students and readers of the accompanying blog post who run the notebooks to understand the modelling and inference pipeline."
+    },
+    {
+      "op": "add",
+      "path": "/business/hazardousUseCases/-",
+      "value": "Using the research code and model outputs directly for safety-critical or legally binding decisions (for example, staffing of emergency services or credit approvals) without additional validation, governance, and monitoring."
+    },
+    {
+      "op": "add",
+      "path": "/business/hazardousUseCases/-",
+      "value": "Relying on forecasts trained on the Rossmann Store Sales dataset to drive high-stakes decisions in domains unrelated to retail store sales, where the data distribution and risks differ substantially."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/codeOverview/languages/-",
+      "value": "Python"
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/codeOverview/entrypoints/-",
+      "value": "Running Jupyter notebooks in notebooks/01-preprocessing.ipynb, 02-model.ipynb, and 03-evaluation.ipynb to execute the full data-to-model-to-evaluation pipeline."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/codeOverview/entrypoints/-",
+      "value": "Importing bhm_at_scale.handler.ModelHandler together with bhm_at_scale.model.model and bhm_at_scale.model.guide to train the hierarchical model from Python code."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/codeOverview/entrypoints/-",
+      "value": "Using bhm_at_scale.preprocess.encode and bhm_at_scale.preprocess.make_cube to transform tabular store-level sales data into model-ready arrays."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/codeOverview/entrypoints/-",
+      "value": "Using bhm_at_scale.plot.PlotStore and bhm_at_scale.plot.plot_sales_preds to visualize sales histories and predictive intervals for individual stores."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/codeOverview/components/-",
+      "value": {
+        "name": "Data Preprocessing",
+        "summary": "Downloads the Rossmann Store Sales Kaggle dataset, cleans and merges store metadata, performs basic feature engineering and dummy-encoding of categorical variables, and constructs a time-series cube for model input.",
+        "keyFiles": [
+          "notebooks/01-preprocessing.ipynb",
+          "src/bhm_at_scale/preprocess.py",
+          "src/bhm_at_scale/utils.py"
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/codeOverview/components/-",
+      "value": {
+        "name": "Hierarchical Sales Model",
+        "summary": "Defines a Gamma-Poisson hierarchical model over stores, days, and features using NumPyro plates, along with corresponding guides and a predictive model for posterior sampling.",
+        "keyFiles": [
+          "src/bhm_at_scale/model.py",
+          "notebooks/02-model.ipynb"
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/codeOverview/components/-",
+      "value": {
+        "name": "Training & Inference Handler",
+        "summary": "Wraps NumPyro SVI with a ModelHandler class that manages JAX PRNG keys, optimizer construction, JIT-compiled training loops, checkpointing of optimizer state, and prediction via Predictive.",
+        "keyFiles": [
+          "src/bhm_at_scale/handler.py",
+          "notebooks/02-model.ipynb"
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/codeOverview/components/-",
+      "value": {
+        "name": "Visualization & Evaluation",
+        "summary": "Provides utilities and notebooks to visualize predictive performance, uncertainty intervals, global weekday and promotion effects, and to compare the hierarchical model to a scikit-learn linear regression baseline.",
+        "keyFiles": [
+          "src/bhm_at_scale/plot.py",
+          "notebooks/03-evaluation.ipynb",
+          "notebooks/02-model.ipynb"
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "ModelHandler",
+        "path": "bhm_at_scale.handler.ModelHandler",
+        "file": "src/bhm_at_scale/handler.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "ModelHandler.fit",
+        "path": "bhm_at_scale.handler.ModelHandler.fit",
+        "file": "src/bhm_at_scale/handler.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "ModelHandler.predict",
+        "path": "bhm_at_scale.handler.ModelHandler.predict",
+        "file": "src/bhm_at_scale/handler.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "hierarchical_model",
+        "path": "bhm_at_scale.model.model",
+        "file": "src/bhm_at_scale/model.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "global_guide",
+        "path": "bhm_at_scale.model.guide",
+        "file": "src/bhm_at_scale/model.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "local_guide",
+        "path": "bhm_at_scale.model.local_guide",
+        "file": "src/bhm_at_scale/model.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "predictive_model",
+        "path": "bhm_at_scale.model.predictive_model",
+        "file": "src/bhm_at_scale/model.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "encode",
+        "path": "bhm_at_scale.preprocess.encode",
+        "file": "src/bhm_at_scale/preprocess.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "make_cube",
+        "path": "bhm_at_scale.preprocess.make_cube",
+        "file": "src/bhm_at_scale/preprocess.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "plot_sales_preds",
+        "path": "bhm_at_scale.plot.plot_sales_preds",
+        "file": "src/bhm_at_scale/plot.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "PlotStore",
+        "path": "bhm_at_scale.plot.PlotStore",
+        "file": "src/bhm_at_scale/plot.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "plot_densities",
+        "path": "bhm_at_scale.plot.plot_densities",
+        "file": "src/bhm_at_scale/plot.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "summary",
+        "path": "bhm_at_scale.utils.summary",
+        "file": "src/bhm_at_scale/utils.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "stats_to_df",
+        "path": "bhm_at_scale.utils.stats_to_df",
+        "file": "src/bhm_at_scale/utils.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "preds_to_df",
+        "path": "bhm_at_scale.utils.preds_to_df",
+        "file": "src/bhm_at_scale/utils.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "make_intervals",
+        "path": "bhm_at_scale.utils.make_intervals",
+        "file": "src/bhm_at_scale/utils.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "reorder_cols",
+        "path": "bhm_at_scale.utils.reorder_cols",
+        "file": "src/bhm_at_scale/utils.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/dataFlow/-",
+      "value": "Raw Rossmann Store Sales CSVs (store.csv, train.csv) are downloaded from Kaggle into data/raw using kaggle.api.dataset_download_files in the preprocessing notebook."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/dataFlow/-",
+      "value": "store.csv and train.csv are loaded into pandas, merged on Store, sorted by Store and Date, and augmented with engineered fields such as numeric StateHoliday, Assortment, StoreType, StoreId, Timestep, and StoreVariant while dropping unused competition and promo interval columns."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/dataFlow/-",
+      "value": "Categorical variables (DayOfWeek, StoreVariant, StateHoliday) are dummy-encoded via bhm_at_scale.preprocess.encode; rows with Open == 0 have Sales set to NaN, and Open is then dropped before columns are reordered to put StoreId and Timestep first and Sales last."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/dataFlow/-",
+      "value": "The encoded DataFrame is saved to data/preprocessed/edf.csv and converted into a three-dimensional numpy array cube X indexed by [StoreId, Timestep, feature/target] using bhm_at_scale.preprocess.make_cube; X is split into X_train and X_test and persisted as .npz files."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/dataFlow/-",
+      "value": "X_train and X_test are loaded as JAX DeviceArray objects and passed to the Gamma-Poisson hierarchical model defined in bhm_at_scale.model via the ModelHandler.fit SVI training loop, which performs JAX-jitted optimization using lax.fori_loop."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/dataFlow/-",
+      "value": "After training, optimizer/model state is serialized to data/result/optim_state.pickle; posterior samples and predictions are generated with ModelHandler.predict and predictive_model, summarized via bhm_at_scale.utils.summary, stats_to_df, and preds_to_df, and exported as CSVs (e.g., coef_mus.csv, stats.csv, train_preds.csv, test_preds.csv) for downstream visualization in notebooks and bhm_at_scale.plot."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/depsSummary/-",
+      "value": "Core language and environment: Python >=3.8 managed via Conda (environment.yaml, environment.lock.yaml)."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/depsSummary/-",
+      "value": "Numerical and data processing: numpy, scipy, pandas (for array math, statistics, and tabular feature engineering)."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/depsSummary/-",
+      "value": "Probabilistic modelling and optimization: jax, jaxlib, numpyro (Gamma-Poisson hierarchical model, SVI, JAX JIT)."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/depsSummary/-",
+      "value": "Classical machine learning baseline: scikit-learn (LinearRegression used as a conventional Poisson-style regression comparator)."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/depsSummary/-",
+      "value": "Visualization and reporting: matplotlib, seaborn, daft (for plotting time series, densities, and graphical model diagrams)."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/depsSummary/-",
+      "value": "Experiment tooling and data access: jupyterlab for notebooks and kaggle API for downloading the Rossmann Store Sales dataset."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/qualitySignals/complexityHints/-",
+      "value": "The training loop in ModelHandler._fit uses JAX JIT compilation and lax.fori_loop over epochs, indicating careful optimization for performance on large time-series cubes."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/qualitySignals/complexityHints/-",
+      "value": "The Gamma-Poisson hierarchical model employs multiple NumPyro plates (features, stores, days) and TransformReparam with TransformedDistribution to stabilize inference, which increases conceptual and implementation complexity."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/qualitySignals/complexityHints/-",
+      "value": "Custom guides (global guide and local_guide) are defined to handle scenarios with full historical data and new stores with limited history, reflecting non-trivial inference design."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/artifactURIs",
+      "value": {
+        "model": "data/result/optim_state.pickle",
+        "dockerImage": ""
+      }
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/training",
+      "value": {
+        "framework": "NumPyro (JAX)",
+        "frameworkVersion": "0.7.2",
+        "hyperparams": {
+          "svi_loss": "Trace_ELBO(num_particles=1)",
+          "optimizer": "Adam via numpyro.optim",
+          "initial_training": {
+            "n_epochs": 5000,
+            "lr": 0.1
+          },
+          "fine_tuning": {
+            "n_epochs": 1000,
+            "lr": 0.001
+          },
+          "local_adaptation": {
+            "n_epochs": 1000,
+            "lr": 0.1
+          },
+          "batching": "full-batch over all stores and days in X"
+        },
+        "hardware": "Local Python 3.8 environment (Conda) with JAX 0.2.19 / jaxlib 0.1.71 and NumPyro 0.7.2, suitable for CPU-based SVI training."
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/mlCore/problem",
+      "value": "Probabilistic time-series regression / forecasting of daily store-level sales counts using a Gamma-Poisson hierarchical model over stores, days, and engineered features."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/datasets/-",
+      "value": {
+        "name": "Rossmann Store Sales (Kaggle)",
+        "uri": "https://www.kaggle.com/pratyushakar/rossmann-store-sales",
+        "license": "See Kaggle dataset page"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/features/-",
+      "value": "DayOfWeek_1–DayOfWeek_7: dummy-encoded weekday indicators derived from the original DayOfWeek column."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/features/-",
+      "value": "Promo: binary indicator of whether a promotion is running on a given day."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/features/-",
+      "value": "StateHoliday_0–StateHoliday_3: dummy-encoded state holiday categories mapped from the original StateHoliday field."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/features/-",
+      "value": "SchoolHoliday: indicator for school holidays."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/features/-",
+      "value": "Promo2: indicator for a secondary promotion program."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/features/-",
+      "value": "StoreVariant_11, StoreVariant_13, StoreVariant_21, StoreVariant_22, StoreVariant_23, StoreVariant_31, StoreVariant_33, StoreVariant_41, StoreVariant_43: categorical encodings combining StoreType and Assortment into store variant groups."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/features/-",
+      "value": "StoreId: contiguous numeric identifier for each store, used as an index dimension in the cube."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/features/-",
+      "value": "Timestep: per-store time index (within-store cumulative day count)."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/features/-",
+      "value": "Sales: target variable representing daily store sales, modelled as a Gamma-Poisson count."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/baselines/-",
+      "value": "Scikit-Learn LinearRegression fitted on log-transformed sales for a single store as a conventional Poisson-style regression baseline, compared against the Bayesian hierarchical model."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/qualities/-",
+      "value": "The Gamma-Poisson hierarchical structure allows sharing of statistical strength across stores, yielding reasonable coefficient estimates even for stores with few observations, as demonstrated by local_guide and coefficient comparisons in the modelling notebook."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/qualities/-",
+      "value": "Posterior predictive samples are summarized into means and credible intervals (5%, 25%, 75%, 95%), providing uncertainty estimates for sales forecasts rather than point predictions only."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/qualities/-",
+      "value": "Global effects such as weekday and promotion impacts are visualized and compared to per-store mean effects, supporting interpretability of how the model uses key features."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/failureModes/-",
+      "value": "The model assumes that relationships between features (such as weekday, promotions, and holidays) and log sales are relatively stable over the training and forecasting horizons; it may underperform under strong distribution shifts not represented in the Rossmann training data."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/failureModes/-",
+      "value": "Features are padded with zeros for missing values in the cube (via jnp.nan_to_num), and closed days have Sales set to NaN before filtering; unexpected patterns of missingness or mis-specified closed days may lead to biased estimates."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/failureModes/-",
+      "value": "Local_guide-based adaptation for new stores with few observations relies on the global priors learned from historical stores; if new stores differ substantially in behaviour from the training population, forecasts may be miscalibrated."
+    },
+    {
+      "op": "add",
+      "path": "/governance/policies/-",
+      "value": "Source code is licensed under the GNU General Public License v2.0 or later (GPL-2.0-or-later), as indicated by LICENSE.txt and the license metadata in setup.cfg, which affects how the code can be reused or integrated into proprietary systems."
+    },
+    {
+      "op": "add",
+      "path": "/provenance/changelog/-",
+      "value": {
+        "date": "2026-03-11T10:29:03.512Z",
+        "summary": "ML System Card run run-2026-03-11-10-28-37 observed 37 changed files",
+        "files": [
+          {
+            "path": ".coveragerc"
+          },
+          {
+            "path": ".gitignore"
+          },
+          {
+            "path": ".isort.cfg"
+          },
+          {
+            "path": ".pre-commit-config.yaml"
+          },
+          {
+            "path": "AUTHORS.rst"
+          },
+          {
+            "path": "CHANGELOG.rst"
+          },
+          {
+            "path": "LICENSE.txt"
+          },
+          {
+            "path": "README.md"
+          },
+          {
+            "path": "data/.gitignore"
+          },
+          {
+            "path": "data/external/.gitignore"
+          },
+          {
+            "path": "data/interim/.gitignore"
+          },
+          {
+            "path": "data/preprocessed/.gitignore"
+          },
+          {
+            "path": "data/raw/.gitignore"
+          },
+          {
+            "path": "data/result/.gitignore"
+          },
+          {
+            "path": "docs/Makefile"
+          },
+          {
+            "path": "docs/_static/.gitignore"
+          },
+          {
+            "path": "docs/authors.rst"
+          },
+          {
+            "path": "docs/changelog.rst"
+          },
+          {
+            "path": "docs/conf.py"
+          },
+          {
+            "path": "docs/index.rst"
+          },
+          {
+            "path": "docs/license.rst"
+          },
+          {
+            "path": "docs/ml_system_card.yaml"
+          },
+          {
+            "path": "docs/stakeholders.yaml"
+          },
+          {
+            "path": "environment.lock.yaml"
+          },
+          {
+            "path": "environment.yaml"
+          },
+          {
+            "path": "notebooks/01-preprocessing.ipynb"
+          },
+          {
+            "path": "notebooks/02-model.ipynb"
+          },
+          {
+            "path": "notebooks/03-evaluation.ipynb"
+          },
+          {
+            "path": "setup.cfg"
+          },
+          {
+            "path": "setup.py"
+          },
+          {
+            "path": "src/bhm_at_scale/__init__.py"
+          },
+          {
+            "path": "src/bhm_at_scale/handler.py"
+          },
+          {
+            "path": "src/bhm_at_scale/model.py"
+          },
+          {
+            "path": "src/bhm_at_scale/plot.py"
+          },
+          {
+            "path": "src/bhm_at_scale/preprocess.py"
+          },
+          {
+            "path": "src/bhm_at_scale/utils.py"
+          },
+          {
+            "path": "tests/conftest.py"
+          }
+        ],
+        "runId": "run-2026-03-11-10-28-37",
+        "headSha": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+      }
+    }
+  ],
+  "card_patch": [
+    {
+      "op": "add",
+      "path": "/stakeholderNotes",
+      "value": {
+        "data-engineer": {
+          "textMd": "",
+          "overview": "The system ingests raw Rossmann Store Sales CSVs (e.g., store.csv, train.csv) from Kaggle into a structured preprocessing pipeline [$.devInsight.architecture.dataFlow]. Processed data feeds a Bayesian hierarchical model implemented in Python, with the environment managed via Conda (environment.yaml, environment.lock.yaml) [$.devInsight.architecture.depsSummary]. The primary implementation language is Python, with Jupyter notebooks used for experimentation and walkthroughs [$.devInsight.codeOverview.languages]. Execution commonly occurs via the notebooks in notebooks/ for preprocessing, model training, and evaluation, backed by the bhm_at_scale Python package [$.devInsight.codeOverview.entrypoints⚠️].",
+          "changes": "- No significant updates detected in the documented data flow between raw Kaggle CSVs and the modeling pipeline [$.devInsight.architecture.dataFlow].\n- No significant updates detected in the core dependency stack (Python + Conda-managed environment) [$.devInsight.architecture.depsSummary].\n- No significant updates detected in primary implementation languages (Python, with Jupyter notebooks for workflows) [$.devInsight.codeOverview.languages].",
+          "confidence": 0.4
+        },
+        "data-scientist": {
+          "textMd": "",
+          "overview": "The system implements ⚠️ scalable Bayesian hierarchical modelling for retail sales forecasting (see $.business.executiveSummary, $.business.useCase). Its primary role is ⚠️ a research and educational example rather than a production-grade service (see $.business.intendedUse, $.business.nonGoals). Intended users are ⚠️ data scientists and researchers working on hierarchical time series models (see $.business.userPopulations). The card also outlines ⚠️ discouraged and out-of-scope deployments, particularly direct use in production or safety‑critical settings without further validation (see $.business.hazardousUseCases, $.business.outOfScopeUse).",
+          "changes": "- ⚠️ Clarified or expanded the high-level project description in $.business.executiveSummary.\n- ⚠️ Updated intended research/educational positioning in $.business.intendedUse and constraints in $.business.nonGoals.\n- ⚠️ Refined examples of primary use cases in $.business.useCase (retail sales forecasting with Bayesian hierarchical models).\n- ⚠️ Adjusted descriptions of hazardous or out-of-scope scenarios in $.business.hazardousUseCases and $.business.outOfScopeUse.\n- ⚠️ Slightly revised the description of target user groups in $.business.userPopulations to emphasize data-science-oriented usage.",
+          "confidence": 0.1
+        },
+        "domain-expert": {
+          "textMd": "",
+          "overview": "This system appears to focus on scalable Bayesian hierarchical modelling for retail sales forecasting ⚠️ (see $.business.executiveSummary, $.business.useCase). The primary role is likely research and education, not production deployment ⚠️ (see $.business.intendedUse, $.business.nonGoals). Anticipated users seem to be data scientists and researchers exploring hierarchical models and retail demand patterns ⚠️ (see $.business.userPopulations). Certain uses—especially direct deployment in safety‑critical or legally regulated contexts—are likely flagged as hazardous or out of scope ⚠️ (see $.business.hazardousUseCases, $.business.outOfScopeUse).",
+          "changes": "- No significant updates detected in the business-related fields for this stakeholder (see $.business.*).⚠️",
+          "confidence": 0.1
+        },
+        "governance-compliance-ethics-officer": {
+          "textMd": "",
+          "overview": "The ML system’s governance framework, as documented in $.governance.policies, currently emphasizes open-source licensing obligations. The source code is licensed under the GNU General Public License v2.0 or later, which requires that derivative works and redistributions preserve the same license and provide access to source code. This licensing choice affects downstream compliance, including obligations for any integrated or redistributed components, and should be reflected in internal governance, third‑party risk assessments, and contractual terms with external partners.",
+          "changes": "- $.governance.policies now explicitly states that the source code is licensed under the GNU General Public License v2.0 or later.\n- Governance, compliance, and ethics oversight should ensure that GPLv2-or-later obligations (e.g., source disclosure and copyleft requirements) are incorporated into organizational policies for reuse, modification, and distribution of this system.\n- Review existing integration and deployment practices to confirm that they do not conflict with GPLv2-or-later terms, especially in mixed-licensing environments.",
+          "confidence": 0.96
+        },
+        "governance-officer": {
+          "textMd": "",
+          "overview": "The ML System Card’s governance section documents the project’s licensing and policy framework. In particular, it records that the system’s source code is distributed under the GNU General Public License v2.0 or later, as specified in $.governance.policies. For governance officers, this implies strong copyleft obligations for derivative works and redistribution. The policy entry can be used to align compliance reviews, third‑party integration checks, and legal disclosures with the project’s chosen open‑source licensing model.",
+          "changes": "- $.governance.policies now explicitly states that the source code is licensed under the GNU General Public License v2.0 or later.\n- This makes the copyleft licensing terms more transparent within the ML System Card, supporting governance reviews and compliance documentation.\n- Governance processes that depend on clear license metadata (e.g., supplier checks, reuse approvals) can now reference $.governance.policies as the canonical in‑card record of the project’s licensing status.",
+          "confidence": 0.96
+        },
+        "ml-engineer": {
+          "textMd": "",
+          "overview": "The system trains and evaluates a Bayesian hierarchical model for Rossmann store sales forecasting. According to $.devInsight.architecture.dataFlow, raw CSVs are downloaded, preprocessed into structured features, and stored in intermediate directories before modeling. $.devInsight.architecture.depsSummary describes a Python-based environment managed via Conda, with scientific computing and probabilistic modeling libraries. $.devInsight.codeOverview.languages confirms Python as the primary implementation language for both core library code and Jupyter-based experimentation.",
+          "changes": "- $.devInsight.architecture.dataFlow now documents the end-to-end flow from raw Rossmann CSVs through preprocessing stages into model-ready data.\n- $.devInsight.architecture.depsSummary adds an explicit summary of the Python/Conda environment and key ML/statistics dependencies.\n- ⚠️ $.devInsight.codeOverview.entrypoints describes notebook-driven workflows and possible CLI/module entrypoints for running preprocessing, training, and evaluation.\n- $.devInsight.codeOverview.languages explicitly records Python as the main language for the system.\n- ⚠️ $.devInsight.qualitySignals.complexityHints flags JAX-based training loop complexity and suggests attention to performance and readability in ModelHandler internals.",
+          "confidence": 0.4
+        },
+        "product-manager": {
+          "textMd": "",
+          "overview": "The system applies Bayesian hierarchical modelling ⚠️ to forecast daily store-level retail sales ⚠️. It is positioned primarily as a research and educational example of scalable probabilistic forecasting, not a production-grade service ⚠️ (see $.business.intendedUse, $.business.nonGoals). Hazardous / out-of-scope usage includes safety-critical or legally binding decisions based directly on this research code or its raw outputs ⚠️ (see $.business.hazardousUseCases, $.business.outOfScopeUse). Intended users are data scientists and researchers working with Bayesian hierarchical models and retail demand data ⚠️ (see $.business.userPopulations).",
+          "changes": "- ⚠️ docs/ml_system_card.yaml was modified, likely affecting business-level descriptions (e.g., $.business.executiveSummary, $.business.useCase, $.business.intendedUse, $.business.nonGoals, $.business.hazardousUseCases, $.business.outOfScopeUse, $.business.userPopulations), but specific content changes versus the prior baseline are not available from this run.\n- No further significant, clearly identifiable updates to product-facing system behavior can be derived from the provided metadata alone ⚠️.",
+          "confidence": 0.1
+        },
+        "project-manager": {
+          "textMd": "",
+          "overview": "This ML system card’s business section ⚠️describes a Bayesian hierarchical modeling solution for retail-scale forecasting (see $.business.useCase). It is ⚠️positioned primarily as a research and educational example rather than a production-grade service (see $.business.intendedUse, $.business.nonGoals). The card ⚠️identifies data scientists and researchers as key users (see $.business.userPopulations) and highlights ⚠️restricted or out-of-scope deployments, especially in safety-critical or high-stakes operational settings (see $.business.hazardousUseCases, $.business.outOfScopeUse).",
+          "changes": "- No significant updates detected in the business-focused fields for this run.\n- Content in $.business.executiveSummary, $.business.useCase, $.business.intendedUse, $.business.nonGoals, $.business.outOfScopeUse, and $.business.userPopulations appears consistent with prior intent descriptions ⚠️(based on limited change signals).\n- No newly documented hazardous or prohibited use cases were identified in $.business.hazardousUseCases ⚠️.\n- No new target user populations or business goals were added in this update ⚠️.",
+          "confidence": 0.1
+        },
+        "software-developer": {
+          "textMd": "",
+          "overview": "This system provides scalable Bayesian hierarchical modelling for retail sales forecasting ⚠️. According to $.business.executiveSummary, it focuses on daily, store-level sales predictions for a retail chain ⚠️. The primary intent, per $.business.intendedUse, is research and education rather than a production-ready service ⚠️. The main use case in $.business.useCase is exploring and demonstrating forecasting workflows, not live deployment ⚠️. Target users from $.business.userPopulations are data scientists and researchers working with Bayesian hierarchical models and large-scale retail data ⚠️.",
+          "changes": "- $.business.executiveSummary now describes the project as scalable Bayesian hierarchical modelling for retail sales forecasting, emphasizing research orientation ⚠️.\n- $.business.intendedUse clarifies that usage is for research/educational examples, not production forecasting services ⚠️.\n- $.business.useCase highlights daily store-level sales forecasting for a retail chain as the canonical example ⚠️.\n- $.business.userPopulations specifies data scientists and researchers as primary users ⚠️.\n- $.business.nonGoals and $.business.outOfScopeUse explicitly exclude production-grade deployment or direct use in safety-/legally-critical contexts ⚠️.\n- $.business.hazardousUseCases warns against using this research code or outputs in safety-critical or high-stakes decision settings without additio",
+          "confidence": 0.1
+        },
+        "ux-researcher": {
+          "textMd": "",
+          "overview": "This system ⚠️implements Bayesian hierarchical modelling at scale for retail sales forecasting (see $.business.executiveSummary, $.business.useCase). It is ⚠️positioned primarily as a research and educational example rather than a production service (see $.business.intendedUse, $.business.nonGoals). The ⚠️intended users are data scientists and researchers exploring Bayesian methods and scalable probabilistic modelling (see $.business.userPopulations). Hazardous and out-of-scope usage includes ⚠️direct application in safety-critical, legal, or high-stakes operational settings without rigorous validation and integration into production-grade workflows (see $.business.hazardousUseCases, $.business.outOfScopeUse).",
+          "changes": "- ⚠️Business framing for the project’s purpose and positioning as research/educational material is captured under $.business.executiveSummary and $.business.intendedUse, but specific edits versus baseline are not determinable from this run.\n- ⚠️Clarifications around non-goals and out-of-scope scenarios (e.g., production deployment without hardening) are documented under $.business.nonGoals and $.business.outOfScopeUse; exact textual changes are unknown.\n- ⚠️User populations and hazardous use cases appear defined in $.business.userPopulations and $.business.hazardousUseCases, but any recent adjustments to these descriptions cannot be reliably identified.\n\nIf precise diffs are required, please review docs/ml_system_card.yaml directly.",
+          "confidence": 0.1
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/meta/maturity",
+      "value": "PoC"
+    },
+    {
+      "op": "replace",
+      "path": "/meta/title",
+      "value": "Bayesian Hierarchical Modelling at Scale"
+    },
+    {
+      "op": "add",
+      "path": "/meta/owners/-",
+      "value": {
+        "name": "Florian Wilhelm",
+        "role": "Author and Maintainer"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/meta/links/repo",
+      "value": "https://github.com/FlorianWilhelm/bhm-at-scale"
+    },
+    {
+      "op": "add",
+      "path": "/meta/links/demo",
+      "value": ""
+    },
+    {
+      "op": "add",
+      "path": "/meta/links/dataset",
+      "value": "https://www.kaggle.com/pratyushakar/rossmann-store-sales"
+    },
+    {
+      "op": "add",
+      "path": "/business/executiveSummary",
+      "value": "This project implements Bayesian hierarchical modelling at scale for retail sales forecasting. Using NumPyro on top of JAX, it fits a Gamma-Poisson hierarchical model over thousands of stores and days in the Rossmann Store Sales dataset from Kaggle. The pipeline downloads raw store and sales CSVs, performs feature engineering and dummy-encoding in pandas, and converts them into a time-series cube suitable for vectorized probabilistic inference. The resulting model captures global and store-specific effects (such as weekday, promotions, and holidays), produces posterior predictive distributions, and is compared against a conventional linear regression baseline."
+    },
+    {
+      "op": "add",
+      "path": "/business/intendedUse",
+      "value": "The primary intended use is as a research and educational example of scalable Bayesian hierarchical modelling for count time-series, demonstrating how to implement a Gamma-Poisson hierarchical model with NumPyro and JAX on the Rossmann store-level sales task. It is designed for experimentation in notebooks rather than for direct production deployment."
+    },
+    {
+      "op": "add",
+      "path": "/business/useCase",
+      "value": "Forecasting daily store-level sales for a retail chain using a Bayesian hierarchical Gamma-Poisson model, trained on the Rossmann Store Sales Kaggle dataset, to capture both global effects (such as weekday and promotions) and store-specific patterns."
+    },
+    {
+      "op": "add",
+      "path": "/business/nonGoals/-",
+      "value": "Providing a fully production-ready forecasting service or API for retail operations."
+    },
+    {
+      "op": "add",
+      "path": "/business/nonGoals/-",
+      "value": "Building a generic forecasting platform applicable to arbitrary domains beyond the Rossmann Store Sales example."
+    },
+    {
+      "op": "add",
+      "path": "/business/nonGoals/-",
+      "value": "Delivering a comprehensive MLOps stack with monitoring, retraining, and automated deployment; the focus is on modelling and experimentation in notebooks."
+    },
+    {
+      "op": "add",
+      "path": "/business/outOfScopeUse/-",
+      "value": "Directly deploying this example codebase in a production environment without additional engineering, testing, and monitoring."
+    },
+    {
+      "op": "add",
+      "path": "/business/outOfScopeUse/-",
+      "value": "Using the model outside the context of historical store-level sales data with similar structure to the Rossmann Store Sales dataset, for example on domains with very different feature semantics."
+    },
+    {
+      "op": "add",
+      "path": "/business/outOfScopeUse/-",
+      "value": "Treating the example changelog and documentation templates as production governance records without project-specific adaptation."
+    },
+    {
+      "op": "add",
+      "path": "/business/userPopulations/-",
+      "value": "Data scientists and researchers interested in Bayesian hierarchical modelling and probabilistic programming with NumPyro and JAX."
+    },
+    {
+      "op": "add",
+      "path": "/business/userPopulations/-",
+      "value": "Machine learning practitioners who want to study scalable approaches to count time-series forecasting on retail sales data."
+    },
+    {
+      "op": "add",
+      "path": "/business/userPopulations/-",
+      "value": "Students and readers of the accompanying blog post who run the notebooks to understand the modelling and inference pipeline."
+    },
+    {
+      "op": "add",
+      "path": "/business/hazardousUseCases/-",
+      "value": "Using the research code and model outputs directly for safety-critical or legally binding decisions (for example, staffing of emergency services or credit approvals) without additional validation, governance, and monitoring."
+    },
+    {
+      "op": "add",
+      "path": "/business/hazardousUseCases/-",
+      "value": "Relying on forecasts trained on the Rossmann Store Sales dataset to drive high-stakes decisions in domains unrelated to retail store sales, where the data distribution and risks differ substantially."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/codeOverview/languages/-",
+      "value": "Python"
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/codeOverview/entrypoints/-",
+      "value": "Running Jupyter notebooks in notebooks/01-preprocessing.ipynb, 02-model.ipynb, and 03-evaluation.ipynb to execute the full data-to-model-to-evaluation pipeline."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/codeOverview/entrypoints/-",
+      "value": "Importing bhm_at_scale.handler.ModelHandler together with bhm_at_scale.model.model and bhm_at_scale.model.guide to train the hierarchical model from Python code."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/codeOverview/entrypoints/-",
+      "value": "Using bhm_at_scale.preprocess.encode and bhm_at_scale.preprocess.make_cube to transform tabular store-level sales data into model-ready arrays."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/codeOverview/entrypoints/-",
+      "value": "Using bhm_at_scale.plot.PlotStore and bhm_at_scale.plot.plot_sales_preds to visualize sales histories and predictive intervals for individual stores."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/codeOverview/components/-",
+      "value": {
+        "name": "Data Preprocessing",
+        "summary": "Downloads the Rossmann Store Sales Kaggle dataset, cleans and merges store metadata, performs basic feature engineering and dummy-encoding of categorical variables, and constructs a time-series cube for model input.",
+        "keyFiles": [
+          "notebooks/01-preprocessing.ipynb",
+          "src/bhm_at_scale/preprocess.py",
+          "src/bhm_at_scale/utils.py"
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/codeOverview/components/-",
+      "value": {
+        "name": "Hierarchical Sales Model",
+        "summary": "Defines a Gamma-Poisson hierarchical model over stores, days, and features using NumPyro plates, along with corresponding guides and a predictive model for posterior sampling.",
+        "keyFiles": [
+          "src/bhm_at_scale/model.py",
+          "notebooks/02-model.ipynb"
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/codeOverview/components/-",
+      "value": {
+        "name": "Training & Inference Handler",
+        "summary": "Wraps NumPyro SVI with a ModelHandler class that manages JAX PRNG keys, optimizer construction, JIT-compiled training loops, checkpointing of optimizer state, and prediction via Predictive.",
+        "keyFiles": [
+          "src/bhm_at_scale/handler.py",
+          "notebooks/02-model.ipynb"
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/codeOverview/components/-",
+      "value": {
+        "name": "Visualization & Evaluation",
+        "summary": "Provides utilities and notebooks to visualize predictive performance, uncertainty intervals, global weekday and promotion effects, and to compare the hierarchical model to a scikit-learn linear regression baseline.",
+        "keyFiles": [
+          "src/bhm_at_scale/plot.py",
+          "notebooks/03-evaluation.ipynb",
+          "notebooks/02-model.ipynb"
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "ModelHandler",
+        "path": "bhm_at_scale.handler.ModelHandler",
+        "file": "src/bhm_at_scale/handler.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "ModelHandler.fit",
+        "path": "bhm_at_scale.handler.ModelHandler.fit",
+        "file": "src/bhm_at_scale/handler.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "ModelHandler.predict",
+        "path": "bhm_at_scale.handler.ModelHandler.predict",
+        "file": "src/bhm_at_scale/handler.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "hierarchical_model",
+        "path": "bhm_at_scale.model.model",
+        "file": "src/bhm_at_scale/model.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "global_guide",
+        "path": "bhm_at_scale.model.guide",
+        "file": "src/bhm_at_scale/model.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "local_guide",
+        "path": "bhm_at_scale.model.local_guide",
+        "file": "src/bhm_at_scale/model.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "predictive_model",
+        "path": "bhm_at_scale.model.predictive_model",
+        "file": "src/bhm_at_scale/model.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "encode",
+        "path": "bhm_at_scale.preprocess.encode",
+        "file": "src/bhm_at_scale/preprocess.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "make_cube",
+        "path": "bhm_at_scale.preprocess.make_cube",
+        "file": "src/bhm_at_scale/preprocess.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "plot_sales_preds",
+        "path": "bhm_at_scale.plot.plot_sales_preds",
+        "file": "src/bhm_at_scale/plot.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "PlotStore",
+        "path": "bhm_at_scale.plot.PlotStore",
+        "file": "src/bhm_at_scale/plot.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "plot_densities",
+        "path": "bhm_at_scale.plot.plot_densities",
+        "file": "src/bhm_at_scale/plot.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "summary",
+        "path": "bhm_at_scale.utils.summary",
+        "file": "src/bhm_at_scale/utils.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "stats_to_df",
+        "path": "bhm_at_scale.utils.stats_to_df",
+        "file": "src/bhm_at_scale/utils.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "preds_to_df",
+        "path": "bhm_at_scale.utils.preds_to_df",
+        "file": "src/bhm_at_scale/utils.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "make_intervals",
+        "path": "bhm_at_scale.utils.make_intervals",
+        "file": "src/bhm_at_scale/utils.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/publicApis/-",
+      "value": {
+        "name": "reorder_cols",
+        "path": "bhm_at_scale.utils.reorder_cols",
+        "file": "src/bhm_at_scale/utils.py"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/dataFlow/-",
+      "value": "Raw Rossmann Store Sales CSVs (store.csv, train.csv) are downloaded from Kaggle into data/raw using kaggle.api.dataset_download_files in the preprocessing notebook."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/dataFlow/-",
+      "value": "store.csv and train.csv are loaded into pandas, merged on Store, sorted by Store and Date, and augmented with engineered fields such as numeric StateHoliday, Assortment, StoreType, StoreId, Timestep, and StoreVariant while dropping unused competition and promo interval columns."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/dataFlow/-",
+      "value": "Categorical variables (DayOfWeek, StoreVariant, StateHoliday) are dummy-encoded via bhm_at_scale.preprocess.encode; rows with Open == 0 have Sales set to NaN, and Open is then dropped before columns are reordered to put StoreId and Timestep first and Sales last."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/dataFlow/-",
+      "value": "The encoded DataFrame is saved to data/preprocessed/edf.csv and converted into a three-dimensional numpy array cube X indexed by [StoreId, Timestep, feature/target] using bhm_at_scale.preprocess.make_cube; X is split into X_train and X_test and persisted as .npz files."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/dataFlow/-",
+      "value": "X_train and X_test are loaded as JAX DeviceArray objects and passed to the Gamma-Poisson hierarchical model defined in bhm_at_scale.model via the ModelHandler.fit SVI training loop, which performs JAX-jitted optimization using lax.fori_loop."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/dataFlow/-",
+      "value": "After training, optimizer/model state is serialized to data/result/optim_state.pickle; posterior samples and predictions are generated with ModelHandler.predict and predictive_model, summarized via bhm_at_scale.utils.summary, stats_to_df, and preds_to_df, and exported as CSVs (e.g., coef_mus.csv, stats.csv, train_preds.csv, test_preds.csv) for downstream visualization in notebooks and bhm_at_scale.plot."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/depsSummary/-",
+      "value": "Core language and environment: Python >=3.8 managed via Conda (environment.yaml, environment.lock.yaml)."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/depsSummary/-",
+      "value": "Numerical and data processing: numpy, scipy, pandas (for array math, statistics, and tabular feature engineering)."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/depsSummary/-",
+      "value": "Probabilistic modelling and optimization: jax, jaxlib, numpyro (Gamma-Poisson hierarchical model, SVI, JAX JIT)."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/depsSummary/-",
+      "value": "Classical machine learning baseline: scikit-learn (LinearRegression used as a conventional Poisson-style regression comparator)."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/depsSummary/-",
+      "value": "Visualization and reporting: matplotlib, seaborn, daft (for plotting time series, densities, and graphical model diagrams)."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/architecture/depsSummary/-",
+      "value": "Experiment tooling and data access: jupyterlab for notebooks and kaggle API for downloading the Rossmann Store Sales dataset."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/qualitySignals/complexityHints/-",
+      "value": "The training loop in ModelHandler._fit uses JAX JIT compilation and lax.fori_loop over epochs, indicating careful optimization for performance on large time-series cubes."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/qualitySignals/complexityHints/-",
+      "value": "The Gamma-Poisson hierarchical model employs multiple NumPyro plates (features, stores, days) and TransformReparam with TransformedDistribution to stabilize inference, which increases conceptual and implementation complexity."
+    },
+    {
+      "op": "add",
+      "path": "/devInsight/qualitySignals/complexityHints/-",
+      "value": "Custom guides (global guide and local_guide) are defined to handle scenarios with full historical data and new stores with limited history, reflecting non-trivial inference design."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/artifactURIs",
+      "value": {
+        "model": "data/result/optim_state.pickle",
+        "dockerImage": ""
+      }
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/training",
+      "value": {
+        "framework": "NumPyro (JAX)",
+        "frameworkVersion": "0.7.2",
+        "hyperparams": {
+          "svi_loss": "Trace_ELBO(num_particles=1)",
+          "optimizer": "Adam via numpyro.optim",
+          "initial_training": {
+            "n_epochs": 5000,
+            "lr": 0.1
+          },
+          "fine_tuning": {
+            "n_epochs": 1000,
+            "lr": 0.001
+          },
+          "local_adaptation": {
+            "n_epochs": 1000,
+            "lr": 0.1
+          },
+          "batching": "full-batch over all stores and days in X"
+        },
+        "hardware": "Local Python 3.8 environment (Conda) with JAX 0.2.19 / jaxlib 0.1.71 and NumPyro 0.7.2, suitable for CPU-based SVI training."
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/mlCore/problem",
+      "value": "Probabilistic time-series regression / forecasting of daily store-level sales counts using a Gamma-Poisson hierarchical model over stores, days, and engineered features."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/datasets/-",
+      "value": {
+        "name": "Rossmann Store Sales (Kaggle)",
+        "uri": "https://www.kaggle.com/pratyushakar/rossmann-store-sales",
+        "license": "See Kaggle dataset page"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/features/-",
+      "value": "DayOfWeek_1–DayOfWeek_7: dummy-encoded weekday indicators derived from the original DayOfWeek column."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/features/-",
+      "value": "Promo: binary indicator of whether a promotion is running on a given day."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/features/-",
+      "value": "StateHoliday_0–StateHoliday_3: dummy-encoded state holiday categories mapped from the original StateHoliday field."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/features/-",
+      "value": "SchoolHoliday: indicator for school holidays."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/features/-",
+      "value": "Promo2: indicator for a secondary promotion program."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/features/-",
+      "value": "StoreVariant_11, StoreVariant_13, StoreVariant_21, StoreVariant_22, StoreVariant_23, StoreVariant_31, StoreVariant_33, StoreVariant_41, StoreVariant_43: categorical encodings combining StoreType and Assortment into store variant groups."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/features/-",
+      "value": "StoreId: contiguous numeric identifier for each store, used as an index dimension in the cube."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/features/-",
+      "value": "Timestep: per-store time index (within-store cumulative day count)."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/features/-",
+      "value": "Sales: target variable representing daily store sales, modelled as a Gamma-Poisson count."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/baselines/-",
+      "value": "Scikit-Learn LinearRegression fitted on log-transformed sales for a single store as a conventional Poisson-style regression baseline, compared against the Bayesian hierarchical model."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/qualities/-",
+      "value": "The Gamma-Poisson hierarchical structure allows sharing of statistical strength across stores, yielding reasonable coefficient estimates even for stores with few observations, as demonstrated by local_guide and coefficient comparisons in the modelling notebook."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/qualities/-",
+      "value": "Posterior predictive samples are summarized into means and credible intervals (5%, 25%, 75%, 95%), providing uncertainty estimates for sales forecasts rather than point predictions only."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/qualities/-",
+      "value": "Global effects such as weekday and promotion impacts are visualized and compared to per-store mean effects, supporting interpretability of how the model uses key features."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/failureModes/-",
+      "value": "The model assumes that relationships between features (such as weekday, promotions, and holidays) and log sales are relatively stable over the training and forecasting horizons; it may underperform under strong distribution shifts not represented in the Rossmann training data."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/failureModes/-",
+      "value": "Features are padded with zeros for missing values in the cube (via jnp.nan_to_num), and closed days have Sales set to NaN before filtering; unexpected patterns of missingness or mis-specified closed days may lead to biased estimates."
+    },
+    {
+      "op": "add",
+      "path": "/mlCore/failureModes/-",
+      "value": "Local_guide-based adaptation for new stores with few observations relies on the global priors learned from historical stores; if new stores differ substantially in behaviour from the training population, forecasts may be miscalibrated."
+    },
+    {
+      "op": "add",
+      "path": "/governance/policies/-",
+      "value": "Source code is licensed under the GNU General Public License v2.0 or later (GPL-2.0-or-later), as indicated by LICENSE.txt and the license metadata in setup.cfg, which affects how the code can be reused or integrated into proprietary systems."
+    },
+    {
+      "op": "add",
+      "path": "/provenance/changelog/-",
+      "value": {
+        "date": "2026-03-11T10:29:03.512Z",
+        "summary": "ML System Card run run-2026-03-11-10-28-37 observed 37 changed files",
+        "files": [
+          {
+            "path": ".coveragerc"
+          },
+          {
+            "path": ".gitignore"
+          },
+          {
+            "path": ".isort.cfg"
+          },
+          {
+            "path": ".pre-commit-config.yaml"
+          },
+          {
+            "path": "AUTHORS.rst"
+          },
+          {
+            "path": "CHANGELOG.rst"
+          },
+          {
+            "path": "LICENSE.txt"
+          },
+          {
+            "path": "README.md"
+          },
+          {
+            "path": "data/.gitignore"
+          },
+          {
+            "path": "data/external/.gitignore"
+          },
+          {
+            "path": "data/interim/.gitignore"
+          },
+          {
+            "path": "data/preprocessed/.gitignore"
+          },
+          {
+            "path": "data/raw/.gitignore"
+          },
+          {
+            "path": "data/result/.gitignore"
+          },
+          {
+            "path": "docs/Makefile"
+          },
+          {
+            "path": "docs/_static/.gitignore"
+          },
+          {
+            "path": "docs/authors.rst"
+          },
+          {
+            "path": "docs/changelog.rst"
+          },
+          {
+            "path": "docs/conf.py"
+          },
+          {
+            "path": "docs/index.rst"
+          },
+          {
+            "path": "docs/license.rst"
+          },
+          {
+            "path": "docs/ml_system_card.yaml"
+          },
+          {
+            "path": "docs/stakeholders.yaml"
+          },
+          {
+            "path": "environment.lock.yaml"
+          },
+          {
+            "path": "environment.yaml"
+          },
+          {
+            "path": "notebooks/01-preprocessing.ipynb"
+          },
+          {
+            "path": "notebooks/02-model.ipynb"
+          },
+          {
+            "path": "notebooks/03-evaluation.ipynb"
+          },
+          {
+            "path": "setup.cfg"
+          },
+          {
+            "path": "setup.py"
+          },
+          {
+            "path": "src/bhm_at_scale/__init__.py"
+          },
+          {
+            "path": "src/bhm_at_scale/handler.py"
+          },
+          {
+            "path": "src/bhm_at_scale/model.py"
+          },
+          {
+            "path": "src/bhm_at_scale/plot.py"
+          },
+          {
+            "path": "src/bhm_at_scale/preprocess.py"
+          },
+          {
+            "path": "src/bhm_at_scale/utils.py"
+          },
+          {
+            "path": "tests/conftest.py"
+          }
+        ],
+        "runId": "run-2026-03-11-10-28-37",
+        "headSha": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+      }
+    }
+  ],
+  "notes": {
+    "data-engineer": {
+      "textMd": "",
+      "overview": "The system ingests raw Rossmann Store Sales CSVs (e.g., store.csv, train.csv) from Kaggle into a structured preprocessing pipeline [$.devInsight.architecture.dataFlow]. Processed data feeds a Bayesian hierarchical model implemented in Python, with the environment managed via Conda (environment.yaml, environment.lock.yaml) [$.devInsight.architecture.depsSummary]. The primary implementation language is Python, with Jupyter notebooks used for experimentation and walkthroughs [$.devInsight.codeOverview.languages]. Execution commonly occurs via the notebooks in notebooks/ for preprocessing, model training, and evaluation, backed by the bhm_at_scale Python package [$.devInsight.codeOverview.entrypoints⚠️].",
+      "changes": "- No significant updates detected in the documented data flow between raw Kaggle CSVs and the modeling pipeline [$.devInsight.architecture.dataFlow].\n- No significant updates detected in the core dependency stack (Python + Conda-managed environment) [$.devInsight.architecture.depsSummary].\n- No significant updates detected in primary implementation languages (Python, with Jupyter notebooks for workflows) [$.devInsight.codeOverview.languages].",
+      "confidence": 0.4
+    },
+    "data-scientist": {
+      "textMd": "",
+      "overview": "The system implements ⚠️ scalable Bayesian hierarchical modelling for retail sales forecasting (see $.business.executiveSummary, $.business.useCase). Its primary role is ⚠️ a research and educational example rather than a production-grade service (see $.business.intendedUse, $.business.nonGoals). Intended users are ⚠️ data scientists and researchers working on hierarchical time series models (see $.business.userPopulations). The card also outlines ⚠️ discouraged and out-of-scope deployments, particularly direct use in production or safety‑critical settings without further validation (see $.business.hazardousUseCases, $.business.outOfScopeUse).",
+      "changes": "- ⚠️ Clarified or expanded the high-level project description in $.business.executiveSummary.\n- ⚠️ Updated intended research/educational positioning in $.business.intendedUse and constraints in $.business.nonGoals.\n- ⚠️ Refined examples of primary use cases in $.business.useCase (retail sales forecasting with Bayesian hierarchical models).\n- ⚠️ Adjusted descriptions of hazardous or out-of-scope scenarios in $.business.hazardousUseCases and $.business.outOfScopeUse.\n- ⚠️ Slightly revised the description of target user groups in $.business.userPopulations to emphasize data-science-oriented usage.",
+      "confidence": 0.1
+    },
+    "domain-expert": {
+      "textMd": "",
+      "overview": "This system appears to focus on scalable Bayesian hierarchical modelling for retail sales forecasting ⚠️ (see $.business.executiveSummary, $.business.useCase). The primary role is likely research and education, not production deployment ⚠️ (see $.business.intendedUse, $.business.nonGoals). Anticipated users seem to be data scientists and researchers exploring hierarchical models and retail demand patterns ⚠️ (see $.business.userPopulations). Certain uses—especially direct deployment in safety‑critical or legally regulated contexts—are likely flagged as hazardous or out of scope ⚠️ (see $.business.hazardousUseCases, $.business.outOfScopeUse).",
+      "changes": "- No significant updates detected in the business-related fields for this stakeholder (see $.business.*).⚠️",
+      "confidence": 0.1
+    },
+    "governance-compliance-ethics-officer": {
+      "textMd": "",
+      "overview": "The ML system’s governance framework, as documented in $.governance.policies, currently emphasizes open-source licensing obligations. The source code is licensed under the GNU General Public License v2.0 or later, which requires that derivative works and redistributions preserve the same license and provide access to source code. This licensing choice affects downstream compliance, including obligations for any integrated or redistributed components, and should be reflected in internal governance, third‑party risk assessments, and contractual terms with external partners.",
+      "changes": "- $.governance.policies now explicitly states that the source code is licensed under the GNU General Public License v2.0 or later.\n- Governance, compliance, and ethics oversight should ensure that GPLv2-or-later obligations (e.g., source disclosure and copyleft requirements) are incorporated into organizational policies for reuse, modification, and distribution of this system.\n- Review existing integration and deployment practices to confirm that they do not conflict with GPLv2-or-later terms, especially in mixed-licensing environments.",
+      "confidence": 0.96
+    },
+    "governance-officer": {
+      "textMd": "",
+      "overview": "The ML System Card’s governance section documents the project’s licensing and policy framework. In particular, it records that the system’s source code is distributed under the GNU General Public License v2.0 or later, as specified in $.governance.policies. For governance officers, this implies strong copyleft obligations for derivative works and redistribution. The policy entry can be used to align compliance reviews, third‑party integration checks, and legal disclosures with the project’s chosen open‑source licensing model.",
+      "changes": "- $.governance.policies now explicitly states that the source code is licensed under the GNU General Public License v2.0 or later.\n- This makes the copyleft licensing terms more transparent within the ML System Card, supporting governance reviews and compliance documentation.\n- Governance processes that depend on clear license metadata (e.g., supplier checks, reuse approvals) can now reference $.governance.policies as the canonical in‑card record of the project’s licensing status.",
+      "confidence": 0.96
+    },
+    "ml-engineer": {
+      "textMd": "",
+      "overview": "The system trains and evaluates a Bayesian hierarchical model for Rossmann store sales forecasting. According to $.devInsight.architecture.dataFlow, raw CSVs are downloaded, preprocessed into structured features, and stored in intermediate directories before modeling. $.devInsight.architecture.depsSummary describes a Python-based environment managed via Conda, with scientific computing and probabilistic modeling libraries. $.devInsight.codeOverview.languages confirms Python as the primary implementation language for both core library code and Jupyter-based experimentation.",
+      "changes": "- $.devInsight.architecture.dataFlow now documents the end-to-end flow from raw Rossmann CSVs through preprocessing stages into model-ready data.\n- $.devInsight.architecture.depsSummary adds an explicit summary of the Python/Conda environment and key ML/statistics dependencies.\n- ⚠️ $.devInsight.codeOverview.entrypoints describes notebook-driven workflows and possible CLI/module entrypoints for running preprocessing, training, and evaluation.\n- $.devInsight.codeOverview.languages explicitly records Python as the main language for the system.\n- ⚠️ $.devInsight.qualitySignals.complexityHints flags JAX-based training loop complexity and suggests attention to performance and readability in ModelHandler internals.",
+      "confidence": 0.4
+    },
+    "product-manager": {
+      "textMd": "",
+      "overview": "The system applies Bayesian hierarchical modelling ⚠️ to forecast daily store-level retail sales ⚠️. It is positioned primarily as a research and educational example of scalable probabilistic forecasting, not a production-grade service ⚠️ (see $.business.intendedUse, $.business.nonGoals). Hazardous / out-of-scope usage includes safety-critical or legally binding decisions based directly on this research code or its raw outputs ⚠️ (see $.business.hazardousUseCases, $.business.outOfScopeUse). Intended users are data scientists and researchers working with Bayesian hierarchical models and retail demand data ⚠️ (see $.business.userPopulations).",
+      "changes": "- ⚠️ docs/ml_system_card.yaml was modified, likely affecting business-level descriptions (e.g., $.business.executiveSummary, $.business.useCase, $.business.intendedUse, $.business.nonGoals, $.business.hazardousUseCases, $.business.outOfScopeUse, $.business.userPopulations), but specific content changes versus the prior baseline are not available from this run.\n- No further significant, clearly identifiable updates to product-facing system behavior can be derived from the provided metadata alone ⚠️.",
+      "confidence": 0.1
+    },
+    "project-manager": {
+      "textMd": "",
+      "overview": "This ML system card’s business section ⚠️describes a Bayesian hierarchical modeling solution for retail-scale forecasting (see $.business.useCase). It is ⚠️positioned primarily as a research and educational example rather than a production-grade service (see $.business.intendedUse, $.business.nonGoals). The card ⚠️identifies data scientists and researchers as key users (see $.business.userPopulations) and highlights ⚠️restricted or out-of-scope deployments, especially in safety-critical or high-stakes operational settings (see $.business.hazardousUseCases, $.business.outOfScopeUse).",
+      "changes": "- No significant updates detected in the business-focused fields for this run.\n- Content in $.business.executiveSummary, $.business.useCase, $.business.intendedUse, $.business.nonGoals, $.business.outOfScopeUse, and $.business.userPopulations appears consistent with prior intent descriptions ⚠️(based on limited change signals).\n- No newly documented hazardous or prohibited use cases were identified in $.business.hazardousUseCases ⚠️.\n- No new target user populations or business goals were added in this update ⚠️.",
+      "confidence": 0.1
+    },
+    "software-developer": {
+      "textMd": "",
+      "overview": "This system provides scalable Bayesian hierarchical modelling for retail sales forecasting ⚠️. According to $.business.executiveSummary, it focuses on daily, store-level sales predictions for a retail chain ⚠️. The primary intent, per $.business.intendedUse, is research and education rather than a production-ready service ⚠️. The main use case in $.business.useCase is exploring and demonstrating forecasting workflows, not live deployment ⚠️. Target users from $.business.userPopulations are data scientists and researchers working with Bayesian hierarchical models and large-scale retail data ⚠️.",
+      "changes": "- $.business.executiveSummary now describes the project as scalable Bayesian hierarchical modelling for retail sales forecasting, emphasizing research orientation ⚠️.\n- $.business.intendedUse clarifies that usage is for research/educational examples, not production forecasting services ⚠️.\n- $.business.useCase highlights daily store-level sales forecasting for a retail chain as the canonical example ⚠️.\n- $.business.userPopulations specifies data scientists and researchers as primary users ⚠️.\n- $.business.nonGoals and $.business.outOfScopeUse explicitly exclude production-grade deployment or direct use in safety-/legally-critical contexts ⚠️.\n- $.business.hazardousUseCases warns against using this research code or outputs in safety-critical or high-stakes decision settings without additio",
+      "confidence": 0.1
+    },
+    "ux-researcher": {
+      "textMd": "",
+      "overview": "This system ⚠️implements Bayesian hierarchical modelling at scale for retail sales forecasting (see $.business.executiveSummary, $.business.useCase). It is ⚠️positioned primarily as a research and educational example rather than a production service (see $.business.intendedUse, $.business.nonGoals). The ⚠️intended users are data scientists and researchers exploring Bayesian methods and scalable probabilistic modelling (see $.business.userPopulations). Hazardous and out-of-scope usage includes ⚠️direct application in safety-critical, legal, or high-stakes operational settings without rigorous validation and integration into production-grade workflows (see $.business.hazardousUseCases, $.business.outOfScopeUse).",
+      "changes": "- ⚠️Business framing for the project’s purpose and positioning as research/educational material is captured under $.business.executiveSummary and $.business.intendedUse, but specific edits versus baseline are not determinable from this run.\n- ⚠️Clarifications around non-goals and out-of-scope scenarios (e.g., production deployment without hardening) are documented under $.business.nonGoals and $.business.outOfScopeUse; exact textual changes are unknown.\n- ⚠️User populations and hazardous use cases appear defined in $.business.userPopulations and $.business.hazardousUseCases, but any recent adjustments to these descriptions cannot be reliably identified.\n\nIf precise diffs are required, please review docs/ml_system_card.yaml directly.",
+      "confidence": 0.1
+    }
+  },
+  "diagnostics": {
+    "coverage_non_null": 1,
+    "low_confidence": [
+      {
+        "jsonPath": "$.business.hazardousUseCases",
+        "reason": "low confidence"
+      },
+      {
+        "jsonPath": "$.mlCore.failureModes",
+        "reason": "low confidence"
+      },
+      {
+        "jsonPath": "$.provenance.changelog[0]",
+        "reason": "Review high-change volume"
+      }
+    ],
+    "warnings": [
+      "Safety Warning: Diff exceeds maximum allowed lines (511 > 500)",
+      "Safety Warning: Card size growth exceeds ratio (33.96 > 3)",
+      "Safety Warning: Proposal contains Require-level facts without reviewer action: 1"
+    ]
+  },
+  "confidence_report": [
+    {
+      "jsonPath": "$.business.executiveSummary",
+      "kind": "inferred",
+      "confidence": 0.1,
+      "gate": "Require",
+      "sources": [
+        "README.md#L1-L40",
+        "notebooks/01-preprocessing.ipynb#L1-L120",
+        "notebooks/02-model.ipynb#L1-L200",
+        "src/bhm_at_scale/model.py#L1-L120"
+      ]
+    },
+    {
+      "jsonPath": "$.business.hazardousUseCases",
+      "kind": "inferred",
+      "confidence": 0.1,
+      "gate": "Require",
+      "sources": [
+        "README.md#L1-L40",
+        "README.md#L41-L80"
+      ]
+    },
+    {
+      "jsonPath": "$.business.intendedUse",
+      "kind": "inferred",
+      "confidence": 0.1,
+      "gate": "Require",
+      "sources": [
+        "README.md#L1-L40",
+        "notebooks/02-model.ipynb#L1-L80"
+      ]
+    },
+    {
+      "jsonPath": "$.business.nonGoals",
+      "kind": "inferred",
+      "confidence": 0.1,
+      "gate": "Require",
+      "sources": [
+        "README.md#L24-L72",
+        "notebooks/02-model.ipynb#L1-L60"
+      ]
+    },
+    {
+      "jsonPath": "$.business.outOfScopeUse",
+      "kind": "inferred",
+      "confidence": 0.1,
+      "gate": "Require",
+      "sources": [
+        "CHANGELOG.rst#L1-L20",
+        "README.md#L24-L72"
+      ]
+    },
+    {
+      "jsonPath": "$.business.useCase",
+      "kind": "inferred",
+      "confidence": 0.4,
+      "gate": "Require",
+      "sources": [
+        "notebooks/01-preprocessing.ipynb#L40-L120",
+        "notebooks/03-evaluation.ipynb#L80-L180",
+        "src/bhm_at_scale/model.py#L60-L140"
+      ]
+    },
+    {
+      "jsonPath": "$.business.userPopulations",
+      "kind": "inferred",
+      "confidence": 0.2,
+      "gate": "OK",
+      "sources": [
+        "README.md#L1-L40",
+        "docs/index.rst#L1-L60"
+      ]
+    },
+    {
+      "jsonPath": "$.devInsight.architecture.dataFlow",
+      "kind": "inferred",
+      "confidence": 0.94,
+      "gate": "Warn",
+      "sources": [
+        "notebooks/01-preprocessing.ipynb#L20-L140",
+        "notebooks/02-model.ipynb#L40-L200",
+        "notebooks/03-evaluation.ipynb#L80-L200",
+        "src/bhm_at_scale/handler.py#L1-L200",
+        "src/bhm_at_scale/preprocess.py#L1-L120",
+        "src/bhm_at_scale/utils.py#L1-L200"
+      ]
+    },
+    {
+      "jsonPath": "$.devInsight.architecture.depsSummary",
+      "kind": "extracted",
+      "confidence": 0.95,
+      "gate": "Warn",
+      "sources": [
+        "environment.lock.yaml#L1-L140",
+        "environment.yaml#L1-L40",
+        "notebooks/01-preprocessing.ipynb#L1-L80",
+        "notebooks/02-model.ipynb#L1-L80",
+        "notebooks/03-evaluation.ipynb#L1-L80"
+      ]
+    },
+    {
+      "jsonPath": "$.devInsight.architecture.publicApis",
+      "kind": "inferred",
+      "confidence": 0,
+      "gate": "Require",
+      "sources": [
+        "src/bhm_at_scale/handler.py#L1-L200",
+        "src/bhm_at_scale/model.py#L1-L260",
+        "src/bhm_at_scale/plot.py#L1-L220",
+        "src/bhm_at_scale/preprocess.py#L1-L120",
+        "src/bhm_at_scale/utils.py#L1-L220"
+      ]
+    },
+    {
+      "jsonPath": "$.devInsight.codeOverview.components",
+      "kind": "inferred",
+      "confidence": 0,
+      "gate": "Require",
+      "sources": [
+        "notebooks/01-preprocessing.ipynb#L1-L140",
+        "notebooks/02-model.ipynb#L1-L220",
+        "notebooks/03-evaluation.ipynb#L1-L220",
+        "src/bhm_at_scale/handler.py#L1-L200",
+        "src/bhm_at_scale/model.py#L1-L260",
+        "src/bhm_at_scale/plot.py#L1-L220",
+        "src/bhm_at_scale/preprocess.py#L1-L120",
+        "src/bhm_at_scale/utils.py#L1-L220"
+      ]
+    },
+    {
+      "jsonPath": "$.devInsight.codeOverview.entrypoints",
+      "kind": "inferred",
+      "confidence": 0.4,
+      "gate": "Require",
+      "sources": [
+        "notebooks/01-preprocessing.ipynb#L1-L40",
+        "notebooks/02-model.ipynb#L20-L80",
+        "notebooks/03-evaluation.ipynb#L80-L160"
+      ]
+    },
+    {
+      "jsonPath": "$.devInsight.codeOverview.languages",
+      "kind": "inferred",
+      "confidence": 0.99,
+      "gate": "OK",
+      "sources": [
+        "environment.yaml#L1-L20",
+        "setup.cfg#L1-L40",
+        "src/bhm_at_scale/model.py#L1-L40"
+      ]
+    },
+    {
+      "jsonPath": "$.devInsight.qualitySignals.complexityHints",
+      "kind": "inferred",
+      "confidence": 0.4,
+      "gate": "Require",
+      "sources": [
+        "notebooks/02-model.ipynb#L80-L200",
+        "src/bhm_at_scale/handler.py#L60-L160",
+        "src/bhm_at_scale/model.py#L60-L260"
+      ]
+    },
+    {
+      "jsonPath": "$.governance.policies",
+      "kind": "extracted",
+      "confidence": 0.96,
+      "gate": "Warn",
+      "sources": [
+        "LICENSE.txt#L1-L30",
+        "README.md#L3-L12",
+        "setup.cfg#L5-L20"
+      ]
+    },
+    {
+      "jsonPath": "$.meta.links",
+      "kind": "inferred",
+      "confidence": 0.95,
+      "gate": "Warn",
+      "sources": [
+        "README.md#L1-L20",
+        "notebooks/01-preprocessing.ipynb#L30-L70",
+        "setup.cfg#L5-L16"
+      ]
+    },
+    {
+      "jsonPath": "$.meta.maturity",
+      "kind": "inferred",
+      "confidence": 0.88,
+      "gate": "OK",
+      "sources": [
+        "README.md#L1-L40",
+        "docs/index.rst#L1-L40"
+      ]
+    },
+    {
+      "jsonPath": "$.meta.owners",
+      "kind": "inferred",
+      "confidence": 0.9,
+      "gate": "OK",
+      "sources": [
+        "AUTHORS.rst#L1-L10",
+        "setup.cfg#L5-L12"
+      ]
+    },
+    {
+      "jsonPath": "$.meta.title",
+      "kind": "extracted",
+      "confidence": 0.98,
+      "gate": "OK",
+      "sources": [
+        "README.md#L1-L4",
+        "setup.cfg#L1-L8"
+      ]
+    },
+    {
+      "jsonPath": "$.mlCore.artifactURIs",
+      "kind": "extracted",
+      "confidence": 0.9,
+      "gate": "Warn",
+      "sources": [
+        "notebooks/02-model.ipynb#L80-L140"
+      ]
+    },
+    {
+      "jsonPath": "$.mlCore.baselines",
+      "kind": "extracted",
+      "confidence": 0,
+      "gate": "Require",
+      "sources": [
+        "notebooks/02-model.ipynb#L140-L220"
+      ]
+    },
+    {
+      "jsonPath": "$.mlCore.datasets",
+      "kind": "extracted",
+      "confidence": 0.2,
+      "gate": "Require",
+      "sources": [
+        "notebooks/01-preprocessing.ipynb#L30-L70"
+      ]
+    },
+    {
+      "jsonPath": "$.mlCore.failureModes",
+      "kind": "inferred",
+      "confidence": 0,
+      "gate": "Require",
+      "sources": [
+        "notebooks/02-model.ipynb#L120-L220",
+        "src/bhm_at_scale/model.py#L80-L160",
+        "src/bhm_at_scale/preprocess.py#L80-L120"
+      ]
+    },
+    {
+      "jsonPath": "$.mlCore.features",
+      "kind": "extracted",
+      "confidence": 0.96,
+      "gate": "OK",
+      "sources": [
+        "notebooks/01-preprocessing.ipynb#L60-L140",
+        "src/bhm_at_scale/model.py#L40-L100",
+        "src/bhm_at_scale/preprocess.py#L40-L120"
+      ]
+    },
+    {
+      "jsonPath": "$.mlCore.problem",
+      "kind": "inferred",
+      "confidence": 0.9,
+      "gate": "OK",
+      "sources": [
+        "notebooks/02-model.ipynb#L40-L120",
+        "src/bhm_at_scale/model.py#L40-L120"
+      ]
+    },
+    {
+      "jsonPath": "$.mlCore.qualities",
+      "kind": "inferred",
+      "confidence": 0.6,
+      "gate": "Require",
+      "sources": [
+        "notebooks/02-model.ipynb#L100-L220",
+        "notebooks/03-evaluation.ipynb#L120-L220",
+        "src/bhm_at_scale/utils.py#L1-L120"
+      ]
+    },
+    {
+      "jsonPath": "$.mlCore.training",
+      "kind": "extracted",
+      "confidence": 0.6,
+      "gate": "Require",
+      "sources": [
+        "environment.lock.yaml#L80-L140",
+        "notebooks/02-model.ipynb#L40-L140",
+        "src/bhm_at_scale/handler.py#L1-L120"
+      ]
+    },
+    {
+      "jsonPath": "$.provenance.changelog[0]",
+      "kind": "extracted",
+      "confidence": 0,
+      "gate": "Require",
+      "sources": [
+        ".coveragerc#L1",
+        ".gitignore#L1",
+        ".isort.cfg#L1",
+        ".pre-commit-config.yaml#L1",
+        "AUTHORS.rst#L1",
+        "CHANGELOG.rst#L1",
+        "LICENSE.txt#L1",
+        "README.md#L1",
+        "data/.gitignore#L1",
+        "data/external/.gitignore#L1",
+        "data/interim/.gitignore#L1",
+        "data/preprocessed/.gitignore#L1",
+        "data/raw/.gitignore#L1",
+        "data/result/.gitignore#L1",
+        "docs/Makefile#L1",
+        "docs/_static/.gitignore#L1",
+        "docs/authors.rst#L1",
+        "docs/changelog.rst#L1",
+        "docs/conf.py#L1",
+        "docs/index.rst#L1",
+        "docs/license.rst#L1",
+        "docs/ml_system_card.yaml#L1",
+        "docs/stakeholders.yaml#L1",
+        "environment.lock.yaml#L1",
+        "environment.yaml#L1",
+        "notebooks/01-preprocessing.ipynb#L1",
+        "notebooks/02-model.ipynb#L1",
+        "notebooks/03-evaluation.ipynb#L1",
+        "setup.cfg#L1",
+        "setup.py#L1",
+        "src/bhm_at_scale/__init__.py#L1",
+        "src/bhm_at_scale/handler.py#L1",
+        "src/bhm_at_scale/model.py#L1",
+        "src/bhm_at_scale/plot.py#L1",
+        "src/bhm_at_scale/preprocess.py#L1",
+        "src/bhm_at_scale/utils.py#L1",
+        "tests/conftest.py#L1"
+      ]
+    }
+  ],
+  "sources": [
+    ".coveragerc#L1",
+    ".gitignore#L1",
+    ".isort.cfg#L1",
+    ".pre-commit-config.yaml#L1",
+    "AUTHORS.rst#L1",
+    "AUTHORS.rst#L1-L10",
+    "CHANGELOG.rst#L1",
+    "CHANGELOG.rst#L1-L20",
+    "data/.gitignore#L1",
+    "data/external/.gitignore#L1",
+    "data/interim/.gitignore#L1",
+    "data/preprocessed/.gitignore#L1",
+    "data/raw/.gitignore#L1",
+    "data/result/.gitignore#L1",
+    "docs/_static/.gitignore#L1",
+    "docs/authors.rst#L1",
+    "docs/changelog.rst#L1",
+    "docs/conf.py#L1",
+    "docs/index.rst#L1",
+    "docs/index.rst#L1-L40",
+    "docs/index.rst#L1-L60",
+    "docs/license.rst#L1",
+    "docs/Makefile#L1",
+    "docs/ml_system_card.yaml#L1",
+    "docs/stakeholders.yaml#L1",
+    "environment.lock.yaml#L1",
+    "environment.lock.yaml#L1-L140",
+    "environment.lock.yaml#L80-L140",
+    "environment.yaml#L1",
+    "environment.yaml#L1-L20",
+    "environment.yaml#L1-L40",
+    "LICENSE.txt#L1",
+    "LICENSE.txt#L1-L30",
+    "notebooks/01-preprocessing.ipynb#L1",
+    "notebooks/01-preprocessing.ipynb#L1-L120",
+    "notebooks/01-preprocessing.ipynb#L1-L140",
+    "notebooks/01-preprocessing.ipynb#L1-L40",
+    "notebooks/01-preprocessing.ipynb#L1-L80",
+    "notebooks/01-preprocessing.ipynb#L20-L140",
+    "notebooks/01-preprocessing.ipynb#L30-L70",
+    "notebooks/01-preprocessing.ipynb#L40-L120",
+    "notebooks/01-preprocessing.ipynb#L60-L140",
+    "notebooks/02-model.ipynb#L1",
+    "notebooks/02-model.ipynb#L1-L200",
+    "notebooks/02-model.ipynb#L1-L220",
+    "notebooks/02-model.ipynb#L1-L60",
+    "notebooks/02-model.ipynb#L1-L80",
+    "notebooks/02-model.ipynb#L100-L220",
+    "notebooks/02-model.ipynb#L120-L220",
+    "notebooks/02-model.ipynb#L140-L220",
+    "notebooks/02-model.ipynb#L20-L80",
+    "notebooks/02-model.ipynb#L40-L120",
+    "notebooks/02-model.ipynb#L40-L140",
+    "notebooks/02-model.ipynb#L40-L200",
+    "notebooks/02-model.ipynb#L80-L140",
+    "notebooks/02-model.ipynb#L80-L200",
+    "notebooks/03-evaluation.ipynb#L1",
+    "notebooks/03-evaluation.ipynb#L1-L220",
+    "notebooks/03-evaluation.ipynb#L1-L80",
+    "notebooks/03-evaluation.ipynb#L120-L220",
+    "notebooks/03-evaluation.ipynb#L80-L160",
+    "notebooks/03-evaluation.ipynb#L80-L180",
+    "notebooks/03-evaluation.ipynb#L80-L200",
+    "README.md#L1",
+    "README.md#L1-L20",
+    "README.md#L1-L4",
+    "README.md#L1-L40",
+    "README.md#L24-L72",
+    "README.md#L3-L12",
+    "README.md#L41-L80",
+    "setup.cfg#L1",
+    "setup.cfg#L1-L40",
+    "setup.cfg#L1-L8",
+    "setup.cfg#L5-L12",
+    "setup.cfg#L5-L16",
+    "setup.cfg#L5-L20",
+    "setup.py#L1",
+    "src/bhm_at_scale/__init__.py#L1",
+    "src/bhm_at_scale/handler.py#L1",
+    "src/bhm_at_scale/handler.py#L1-L120",
+    "src/bhm_at_scale/handler.py#L1-L200",
+    "src/bhm_at_scale/handler.py#L60-L160",
+    "src/bhm_at_scale/model.py#L1",
+    "src/bhm_at_scale/model.py#L1-L120",
+    "src/bhm_at_scale/model.py#L1-L260",
+    "src/bhm_at_scale/model.py#L1-L40",
+    "src/bhm_at_scale/model.py#L40-L100",
+    "src/bhm_at_scale/model.py#L40-L120",
+    "src/bhm_at_scale/model.py#L60-L140",
+    "src/bhm_at_scale/model.py#L60-L260",
+    "src/bhm_at_scale/model.py#L80-L160",
+    "src/bhm_at_scale/plot.py#L1",
+    "src/bhm_at_scale/plot.py#L1-L220",
+    "src/bhm_at_scale/preprocess.py#L1",
+    "src/bhm_at_scale/preprocess.py#L1-L120",
+    "src/bhm_at_scale/preprocess.py#L40-L120",
+    "src/bhm_at_scale/preprocess.py#L80-L120",
+    "src/bhm_at_scale/utils.py#L1",
+    "src/bhm_at_scale/utils.py#L1-L120",
+    "src/bhm_at_scale/utils.py#L1-L200",
+    "src/bhm_at_scale/utils.py#L1-L220",
+    "tests/conftest.py#L1"
+  ]
+}

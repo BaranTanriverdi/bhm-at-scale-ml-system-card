@@ -661,33 +661,6 @@
     ]
   },
   {
-    "jsonPath": "$.mlCore.qualities",
-    "decision": "accept",
-    "anchors": [
-      {
-        "path": "notebooks/02-model.ipynb",
-        "startLine": 100,
-        "endLine": 220,
-        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
-        "kind": "code"
-      },
-      {
-        "path": "notebooks/03-evaluation.ipynb",
-        "startLine": 120,
-        "endLine": 220,
-        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
-        "kind": "code"
-      },
-      {
-        "path": "src/bhm_at_scale/utils.py",
-        "startLine": 1,
-        "endLine": 120,
-        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
-        "kind": "code"
-      }
-    ]
-  },
-  {
     "jsonPath": "$.mlCore.training",
     "decision": "accept",
     "anchors": [

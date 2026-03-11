@@ -1,0 +1,854 @@
+{
+  "$schema": "https://example.com/ml_system_card.anchors.schema.json",
+  "anchorsByPath": {
+    "$.business.executiveSummary": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 120,
+        "kind": "code",
+        "path": "notebooks/01-preprocessing.ipynb",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 200,
+        "kind": "code",
+        "path": "notebooks/02-model.ipynb",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 40,
+        "kind": "docs",
+        "path": "README.md",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 120,
+        "kind": "code",
+        "path": "src/bhm_at_scale/model.py",
+        "startLine": 1
+      }
+    ],
+    "$.business.hazardousUseCases": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 40,
+        "kind": "docs",
+        "path": "README.md",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 80,
+        "kind": "docs",
+        "path": "README.md",
+        "startLine": 41
+      }
+    ],
+    "$.business.intendedUse": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 80,
+        "kind": "code",
+        "path": "notebooks/02-model.ipynb",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 40,
+        "kind": "docs",
+        "path": "README.md",
+        "startLine": 1
+      }
+    ],
+    "$.business.nonGoals": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 60,
+        "kind": "code",
+        "path": "notebooks/02-model.ipynb",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 72,
+        "kind": "docs",
+        "path": "README.md",
+        "startLine": 24
+      }
+    ],
+    "$.business.outOfScopeUse": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 20,
+        "kind": "code",
+        "path": "CHANGELOG.rst",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 72,
+        "kind": "docs",
+        "path": "README.md",
+        "startLine": 24
+      }
+    ],
+    "$.business.useCase": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 120,
+        "kind": "code",
+        "path": "notebooks/01-preprocessing.ipynb",
+        "startLine": 40
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 180,
+        "kind": "code",
+        "path": "notebooks/03-evaluation.ipynb",
+        "startLine": 80
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 140,
+        "kind": "code",
+        "path": "src/bhm_at_scale/model.py",
+        "startLine": 60
+      }
+    ],
+    "$.business.userPopulations": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 60,
+        "kind": "code",
+        "path": "docs/index.rst",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 40,
+        "kind": "docs",
+        "path": "README.md",
+        "startLine": 1
+      }
+    ],
+    "$.devInsight.architecture.dataFlow": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 140,
+        "kind": "code",
+        "path": "notebooks/01-preprocessing.ipynb",
+        "startLine": 20
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 200,
+        "kind": "code",
+        "path": "notebooks/02-model.ipynb",
+        "startLine": 40
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 200,
+        "kind": "code",
+        "path": "notebooks/03-evaluation.ipynb",
+        "startLine": 80
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 200,
+        "kind": "code",
+        "path": "src/bhm_at_scale/handler.py",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 120,
+        "kind": "code",
+        "path": "src/bhm_at_scale/preprocess.py",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 200,
+        "kind": "code",
+        "path": "src/bhm_at_scale/utils.py",
+        "startLine": 1
+      }
+    ],
+    "$.devInsight.architecture.depsSummary": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 140,
+        "kind": "config",
+        "path": "environment.lock.yaml",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 40,
+        "kind": "config",
+        "path": "environment.yaml",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 80,
+        "kind": "code",
+        "path": "notebooks/01-preprocessing.ipynb",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 80,
+        "kind": "code",
+        "path": "notebooks/02-model.ipynb",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 80,
+        "kind": "code",
+        "path": "notebooks/03-evaluation.ipynb",
+        "startLine": 1
+      }
+    ],
+    "$.devInsight.architecture.publicApis": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 200,
+        "kind": "code",
+        "path": "src/bhm_at_scale/handler.py",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 260,
+        "kind": "code",
+        "path": "src/bhm_at_scale/model.py",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 220,
+        "kind": "code",
+        "path": "src/bhm_at_scale/plot.py",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 120,
+        "kind": "code",
+        "path": "src/bhm_at_scale/preprocess.py",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 220,
+        "kind": "code",
+        "path": "src/bhm_at_scale/utils.py",
+        "startLine": 1
+      }
+    ],
+    "$.devInsight.codeOverview.components": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 140,
+        "kind": "code",
+        "path": "notebooks/01-preprocessing.ipynb",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 220,
+        "kind": "code",
+        "path": "notebooks/02-model.ipynb",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 220,
+        "kind": "code",
+        "path": "notebooks/03-evaluation.ipynb",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 200,
+        "kind": "code",
+        "path": "src/bhm_at_scale/handler.py",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 260,
+        "kind": "code",
+        "path": "src/bhm_at_scale/model.py",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 220,
+        "kind": "code",
+        "path": "src/bhm_at_scale/plot.py",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 120,
+        "kind": "code",
+        "path": "src/bhm_at_scale/preprocess.py",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 220,
+        "kind": "code",
+        "path": "src/bhm_at_scale/utils.py",
+        "startLine": 1
+      }
+    ],
+    "$.devInsight.codeOverview.entrypoints": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 40,
+        "kind": "code",
+        "path": "notebooks/01-preprocessing.ipynb",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 80,
+        "kind": "code",
+        "path": "notebooks/02-model.ipynb",
+        "startLine": 20
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 160,
+        "kind": "code",
+        "path": "notebooks/03-evaluation.ipynb",
+        "startLine": 80
+      }
+    ],
+    "$.devInsight.codeOverview.languages": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 20,
+        "kind": "config",
+        "path": "environment.yaml",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 40,
+        "kind": "code",
+        "path": "setup.cfg",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 40,
+        "kind": "code",
+        "path": "src/bhm_at_scale/model.py",
+        "startLine": 1
+      }
+    ],
+    "$.devInsight.qualitySignals.complexityHints": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 200,
+        "kind": "code",
+        "path": "notebooks/02-model.ipynb",
+        "startLine": 80
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 160,
+        "kind": "code",
+        "path": "src/bhm_at_scale/handler.py",
+        "startLine": 60
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 260,
+        "kind": "code",
+        "path": "src/bhm_at_scale/model.py",
+        "startLine": 60
+      }
+    ],
+    "$.governance.policies": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 30,
+        "kind": "code",
+        "path": "LICENSE.txt",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 12,
+        "kind": "docs",
+        "path": "README.md",
+        "startLine": 3
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 20,
+        "kind": "code",
+        "path": "setup.cfg",
+        "startLine": 5
+      }
+    ],
+    "$.meta.links": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 70,
+        "kind": "code",
+        "path": "notebooks/01-preprocessing.ipynb",
+        "startLine": 30
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 20,
+        "kind": "docs",
+        "path": "README.md",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 16,
+        "kind": "code",
+        "path": "setup.cfg",
+        "startLine": 5
+      }
+    ],
+    "$.meta.maturity": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 40,
+        "kind": "code",
+        "path": "docs/index.rst",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 40,
+        "kind": "docs",
+        "path": "README.md",
+        "startLine": 1
+      }
+    ],
+    "$.meta.owners": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 10,
+        "kind": "code",
+        "path": "AUTHORS.rst",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 12,
+        "kind": "code",
+        "path": "setup.cfg",
+        "startLine": 5
+      }
+    ],
+    "$.meta.title": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 4,
+        "kind": "docs",
+        "path": "README.md",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 8,
+        "kind": "code",
+        "path": "setup.cfg",
+        "startLine": 1
+      }
+    ],
+    "$.mlCore.artifactURIs": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 140,
+        "kind": "code",
+        "path": "notebooks/02-model.ipynb",
+        "startLine": 80
+      }
+    ],
+    "$.mlCore.baselines": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 220,
+        "kind": "code",
+        "path": "notebooks/02-model.ipynb",
+        "startLine": 140
+      }
+    ],
+    "$.mlCore.datasets": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 70,
+        "kind": "code",
+        "path": "notebooks/01-preprocessing.ipynb",
+        "startLine": 30
+      }
+    ],
+    "$.mlCore.failureModes": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 220,
+        "kind": "code",
+        "path": "notebooks/02-model.ipynb",
+        "startLine": 120
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 160,
+        "kind": "code",
+        "path": "src/bhm_at_scale/model.py",
+        "startLine": 80
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 120,
+        "kind": "code",
+        "path": "src/bhm_at_scale/preprocess.py",
+        "startLine": 80
+      }
+    ],
+    "$.mlCore.features": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 140,
+        "kind": "code",
+        "path": "notebooks/01-preprocessing.ipynb",
+        "startLine": 60
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 100,
+        "kind": "code",
+        "path": "src/bhm_at_scale/model.py",
+        "startLine": 40
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 120,
+        "kind": "code",
+        "path": "src/bhm_at_scale/preprocess.py",
+        "startLine": 40
+      }
+    ],
+    "$.mlCore.problem": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 120,
+        "kind": "code",
+        "path": "notebooks/02-model.ipynb",
+        "startLine": 40
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 120,
+        "kind": "code",
+        "path": "src/bhm_at_scale/model.py",
+        "startLine": 40
+      }
+    ],
+    "$.mlCore.training": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 140,
+        "kind": "config",
+        "path": "environment.lock.yaml",
+        "startLine": 80
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 140,
+        "kind": "code",
+        "path": "notebooks/02-model.ipynb",
+        "startLine": 40
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 120,
+        "kind": "code",
+        "path": "src/bhm_at_scale/handler.py",
+        "startLine": 1
+      }
+    ],
+    "$.provenance.changelog[0]": [
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": ".coveragerc",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": ".gitignore",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": ".isort.cfg",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "config",
+        "path": ".pre-commit-config.yaml",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "AUTHORS.rst",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "CHANGELOG.rst",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "data/.gitignore",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "data/external/.gitignore",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "data/interim/.gitignore",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "data/preprocessed/.gitignore",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "data/raw/.gitignore",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "data/result/.gitignore",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "docs/_static/.gitignore",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "docs/authors.rst",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "docs/changelog.rst",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "docs/conf.py",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "docs/index.rst",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "docs/license.rst",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "docs/Makefile",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "config",
+        "path": "docs/ml_system_card.yaml",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "config",
+        "path": "docs/stakeholders.yaml",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "config",
+        "path": "environment.lock.yaml",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "config",
+        "path": "environment.yaml",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "LICENSE.txt",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "notebooks/01-preprocessing.ipynb",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "notebooks/02-model.ipynb",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "notebooks/03-evaluation.ipynb",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "docs",
+        "path": "README.md",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "setup.cfg",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "setup.py",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "src/bhm_at_scale/__init__.py",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "src/bhm_at_scale/handler.py",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "src/bhm_at_scale/model.py",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "src/bhm_at_scale/plot.py",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "src/bhm_at_scale/preprocess.py",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "src/bhm_at_scale/utils.py",
+        "startLine": 1
+      },
+      {
+        "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+        "endLine": 1,
+        "kind": "code",
+        "path": "tests/conftest.py",
+        "startLine": 1
+      }
+    ]
+  },
+  "cardSha": "0850621f813948ddc91347fa9e57a7a44a20040f9206b6acceb9dc791c9e0337",
+  "generatedAt": "2026-03-11T10:48:57.818Z",
+  "runId": "run-2026-03-11-10-28-37",
+  "version": "1.0.0"
+}

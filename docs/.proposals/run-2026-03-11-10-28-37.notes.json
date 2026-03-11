@@ -1,0 +1,296 @@
+{
+  "promptId": "notes.v1",
+  "promptMetadata": {
+    "id": "notes.v1",
+    "audience": "card-stakeholder-notes",
+    "version": 1,
+    "max_tokens": 768,
+    "citations": "preferred",
+    "sampling": {
+      "temperature": 0.25,
+      "top_p": 0.85
+    }
+  },
+  "mode": "llm",
+  "notes": {
+    "data-engineer": {
+      "textMd": "",
+      "overview": "The system ingests raw Rossmann Store Sales CSVs (e.g., store.csv, train.csv) from Kaggle into a structured preprocessing pipeline [$.devInsight.architecture.dataFlow]. Processed data feeds a Bayesian hierarchical model implemented in Python, with the environment managed via Conda (environment.yaml, environment.lock.yaml) [$.devInsight.architecture.depsSummary]. The primary implementation language is Python, with Jupyter notebooks used for experimentation and walkthroughs [$.devInsight.codeOverview.languages]. Execution commonly occurs via the notebooks in notebooks/ for preprocessing, model training, and evaluation, backed by the bhm_at_scale Python package [$.devInsight.codeOverview.entrypoints⚠️].",
+      "changes": "- No significant updates detected in the documented data flow between raw Kaggle CSVs and the modeling pipeline [$.devInsight.architecture.dataFlow].\n- No significant updates detected in the core dependency stack (Python + Conda-managed environment) [$.devInsight.architecture.depsSummary].\n- No significant updates detected in primary implementation languages (Python, with Jupyter notebooks for workflows) [$.devInsight.codeOverview.languages].",
+      "confidence": 0.4
+    },
+    "data-scientist": {
+      "textMd": "",
+      "overview": "The system implements ⚠️ scalable Bayesian hierarchical modelling for retail sales forecasting (see $.business.executiveSummary, $.business.useCase). Its primary role is ⚠️ a research and educational example rather than a production-grade service (see $.business.intendedUse, $.business.nonGoals). Intended users are ⚠️ data scientists and researchers working on hierarchical time series models (see $.business.userPopulations). The card also outlines ⚠️ discouraged and out-of-scope deployments, particularly direct use in production or safety‑critical settings without further validation (see $.business.hazardousUseCases, $.business.outOfScopeUse).",
+      "changes": "- ⚠️ Clarified or expanded the high-level project description in $.business.executiveSummary.\n- ⚠️ Updated intended research/educational positioning in $.business.intendedUse and constraints in $.business.nonGoals.\n- ⚠️ Refined examples of primary use cases in $.business.useCase (retail sales forecasting with Bayesian hierarchical models).\n- ⚠️ Adjusted descriptions of hazardous or out-of-scope scenarios in $.business.hazardousUseCases and $.business.outOfScopeUse.\n- ⚠️ Slightly revised the description of target user groups in $.business.userPopulations to emphasize data-science-oriented usage.",
+      "confidence": 0.1
+    },
+    "domain-expert": {
+      "textMd": "",
+      "overview": "This system appears to focus on scalable Bayesian hierarchical modelling for retail sales forecasting ⚠️ (see $.business.executiveSummary, $.business.useCase). The primary role is likely research and education, not production deployment ⚠️ (see $.business.intendedUse, $.business.nonGoals). Anticipated users seem to be data scientists and researchers exploring hierarchical models and retail demand patterns ⚠️ (see $.business.userPopulations). Certain uses—especially direct deployment in safety‑critical or legally regulated contexts—are likely flagged as hazardous or out of scope ⚠️ (see $.business.hazardousUseCases, $.business.outOfScopeUse).",
+      "changes": "- No significant updates detected in the business-related fields for this stakeholder (see $.business.*).⚠️",
+      "confidence": 0.1
+    },
+    "governance-compliance-ethics-officer": {
+      "textMd": "",
+      "overview": "The ML system’s governance framework, as documented in $.governance.policies, currently emphasizes open-source licensing obligations. The source code is licensed under the GNU General Public License v2.0 or later, which requires that derivative works and redistributions preserve the same license and provide access to source code. This licensing choice affects downstream compliance, including obligations for any integrated or redistributed components, and should be reflected in internal governance, third‑party risk assessments, and contractual terms with external partners.",
+      "changes": "- $.governance.policies now explicitly states that the source code is licensed under the GNU General Public License v2.0 or later.\n- Governance, compliance, and ethics oversight should ensure that GPLv2-or-later obligations (e.g., source disclosure and copyleft requirements) are incorporated into organizational policies for reuse, modification, and distribution of this system.\n- Review existing integration and deployment practices to confirm that they do not conflict with GPLv2-or-later terms, especially in mixed-licensing environments.",
+      "confidence": 0.96
+    },
+    "governance-officer": {
+      "textMd": "",
+      "overview": "The ML System Card’s governance section documents the project’s licensing and policy framework. In particular, it records that the system’s source code is distributed under the GNU General Public License v2.0 or later, as specified in $.governance.policies. For governance officers, this implies strong copyleft obligations for derivative works and redistribution. The policy entry can be used to align compliance reviews, third‑party integration checks, and legal disclosures with the project’s chosen open‑source licensing model.",
+      "changes": "- $.governance.policies now explicitly states that the source code is licensed under the GNU General Public License v2.0 or later.\n- This makes the copyleft licensing terms more transparent within the ML System Card, supporting governance reviews and compliance documentation.\n- Governance processes that depend on clear license metadata (e.g., supplier checks, reuse approvals) can now reference $.governance.policies as the canonical in‑card record of the project’s licensing status.",
+      "confidence": 0.96
+    },
+    "ml-engineer": {
+      "textMd": "",
+      "overview": "The system trains and evaluates a Bayesian hierarchical model for Rossmann store sales forecasting. According to $.devInsight.architecture.dataFlow, raw CSVs are downloaded, preprocessed into structured features, and stored in intermediate directories before modeling. $.devInsight.architecture.depsSummary describes a Python-based environment managed via Conda, with scientific computing and probabilistic modeling libraries. $.devInsight.codeOverview.languages confirms Python as the primary implementation language for both core library code and Jupyter-based experimentation.",
+      "changes": "- $.devInsight.architecture.dataFlow now documents the end-to-end flow from raw Rossmann CSVs through preprocessing stages into model-ready data.\n- $.devInsight.architecture.depsSummary adds an explicit summary of the Python/Conda environment and key ML/statistics dependencies.\n- ⚠️ $.devInsight.codeOverview.entrypoints describes notebook-driven workflows and possible CLI/module entrypoints for running preprocessing, training, and evaluation.\n- $.devInsight.codeOverview.languages explicitly records Python as the main language for the system.\n- ⚠️ $.devInsight.qualitySignals.complexityHints flags JAX-based training loop complexity and suggests attention to performance and readability in ModelHandler internals.",
+      "confidence": 0.4
+    },
+    "product-manager": {
+      "textMd": "",
+      "overview": "The system applies Bayesian hierarchical modelling ⚠️ to forecast daily store-level retail sales ⚠️. It is positioned primarily as a research and educational example of scalable probabilistic forecasting, not a production-grade service ⚠️ (see $.business.intendedUse, $.business.nonGoals). Hazardous / out-of-scope usage includes safety-critical or legally binding decisions based directly on this research code or its raw outputs ⚠️ (see $.business.hazardousUseCases, $.business.outOfScopeUse). Intended users are data scientists and researchers working with Bayesian hierarchical models and retail demand data ⚠️ (see $.business.userPopulations).",
+      "changes": "- ⚠️ docs/ml_system_card.yaml was modified, likely affecting business-level descriptions (e.g., $.business.executiveSummary, $.business.useCase, $.business.intendedUse, $.business.nonGoals, $.business.hazardousUseCases, $.business.outOfScopeUse, $.business.userPopulations), but specific content changes versus the prior baseline are not available from this run.\n- No further significant, clearly identifiable updates to product-facing system behavior can be derived from the provided metadata alone ⚠️.",
+      "confidence": 0.1
+    },
+    "project-manager": {
+      "textMd": "",
+      "overview": "This ML system card’s business section ⚠️describes a Bayesian hierarchical modeling solution for retail-scale forecasting (see $.business.useCase). It is ⚠️positioned primarily as a research and educational example rather than a production-grade service (see $.business.intendedUse, $.business.nonGoals). The card ⚠️identifies data scientists and researchers as key users (see $.business.userPopulations) and highlights ⚠️restricted or out-of-scope deployments, especially in safety-critical or high-stakes operational settings (see $.business.hazardousUseCases, $.business.outOfScopeUse).",
+      "changes": "- No significant updates detected in the business-focused fields for this run.\n- Content in $.business.executiveSummary, $.business.useCase, $.business.intendedUse, $.business.nonGoals, $.business.outOfScopeUse, and $.business.userPopulations appears consistent with prior intent descriptions ⚠️(based on limited change signals).\n- No newly documented hazardous or prohibited use cases were identified in $.business.hazardousUseCases ⚠️.\n- No new target user populations or business goals were added in this update ⚠️.",
+      "confidence": 0.1
+    },
+    "software-developer": {
+      "textMd": "",
+      "overview": "This system provides scalable Bayesian hierarchical modelling for retail sales forecasting ⚠️. According to $.business.executiveSummary, it focuses on daily, store-level sales predictions for a retail chain ⚠️. The primary intent, per $.business.intendedUse, is research and education rather than a production-ready service ⚠️. The main use case in $.business.useCase is exploring and demonstrating forecasting workflows, not live deployment ⚠️. Target users from $.business.userPopulations are data scientists and researchers working with Bayesian hierarchical models and large-scale retail data ⚠️.",
+      "changes": "- $.business.executiveSummary now describes the project as scalable Bayesian hierarchical modelling for retail sales forecasting, emphasizing research orientation ⚠️.\n- $.business.intendedUse clarifies that usage is for research/educational examples, not production forecasting services ⚠️.\n- $.business.useCase highlights daily store-level sales forecasting for a retail chain as the canonical example ⚠️.\n- $.business.userPopulations specifies data scientists and researchers as primary users ⚠️.\n- $.business.nonGoals and $.business.outOfScopeUse explicitly exclude production-grade deployment or direct use in safety-/legally-critical contexts ⚠️.\n- $.business.hazardousUseCases warns against using this research code or outputs in safety-critical or high-stakes decision settings without additio",
+      "confidence": 0.1
+    },
+    "ux-researcher": {
+      "textMd": "",
+      "overview": "This system ⚠️implements Bayesian hierarchical modelling at scale for retail sales forecasting (see $.business.executiveSummary, $.business.useCase). It is ⚠️positioned primarily as a research and educational example rather than a production service (see $.business.intendedUse, $.business.nonGoals). The ⚠️intended users are data scientists and researchers exploring Bayesian methods and scalable probabilistic modelling (see $.business.userPopulations). Hazardous and out-of-scope usage includes ⚠️direct application in safety-critical, legal, or high-stakes operational settings without rigorous validation and integration into production-grade workflows (see $.business.hazardousUseCases, $.business.outOfScopeUse).",
+      "changes": "- ⚠️Business framing for the project’s purpose and positioning as research/educational material is captured under $.business.executiveSummary and $.business.intendedUse, but specific edits versus baseline are not determinable from this run.\n- ⚠️Clarifications around non-goals and out-of-scope scenarios (e.g., production deployment without hardening) are documented under $.business.nonGoals and $.business.outOfScopeUse; exact textual changes are unknown.\n- ⚠️User populations and hazardous use cases appear defined in $.business.userPopulations and $.business.hazardousUseCases, but any recent adjustments to these descriptions cannot be reliably identified.\n\nIf precise diffs are required, please review docs/ml_system_card.yaml directly.",
+      "confidence": 0.1
+    }
+  },
+  "deterministicFallback": {
+    "product-manager": {
+      "textMd": "Business highlights:\n- $.business.executiveSummary: updated with confidence 10%\n- $.business.hazardousUseCases: updated with confidence 10%\n- $.business.intendedUse: updated with confidence 10%\n- $.business.nonGoals: updated with confidence 10%\n- $.business.outOfScopeUse: updated with confidence 10%\n- $.business.useCase: updated with confidence 40%\n- $.business.userPopulations: updated with confidence 20%",
+      "confidence": 0.8
+    },
+    "ml-engineer": {
+      "textMd": "Developer view:\n- $.devInsight.architecture.dataFlow: anchors 6\n- $.devInsight.architecture.depsSummary: anchors 5\n- $.devInsight.architecture.publicApis: anchors 5\n- $.devInsight.codeOverview.components: anchors 8\n- $.devInsight.codeOverview.entrypoints: anchors 3\n- $.devInsight.codeOverview.languages: anchors 3\n- $.devInsight.qualitySignals.complexityHints: anchors 3",
+      "confidence": 0.85
+    },
+    "governance-officer": {
+      "textMd": "Provenance updates:\n- $.provenance.changelog[0] (37 anchors)",
+      "confidence": 0.75
+    }
+  },
+  "reasonerArtifact": "memory",
+  "analysisArtifact": "docs/.analysis/run-2026-03-11-10-28-37.json",
+  "generatedAt": "2026-03-11T10:45:32.883Z",
+  "perStakeholder": [
+    {
+      "stakeholderId": "data-engineer",
+      "promptDigest": "2503951a1488aedf35545d687c191c2993061136918e2d002b9df0af274054e4",
+      "usedFallback": false,
+      "note": {
+        "textMd": "",
+        "overview": "The system ingests raw Rossmann Store Sales CSVs (e.g., store.csv, train.csv) from Kaggle into a structured preprocessing pipeline [$.devInsight.architecture.dataFlow]. Processed data feeds a Bayesian hierarchical model implemented in Python, with the environment managed via Conda (environment.yaml, environment.lock.yaml) [$.devInsight.architecture.depsSummary]. The primary implementation language is Python, with Jupyter notebooks used for experimentation and walkthroughs [$.devInsight.codeOverview.languages]. Execution commonly occurs via the notebooks in notebooks/ for preprocessing, model training, and evaluation, backed by the bhm_at_scale Python package [$.devInsight.codeOverview.entrypoints⚠️].",
+        "changes": "- No significant updates detected in the documented data flow between raw Kaggle CSVs and the modeling pipeline [$.devInsight.architecture.dataFlow].\n- No significant updates detected in the core dependency stack (Python + Conda-managed environment) [$.devInsight.architecture.depsSummary].\n- No significant updates detected in primary implementation languages (Python, with Jupyter notebooks for workflows) [$.devInsight.codeOverview.languages].",
+        "confidence": 0.4
+      },
+      "fallback": null,
+      "llm": {
+        "requestDigest": "d0737596d897bc932d5bc9767294637f04582951d4c277505df4178acdfd7d21",
+        "responseDigest": "d4237b6b169ffbf3a86ae533764f7c2062357b64cbc0d63312b1ddeedaefd73a",
+        "promptPreview": "You generate concise stakeholder notes that summarize ML System Card updates.\n\nGuidelines:\n- Respect the stakeholder language preference; if `auto`, default to repository locale.\n- Limit responses to 180 words and avoid marketing flourishes.\n- Reference JSON paths when pointing to specific card fields.\n- Mark any mention of low-confidence facts with `⚠️`.\n\nInputs:\nRun ID: run-2026-03-11-10-28-37\nBase SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nHead SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nChanged files (37): .coveragerc, .gitignore, .isort.cfg, .pre-commit-config.yaml, AUTHORS.rst, CHANGELOG.rst, LICENSE.txt, README.md, data/.gitignore, data/external/.gitignore, data/interim/.gitignore, data/preprocessed/.gitignore, data/raw/.gitignore, data/result/.gitignore, docs/Makefile, docs/_static/.gitignore, docs/authors.rst, docs/changelog.rst, docs/conf.py, docs/index.rst, docs/license.rst, docs/ml_system_card.yaml, docs/stakeholders.yaml, environment.lock.yaml, environment.yaml, notebooks/01-preprocessing.ipynb, notebooks/02-model.ipynb, notebooks/03-evaluation.ipynb, setup.cfg, setup.py, src/bhm_at_scale/__init__.py, src/bhm_at_scale/handler.py, src/bhm_at_scale/model.py, src/bhm",
+        "contentPreview": "{\n  \"note\": {\n    \"overview\": \"The system ingests raw Rossmann Store Sales CSVs (e.g., store.csv, train.csv) from Kaggle into a structured preprocessing pipeline [$.devInsight.architecture.dataFlow]. Processed data feeds a Bayesian hierarchical model implemented in Python, with the environment managed via Conda (environment.yaml, environment.lock.yaml) [$.devInsight.architecture.depsSummary]. The primary implementation language is Python, with Jupyter notebooks used for experimentation and walkthroughs [$.devInsight.codeOverview.languages]. Execution commonly occurs via the notebooks in notebooks/ for preprocessing, model training, and evaluation, backed by the bhm_at_scale Python package [$.devInsight.codeOverview.entrypoints⚠️].\",\n    \"changes\": \"- No significant updates detected in the documented data flow between raw Kaggle CSVs and the modeling pipeline [$.devInsight.architecture.dataFlow].\\n- No significant updates detected in the core dependency stack (Python + Conda-managed environment) [$.devInsight.architecture.depsSummary].\\n- No significant updates detected in primary implementation languages (Python, with Jupyter notebooks for workflows) [$.devInsight.codeOverview.lang"
+      }
+    },
+    {
+      "stakeholderId": "data-scientist",
+      "promptDigest": "2786d13093eeeb1d082d6789760f166dc2543c65b61026a59c0a6a0e313eb8f4",
+      "usedFallback": false,
+      "note": {
+        "textMd": "",
+        "overview": "The system implements ⚠️ scalable Bayesian hierarchical modelling for retail sales forecasting (see $.business.executiveSummary, $.business.useCase). Its primary role is ⚠️ a research and educational example rather than a production-grade service (see $.business.intendedUse, $.business.nonGoals). Intended users are ⚠️ data scientists and researchers working on hierarchical time series models (see $.business.userPopulations). The card also outlines ⚠️ discouraged and out-of-scope deployments, particularly direct use in production or safety‑critical settings without further validation (see $.business.hazardousUseCases, $.business.outOfScopeUse).",
+        "changes": "- ⚠️ Clarified or expanded the high-level project description in $.business.executiveSummary.\n- ⚠️ Updated intended research/educational positioning in $.business.intendedUse and constraints in $.business.nonGoals.\n- ⚠️ Refined examples of primary use cases in $.business.useCase (retail sales forecasting with Bayesian hierarchical models).\n- ⚠️ Adjusted descriptions of hazardous or out-of-scope scenarios in $.business.hazardousUseCases and $.business.outOfScopeUse.\n- ⚠️ Slightly revised the description of target user groups in $.business.userPopulations to emphasize data-science-oriented usage.",
+        "confidence": 0.1
+      },
+      "fallback": null,
+      "llm": {
+        "requestDigest": "9500ef337ffbef3bb699101d823d05d809e8fff5fc871dbff7c13e660a265928",
+        "responseDigest": "21af0ca1c7625e97349a61337376eee9e1971147500cbcf3d0dc7f1da0f9a880",
+        "promptPreview": "You generate concise stakeholder notes that summarize ML System Card updates.\n\nGuidelines:\n- Respect the stakeholder language preference; if `auto`, default to repository locale.\n- Limit responses to 180 words and avoid marketing flourishes.\n- Reference JSON paths when pointing to specific card fields.\n- Mark any mention of low-confidence facts with `⚠️`.\n\nInputs:\nRun ID: run-2026-03-11-10-28-37\nBase SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nHead SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nChanged files (37): .coveragerc, .gitignore, .isort.cfg, .pre-commit-config.yaml, AUTHORS.rst, CHANGELOG.rst, LICENSE.txt, README.md, data/.gitignore, data/external/.gitignore, data/interim/.gitignore, data/preprocessed/.gitignore, data/raw/.gitignore, data/result/.gitignore, docs/Makefile, docs/_static/.gitignore, docs/authors.rst, docs/changelog.rst, docs/conf.py, docs/index.rst, docs/license.rst, docs/ml_system_card.yaml, docs/stakeholders.yaml, environment.lock.yaml, environment.yaml, notebooks/01-preprocessing.ipynb, notebooks/02-model.ipynb, notebooks/03-evaluation.ipynb, setup.cfg, setup.py, src/bhm_at_scale/__init__.py, src/bhm_at_scale/handler.py, src/bhm_at_scale/model.py, src/bhm",
+        "contentPreview": "{ \n  \"note\": {\n    \"overview\": \"The system implements ⚠️ scalable Bayesian hierarchical modelling for retail sales forecasting (see $.business.executiveSummary, $.business.useCase). Its primary role is ⚠️ a research and educational example rather than a production-grade service (see $.business.intendedUse, $.business.nonGoals). Intended users are ⚠️ data scientists and researchers working on hierarchical time series models (see $.business.userPopulations). The card also outlines ⚠️ discouraged and out-of-scope deployments, particularly direct use in production or safety‑critical settings without further validation (see $.business.hazardousUseCases, $.business.outOfScopeUse).\",\n    \"changes\": \"- ⚠️ Clarified or expanded the high-level project description in $.business.executiveSummary.\\n- ⚠️ Updated intended research/educational positioning in $.business.intendedUse and constraints in $.business.nonGoals.\\n- ⚠️ Refined examples of primary use cases in $.business.useCase (retail sales forecasting with Bayesian hierarchical models).\\n- ⚠️ Adjusted descriptions of hazardous or out-of-scope scenarios in $.business.hazardousUseCases and $.business.outOfScopeUse.\\n- ⚠️ Slightly revised th"
+      }
+    },
+    {
+      "stakeholderId": "domain-expert",
+      "promptDigest": "401b7f6707a4368593dd4e6f74078d5533d3b4d6cc75fe911cf30a9b0ff1df56",
+      "usedFallback": false,
+      "note": {
+        "textMd": "",
+        "overview": "This system appears to focus on scalable Bayesian hierarchical modelling for retail sales forecasting ⚠️ (see $.business.executiveSummary, $.business.useCase). The primary role is likely research and education, not production deployment ⚠️ (see $.business.intendedUse, $.business.nonGoals). Anticipated users seem to be data scientists and researchers exploring hierarchical models and retail demand patterns ⚠️ (see $.business.userPopulations). Certain uses—especially direct deployment in safety‑critical or legally regulated contexts—are likely flagged as hazardous or out of scope ⚠️ (see $.business.hazardousUseCases, $.business.outOfScopeUse).",
+        "changes": "- No significant updates detected in the business-related fields for this stakeholder (see $.business.*).⚠️",
+        "confidence": 0.1
+      },
+      "fallback": null,
+      "llm": {
+        "requestDigest": "735c18eca11f3dde6836cf35a6ced3e6eca916b1e350991f37780f2a53ddd4c2",
+        "responseDigest": "a3158cc20abeff86ee156864fd5eef08547f21c3392e93242817d00e9373ecf4",
+        "promptPreview": "You generate concise stakeholder notes that summarize ML System Card updates.\n\nGuidelines:\n- Respect the stakeholder language preference; if `auto`, default to repository locale.\n- Limit responses to 180 words and avoid marketing flourishes.\n- Reference JSON paths when pointing to specific card fields.\n- Mark any mention of low-confidence facts with `⚠️`.\n\nInputs:\nRun ID: run-2026-03-11-10-28-37\nBase SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nHead SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nChanged files (37): .coveragerc, .gitignore, .isort.cfg, .pre-commit-config.yaml, AUTHORS.rst, CHANGELOG.rst, LICENSE.txt, README.md, data/.gitignore, data/external/.gitignore, data/interim/.gitignore, data/preprocessed/.gitignore, data/raw/.gitignore, data/result/.gitignore, docs/Makefile, docs/_static/.gitignore, docs/authors.rst, docs/changelog.rst, docs/conf.py, docs/index.rst, docs/license.rst, docs/ml_system_card.yaml, docs/stakeholders.yaml, environment.lock.yaml, environment.yaml, notebooks/01-preprocessing.ipynb, notebooks/02-model.ipynb, notebooks/03-evaluation.ipynb, setup.cfg, setup.py, src/bhm_at_scale/__init__.py, src/bhm_at_scale/handler.py, src/bhm_at_scale/model.py, src/bhm",
+        "contentPreview": "{ \n  \"note\": {\n    \"overview\": \"This system appears to focus on scalable Bayesian hierarchical modelling for retail sales forecasting ⚠️ (see $.business.executiveSummary, $.business.useCase). The primary role is likely research and education, not production deployment ⚠️ (see $.business.intendedUse, $.business.nonGoals). Anticipated users seem to be data scientists and researchers exploring hierarchical models and retail demand patterns ⚠️ (see $.business.userPopulations). Certain uses—especially direct deployment in safety‑critical or legally regulated contexts—are likely flagged as hazardous or out of scope ⚠️ (see $.business.hazardousUseCases, $.business.outOfScopeUse).\",\n    \"changes\": \"- No significant updates detected in the business-related fields for this stakeholder (see $.business.*).⚠️\",\n    \"confidence\": 0.1\n  }\n}"
+      }
+    },
+    {
+      "stakeholderId": "governance-compliance-ethics-officer",
+      "promptDigest": "5a4913a319f28d061a2ff78ff35dd8f24c57f515852f7ef3596fc9e6b11923a9",
+      "usedFallback": false,
+      "note": {
+        "textMd": "",
+        "overview": "The ML system’s governance framework, as documented in $.governance.policies, currently emphasizes open-source licensing obligations. The source code is licensed under the GNU General Public License v2.0 or later, which requires that derivative works and redistributions preserve the same license and provide access to source code. This licensing choice affects downstream compliance, including obligations for any integrated or redistributed components, and should be reflected in internal governance, third‑party risk assessments, and contractual terms with external partners.",
+        "changes": "- $.governance.policies now explicitly states that the source code is licensed under the GNU General Public License v2.0 or later.\n- Governance, compliance, and ethics oversight should ensure that GPLv2-or-later obligations (e.g., source disclosure and copyleft requirements) are incorporated into organizational policies for reuse, modification, and distribution of this system.\n- Review existing integration and deployment practices to confirm that they do not conflict with GPLv2-or-later terms, especially in mixed-licensing environments.",
+        "confidence": 0.96
+      },
+      "fallback": null,
+      "llm": {
+        "requestDigest": "73dcb7270e73acf37a0514637696fef8caceca474084189fa0b16840c694a4d6",
+        "responseDigest": "780f7d3747f916d439dbc4344bb0a143637ab1ef3faf2cb87048322c5c3ed63f",
+        "promptPreview": "You generate concise stakeholder notes that summarize ML System Card updates.\n\nGuidelines:\n- Respect the stakeholder language preference; if `auto`, default to repository locale.\n- Limit responses to 180 words and avoid marketing flourishes.\n- Reference JSON paths when pointing to specific card fields.\n- Mark any mention of low-confidence facts with `⚠️`.\n\nInputs:\nRun ID: run-2026-03-11-10-28-37\nBase SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nHead SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nChanged files (37): .coveragerc, .gitignore, .isort.cfg, .pre-commit-config.yaml, AUTHORS.rst, CHANGELOG.rst, LICENSE.txt, README.md, data/.gitignore, data/external/.gitignore, data/interim/.gitignore, data/preprocessed/.gitignore, data/raw/.gitignore, data/result/.gitignore, docs/Makefile, docs/_static/.gitignore, docs/authors.rst, docs/changelog.rst, docs/conf.py, docs/index.rst, docs/license.rst, docs/ml_system_card.yaml, docs/stakeholders.yaml, environment.lock.yaml, environment.yaml, notebooks/01-preprocessing.ipynb, notebooks/02-model.ipynb, notebooks/03-evaluation.ipynb, setup.cfg, setup.py, src/bhm_at_scale/__init__.py, src/bhm_at_scale/handler.py, src/bhm_at_scale/model.py, src/bhm",
+        "contentPreview": "{  \n  \"note\": {  \n    \"overview\": \"The ML system’s governance framework, as documented in $.governance.policies, currently emphasizes open-source licensing obligations. The source code is licensed under the GNU General Public License v2.0 or later, which requires that derivative works and redistributions preserve the same license and provide access to source code. This licensing choice affects downstream compliance, including obligations for any integrated or redistributed components, and should be reflected in internal governance, third‑party risk assessments, and contractual terms with external partners.\",  \n    \"changes\": \"- $.governance.policies now explicitly states that the source code is licensed under the GNU General Public License v2.0 or later.\\n- Governance, compliance, and ethics oversight should ensure that GPLv2-or-later obligations (e.g., source disclosure and copyleft requirements) are incorporated into organizational policies for reuse, modification, and distribution of this system.\\n- Review existing integration and deployment practices to confirm that they do not conflict with GPLv2-or-later terms, especially in mixed-licensing environments.\",  \n    \"confidence\":"
+      }
+    },
+    {
+      "stakeholderId": "governance-officer",
+      "promptDigest": "eaa7485b90857221af7dccac7a18c60baddc18c019bd7f34d0439f3cf886bd36",
+      "usedFallback": false,
+      "note": {
+        "textMd": "",
+        "overview": "The ML System Card’s governance section documents the project’s licensing and policy framework. In particular, it records that the system’s source code is distributed under the GNU General Public License v2.0 or later, as specified in $.governance.policies. For governance officers, this implies strong copyleft obligations for derivative works and redistribution. The policy entry can be used to align compliance reviews, third‑party integration checks, and legal disclosures with the project’s chosen open‑source licensing model.",
+        "changes": "- $.governance.policies now explicitly states that the source code is licensed under the GNU General Public License v2.0 or later.\n- This makes the copyleft licensing terms more transparent within the ML System Card, supporting governance reviews and compliance documentation.\n- Governance processes that depend on clear license metadata (e.g., supplier checks, reuse approvals) can now reference $.governance.policies as the canonical in‑card record of the project’s licensing status.",
+        "confidence": 0.96
+      },
+      "fallback": {
+        "textMd": "Provenance updates:\n- $.provenance.changelog[0] (37 anchors)",
+        "confidence": 0.75
+      },
+      "llm": {
+        "requestDigest": "b651e4685e0d9149e29f4a3fae9ccac79680b3eb83e8d02f024807c34984bd70",
+        "responseDigest": "45efc7806a66b931d1d6509c69295000f3279e14686f4332d6e2810275ff5760",
+        "promptPreview": "You generate concise stakeholder notes that summarize ML System Card updates.\n\nGuidelines:\n- Respect the stakeholder language preference; if `auto`, default to repository locale.\n- Limit responses to 180 words and avoid marketing flourishes.\n- Reference JSON paths when pointing to specific card fields.\n- Mark any mention of low-confidence facts with `⚠️`.\n\nInputs:\nRun ID: run-2026-03-11-10-28-37\nBase SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nHead SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nChanged files (37): .coveragerc, .gitignore, .isort.cfg, .pre-commit-config.yaml, AUTHORS.rst, CHANGELOG.rst, LICENSE.txt, README.md, data/.gitignore, data/external/.gitignore, data/interim/.gitignore, data/preprocessed/.gitignore, data/raw/.gitignore, data/result/.gitignore, docs/Makefile, docs/_static/.gitignore, docs/authors.rst, docs/changelog.rst, docs/conf.py, docs/index.rst, docs/license.rst, docs/ml_system_card.yaml, docs/stakeholders.yaml, environment.lock.yaml, environment.yaml, notebooks/01-preprocessing.ipynb, notebooks/02-model.ipynb, notebooks/03-evaluation.ipynb, setup.cfg, setup.py, src/bhm_at_scale/__init__.py, src/bhm_at_scale/handler.py, src/bhm_at_scale/model.py, src/bhm",
+        "contentPreview": "{ \"note\": {\n  \"overview\": \"The ML System Card’s governance section documents the project’s licensing and policy framework. In particular, it records that the system’s source code is distributed under the GNU General Public License v2.0 or later, as specified in $.governance.policies. For governance officers, this implies strong copyleft obligations for derivative works and redistribution. The policy entry can be used to align compliance reviews, third‑party integration checks, and legal disclosures with the project’s chosen open‑source licensing model.\",\n  \"changes\": \"- $.governance.policies now explicitly states that the source code is licensed under the GNU General Public License v2.0 or later.\\n- This makes the copyleft licensing terms more transparent within the ML System Card, supporting governance reviews and compliance documentation.\\n- Governance processes that depend on clear license metadata (e.g., supplier checks, reuse approvals) can now reference $.governance.policies as the canonical in‑card record of the project’s licensing status.\",\n  \"confidence\": 0.96\n} }"
+      }
+    },
+    {
+      "stakeholderId": "ml-engineer",
+      "promptDigest": "bd7f58e327f2b5f6eb0b2622b2c5a67ee6bc9e2c2abc8eb358a985e8d2ace7b8",
+      "usedFallback": false,
+      "note": {
+        "textMd": "",
+        "overview": "The system trains and evaluates a Bayesian hierarchical model for Rossmann store sales forecasting. According to $.devInsight.architecture.dataFlow, raw CSVs are downloaded, preprocessed into structured features, and stored in intermediate directories before modeling. $.devInsight.architecture.depsSummary describes a Python-based environment managed via Conda, with scientific computing and probabilistic modeling libraries. $.devInsight.codeOverview.languages confirms Python as the primary implementation language for both core library code and Jupyter-based experimentation.",
+        "changes": "- $.devInsight.architecture.dataFlow now documents the end-to-end flow from raw Rossmann CSVs through preprocessing stages into model-ready data.\n- $.devInsight.architecture.depsSummary adds an explicit summary of the Python/Conda environment and key ML/statistics dependencies.\n- ⚠️ $.devInsight.codeOverview.entrypoints describes notebook-driven workflows and possible CLI/module entrypoints for running preprocessing, training, and evaluation.\n- $.devInsight.codeOverview.languages explicitly records Python as the main language for the system.\n- ⚠️ $.devInsight.qualitySignals.complexityHints flags JAX-based training loop complexity and suggests attention to performance and readability in ModelHandler internals.",
+        "confidence": 0.4
+      },
+      "fallback": {
+        "textMd": "Developer view:\n- $.devInsight.architecture.dataFlow: anchors 6\n- $.devInsight.architecture.depsSummary: anchors 5\n- $.devInsight.architecture.publicApis: anchors 5\n- $.devInsight.codeOverview.components: anchors 8\n- $.devInsight.codeOverview.entrypoints: anchors 3\n- $.devInsight.codeOverview.languages: anchors 3\n- $.devInsight.qualitySignals.complexityHints: anchors 3",
+        "confidence": 0.85
+      },
+      "llm": {
+        "requestDigest": "281d24dc84d5553a0b09bf607ae13fd1289ae189b206e8ce1fb534f74055be41",
+        "responseDigest": "0abe34fd7253d2936b7e7a04a89b151f2d49a53ff292a9192801494ddfc777c9",
+        "promptPreview": "You generate concise stakeholder notes that summarize ML System Card updates.\n\nGuidelines:\n- Respect the stakeholder language preference; if `auto`, default to repository locale.\n- Limit responses to 180 words and avoid marketing flourishes.\n- Reference JSON paths when pointing to specific card fields.\n- Mark any mention of low-confidence facts with `⚠️`.\n\nInputs:\nRun ID: run-2026-03-11-10-28-37\nBase SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nHead SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nChanged files (37): .coveragerc, .gitignore, .isort.cfg, .pre-commit-config.yaml, AUTHORS.rst, CHANGELOG.rst, LICENSE.txt, README.md, data/.gitignore, data/external/.gitignore, data/interim/.gitignore, data/preprocessed/.gitignore, data/raw/.gitignore, data/result/.gitignore, docs/Makefile, docs/_static/.gitignore, docs/authors.rst, docs/changelog.rst, docs/conf.py, docs/index.rst, docs/license.rst, docs/ml_system_card.yaml, docs/stakeholders.yaml, environment.lock.yaml, environment.yaml, notebooks/01-preprocessing.ipynb, notebooks/02-model.ipynb, notebooks/03-evaluation.ipynb, setup.cfg, setup.py, src/bhm_at_scale/__init__.py, src/bhm_at_scale/handler.py, src/bhm_at_scale/model.py, src/bhm",
+        "contentPreview": "{ \n  \"note\": {\n    \"overview\": \"The system trains and evaluates a Bayesian hierarchical model for Rossmann store sales forecasting. According to $.devInsight.architecture.dataFlow, raw CSVs are downloaded, preprocessed into structured features, and stored in intermediate directories before modeling. $.devInsight.architecture.depsSummary describes a Python-based environment managed via Conda, with scientific computing and probabilistic modeling libraries. $.devInsight.codeOverview.languages confirms Python as the primary implementation language for both core library code and Jupyter-based experimentation.\",\n    \"changes\": \"- $.devInsight.architecture.dataFlow now documents the end-to-end flow from raw Rossmann CSVs through preprocessing stages into model-ready data.\\n- $.devInsight.architecture.depsSummary adds an explicit summary of the Python/Conda environment and key ML/statistics dependencies.\\n- ⚠️ $.devInsight.codeOverview.entrypoints describes notebook-driven workflows and possible CLI/module entrypoints for running preprocessing, training, and evaluation.\\n- $.devInsight.codeOverview.languages explicitly records Python as the main language for the system.\\n- ⚠️ $.devInsight."
+      }
+    },
+    {
+      "stakeholderId": "product-manager",
+      "promptDigest": "a7a0fc5d61f7127e6d7bbba508f52099ebbc74e3f22276da2534f47a3b654a17",
+      "usedFallback": false,
+      "note": {
+        "textMd": "",
+        "overview": "The system applies Bayesian hierarchical modelling ⚠️ to forecast daily store-level retail sales ⚠️. It is positioned primarily as a research and educational example of scalable probabilistic forecasting, not a production-grade service ⚠️ (see $.business.intendedUse, $.business.nonGoals). Hazardous / out-of-scope usage includes safety-critical or legally binding decisions based directly on this research code or its raw outputs ⚠️ (see $.business.hazardousUseCases, $.business.outOfScopeUse). Intended users are data scientists and researchers working with Bayesian hierarchical models and retail demand data ⚠️ (see $.business.userPopulations).",
+        "changes": "- ⚠️ docs/ml_system_card.yaml was modified, likely affecting business-level descriptions (e.g., $.business.executiveSummary, $.business.useCase, $.business.intendedUse, $.business.nonGoals, $.business.hazardousUseCases, $.business.outOfScopeUse, $.business.userPopulations), but specific content changes versus the prior baseline are not available from this run.\n- No further significant, clearly identifiable updates to product-facing system behavior can be derived from the provided metadata alone ⚠️.",
+        "confidence": 0.1
+      },
+      "fallback": {
+        "textMd": "Business highlights:\n- $.business.executiveSummary: updated with confidence 10%\n- $.business.hazardousUseCases: updated with confidence 10%\n- $.business.intendedUse: updated with confidence 10%\n- $.business.nonGoals: updated with confidence 10%\n- $.business.outOfScopeUse: updated with confidence 10%\n- $.business.useCase: updated with confidence 40%\n- $.business.userPopulations: updated with confidence 20%",
+        "confidence": 0.8
+      },
+      "llm": {
+        "requestDigest": "f298f71878c93e868ae73e68e5d294dfb9bcbebe987acad2fc1ec0fd8325a281",
+        "responseDigest": "645b347ebbac74f3c12f98ce770227b88265cf65a18f97f7399aed58d4136883",
+        "promptPreview": "You generate concise stakeholder notes that summarize ML System Card updates.\n\nGuidelines:\n- Respect the stakeholder language preference; if `auto`, default to repository locale.\n- Limit responses to 180 words and avoid marketing flourishes.\n- Reference JSON paths when pointing to specific card fields.\n- Mark any mention of low-confidence facts with `⚠️`.\n\nInputs:\nRun ID: run-2026-03-11-10-28-37\nBase SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nHead SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nChanged files (37): .coveragerc, .gitignore, .isort.cfg, .pre-commit-config.yaml, AUTHORS.rst, CHANGELOG.rst, LICENSE.txt, README.md, data/.gitignore, data/external/.gitignore, data/interim/.gitignore, data/preprocessed/.gitignore, data/raw/.gitignore, data/result/.gitignore, docs/Makefile, docs/_static/.gitignore, docs/authors.rst, docs/changelog.rst, docs/conf.py, docs/index.rst, docs/license.rst, docs/ml_system_card.yaml, docs/stakeholders.yaml, environment.lock.yaml, environment.yaml, notebooks/01-preprocessing.ipynb, notebooks/02-model.ipynb, notebooks/03-evaluation.ipynb, setup.cfg, setup.py, src/bhm_at_scale/__init__.py, src/bhm_at_scale/handler.py, src/bhm_at_scale/model.py, src/bhm",
+        "contentPreview": "{ \n  \"note\": {\n    \"overview\": \"The system applies Bayesian hierarchical modelling ⚠️ to forecast daily store-level retail sales ⚠️. It is positioned primarily as a research and educational example of scalable probabilistic forecasting, not a production-grade service ⚠️ (see $.business.intendedUse, $.business.nonGoals). Hazardous / out-of-scope usage includes safety-critical or legally binding decisions based directly on this research code or its raw outputs ⚠️ (see $.business.hazardousUseCases, $.business.outOfScopeUse). Intended users are data scientists and researchers working with Bayesian hierarchical models and retail demand data ⚠️ (see $.business.userPopulations).\",\n    \"changes\": \"- ⚠️ docs/ml_system_card.yaml was modified, likely affecting business-level descriptions (e.g., $.business.executiveSummary, $.business.useCase, $.business.intendedUse, $.business.nonGoals, $.business.hazardousUseCases, $.business.outOfScopeUse, $.business.userPopulations), but specific content changes versus the prior baseline are not available from this run.\\n- No further significant, clearly identifiable updates to product-facing system behavior can be derived from the provided metadata alone "
+      }
+    },
+    {
+      "stakeholderId": "project-manager",
+      "promptDigest": "650933351cfa361eeee1112fe0b128fcd716ca5d1d74f1ebff993c25d1bd6126",
+      "usedFallback": false,
+      "note": {
+        "textMd": "",
+        "overview": "This ML system card’s business section ⚠️describes a Bayesian hierarchical modeling solution for retail-scale forecasting (see $.business.useCase). It is ⚠️positioned primarily as a research and educational example rather than a production-grade service (see $.business.intendedUse, $.business.nonGoals). The card ⚠️identifies data scientists and researchers as key users (see $.business.userPopulations) and highlights ⚠️restricted or out-of-scope deployments, especially in safety-critical or high-stakes operational settings (see $.business.hazardousUseCases, $.business.outOfScopeUse).",
+        "changes": "- No significant updates detected in the business-focused fields for this run.\n- Content in $.business.executiveSummary, $.business.useCase, $.business.intendedUse, $.business.nonGoals, $.business.outOfScopeUse, and $.business.userPopulations appears consistent with prior intent descriptions ⚠️(based on limited change signals).\n- No newly documented hazardous or prohibited use cases were identified in $.business.hazardousUseCases ⚠️.\n- No new target user populations or business goals were added in this update ⚠️.",
+        "confidence": 0.1
+      },
+      "fallback": null,
+      "llm": {
+        "requestDigest": "5bc57ae3a29b8c5ba5c5e0d03c32d13bd6d4927cba19878beb15b71867eaec54",
+        "responseDigest": "501555a41112ef22af5bcd195acfc36e526802c60325ce789673f1e68dd82558",
+        "promptPreview": "You generate concise stakeholder notes that summarize ML System Card updates.\n\nGuidelines:\n- Respect the stakeholder language preference; if `auto`, default to repository locale.\n- Limit responses to 180 words and avoid marketing flourishes.\n- Reference JSON paths when pointing to specific card fields.\n- Mark any mention of low-confidence facts with `⚠️`.\n\nInputs:\nRun ID: run-2026-03-11-10-28-37\nBase SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nHead SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nChanged files (37): .coveragerc, .gitignore, .isort.cfg, .pre-commit-config.yaml, AUTHORS.rst, CHANGELOG.rst, LICENSE.txt, README.md, data/.gitignore, data/external/.gitignore, data/interim/.gitignore, data/preprocessed/.gitignore, data/raw/.gitignore, data/result/.gitignore, docs/Makefile, docs/_static/.gitignore, docs/authors.rst, docs/changelog.rst, docs/conf.py, docs/index.rst, docs/license.rst, docs/ml_system_card.yaml, docs/stakeholders.yaml, environment.lock.yaml, environment.yaml, notebooks/01-preprocessing.ipynb, notebooks/02-model.ipynb, notebooks/03-evaluation.ipynb, setup.cfg, setup.py, src/bhm_at_scale/__init__.py, src/bhm_at_scale/handler.py, src/bhm_at_scale/model.py, src/bhm",
+        "contentPreview": "{ \n  \"note\": {\n    \"overview\": \"This ML system card’s business section ⚠️describes a Bayesian hierarchical modeling solution for retail-scale forecasting (see $.business.useCase). It is ⚠️positioned primarily as a research and educational example rather than a production-grade service (see $.business.intendedUse, $.business.nonGoals). The card ⚠️identifies data scientists and researchers as key users (see $.business.userPopulations) and highlights ⚠️restricted or out-of-scope deployments, especially in safety-critical or high-stakes operational settings (see $.business.hazardousUseCases, $.business.outOfScopeUse).\",\n    \"changes\": \"- No significant updates detected in the business-focused fields for this run.\\n- Content in $.business.executiveSummary, $.business.useCase, $.business.intendedUse, $.business.nonGoals, $.business.outOfScopeUse, and $.business.userPopulations appears consistent with prior intent descriptions ⚠️(based on limited change signals).\\n- No newly documented hazardous or prohibited use cases were identified in $.business.hazardousUseCases ⚠️.\\n- No new target user populations or business goals were added in this update ⚠️.\",\n    \"confidence\": 0.1\n  }\n}"
+      }
+    },
+    {
+      "stakeholderId": "software-developer",
+      "promptDigest": "3c006cf74bff7c62beb1a1b76835ed389e063781ccca57979a002050fbeb1c0d",
+      "usedFallback": false,
+      "note": {
+        "textMd": "",
+        "overview": "This system provides scalable Bayesian hierarchical modelling for retail sales forecasting ⚠️. According to $.business.executiveSummary, it focuses on daily, store-level sales predictions for a retail chain ⚠️. The primary intent, per $.business.intendedUse, is research and education rather than a production-ready service ⚠️. The main use case in $.business.useCase is exploring and demonstrating forecasting workflows, not live deployment ⚠️. Target users from $.business.userPopulations are data scientists and researchers working with Bayesian hierarchical models and large-scale retail data ⚠️.",
+        "changes": "- $.business.executiveSummary now describes the project as scalable Bayesian hierarchical modelling for retail sales forecasting, emphasizing research orientation ⚠️.\n- $.business.intendedUse clarifies that usage is for research/educational examples, not production forecasting services ⚠️.\n- $.business.useCase highlights daily store-level sales forecasting for a retail chain as the canonical example ⚠️.\n- $.business.userPopulations specifies data scientists and researchers as primary users ⚠️.\n- $.business.nonGoals and $.business.outOfScopeUse explicitly exclude production-grade deployment or direct use in safety-/legally-critical contexts ⚠️.\n- $.business.hazardousUseCases warns against using this research code or outputs in safety-critical or high-stakes decision settings without additio",
+        "confidence": 0.1
+      },
+      "fallback": null,
+      "llm": {
+        "requestDigest": "97316b374699e1c2162b16a103cf4624b9f49210a7b6a0e34d80e1faca5e9e87",
+        "responseDigest": "538484c221fc3b94c906289ae11fd78610bfa093d6f1ce788bab2dec86aceb06",
+        "promptPreview": "You generate concise stakeholder notes that summarize ML System Card updates.\n\nGuidelines:\n- Respect the stakeholder language preference; if `auto`, default to repository locale.\n- Limit responses to 180 words and avoid marketing flourishes.\n- Reference JSON paths when pointing to specific card fields.\n- Mark any mention of low-confidence facts with `⚠️`.\n\nInputs:\nRun ID: run-2026-03-11-10-28-37\nBase SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nHead SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nChanged files (37): .coveragerc, .gitignore, .isort.cfg, .pre-commit-config.yaml, AUTHORS.rst, CHANGELOG.rst, LICENSE.txt, README.md, data/.gitignore, data/external/.gitignore, data/interim/.gitignore, data/preprocessed/.gitignore, data/raw/.gitignore, data/result/.gitignore, docs/Makefile, docs/_static/.gitignore, docs/authors.rst, docs/changelog.rst, docs/conf.py, docs/index.rst, docs/license.rst, docs/ml_system_card.yaml, docs/stakeholders.yaml, environment.lock.yaml, environment.yaml, notebooks/01-preprocessing.ipynb, notebooks/02-model.ipynb, notebooks/03-evaluation.ipynb, setup.cfg, setup.py, src/bhm_at_scale/__init__.py, src/bhm_at_scale/handler.py, src/bhm_at_scale/model.py, src/bhm",
+        "contentPreview": "{\n  \"note\": {\n    \"overview\": \"This system provides scalable Bayesian hierarchical modelling for retail sales forecasting ⚠️. According to $.business.executiveSummary, it focuses on daily, store-level sales predictions for a retail chain ⚠️. The primary intent, per $.business.intendedUse, is research and education rather than a production-ready service ⚠️. The main use case in $.business.useCase is exploring and demonstrating forecasting workflows, not live deployment ⚠️. Target users from $.business.userPopulations are data scientists and researchers working with Bayesian hierarchical models and large-scale retail data ⚠️.\",\n    \"changes\": \"- $.business.executiveSummary now describes the project as scalable Bayesian hierarchical modelling for retail sales forecasting, emphasizing research orientation ⚠️.\\n- $.business.intendedUse clarifies that usage is for research/educational examples, not production forecasting services ⚠️.\\n- $.business.useCase highlights daily store-level sales forecasting for a retail chain as the canonical example ⚠️.\\n- $.business.userPopulations specifies data scientists and researchers as primary users ⚠️.\\n- $.business.nonGoals and $.business.outOfScope"
+      }
+    },
+    {
+      "stakeholderId": "ux-researcher",
+      "promptDigest": "3d9510ae5ba5a43c1705715fcce3bce1ebd3d2720c3a801c8f5d8dd3c6f0427f",
+      "usedFallback": false,
+      "note": {
+        "textMd": "",
+        "overview": "This system ⚠️implements Bayesian hierarchical modelling at scale for retail sales forecasting (see $.business.executiveSummary, $.business.useCase). It is ⚠️positioned primarily as a research and educational example rather than a production service (see $.business.intendedUse, $.business.nonGoals). The ⚠️intended users are data scientists and researchers exploring Bayesian methods and scalable probabilistic modelling (see $.business.userPopulations). Hazardous and out-of-scope usage includes ⚠️direct application in safety-critical, legal, or high-stakes operational settings without rigorous validation and integration into production-grade workflows (see $.business.hazardousUseCases, $.business.outOfScopeUse).",
+        "changes": "- ⚠️Business framing for the project’s purpose and positioning as research/educational material is captured under $.business.executiveSummary and $.business.intendedUse, but specific edits versus baseline are not determinable from this run.\n- ⚠️Clarifications around non-goals and out-of-scope scenarios (e.g., production deployment without hardening) are documented under $.business.nonGoals and $.business.outOfScopeUse; exact textual changes are unknown.\n- ⚠️User populations and hazardous use cases appear defined in $.business.userPopulations and $.business.hazardousUseCases, but any recent adjustments to these descriptions cannot be reliably identified.\n\nIf precise diffs are required, please review docs/ml_system_card.yaml directly.",
+        "confidence": 0.1
+      },
+      "fallback": null,
+      "llm": {
+        "requestDigest": "9a72bf074e488df7a301ac2dbc7954b327e2f96080af3f75a1bdfe5ff2f97d05",
+        "responseDigest": "88c5c935e5fca4f6587d006f3c610cfd71351734f744ce4e243d52c874a8e29a",
+        "promptPreview": "You generate concise stakeholder notes that summarize ML System Card updates.\n\nGuidelines:\n- Respect the stakeholder language preference; if `auto`, default to repository locale.\n- Limit responses to 180 words and avoid marketing flourishes.\n- Reference JSON paths when pointing to specific card fields.\n- Mark any mention of low-confidence facts with `⚠️`.\n\nInputs:\nRun ID: run-2026-03-11-10-28-37\nBase SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nHead SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nChanged files (37): .coveragerc, .gitignore, .isort.cfg, .pre-commit-config.yaml, AUTHORS.rst, CHANGELOG.rst, LICENSE.txt, README.md, data/.gitignore, data/external/.gitignore, data/interim/.gitignore, data/preprocessed/.gitignore, data/raw/.gitignore, data/result/.gitignore, docs/Makefile, docs/_static/.gitignore, docs/authors.rst, docs/changelog.rst, docs/conf.py, docs/index.rst, docs/license.rst, docs/ml_system_card.yaml, docs/stakeholders.yaml, environment.lock.yaml, environment.yaml, notebooks/01-preprocessing.ipynb, notebooks/02-model.ipynb, notebooks/03-evaluation.ipynb, setup.cfg, setup.py, src/bhm_at_scale/__init__.py, src/bhm_at_scale/handler.py, src/bhm_at_scale/model.py, src/bhm",
+        "contentPreview": "{ \n  \"note\": {\n    \"overview\": \"This system ⚠️implements Bayesian hierarchical modelling at scale for retail sales forecasting (see $.business.executiveSummary, $.business.useCase). It is ⚠️positioned primarily as a research and educational example rather than a production service (see $.business.intendedUse, $.business.nonGoals). The ⚠️intended users are data scientists and researchers exploring Bayesian methods and scalable probabilistic modelling (see $.business.userPopulations). Hazardous and out-of-scope usage includes ⚠️direct application in safety-critical, legal, or high-stakes operational settings without rigorous validation and integration into production-grade workflows (see $.business.hazardousUseCases, $.business.outOfScopeUse).\",\n    \"changes\": \"- ⚠️Business framing for the project’s purpose and positioning as research/educational material is captured under $.business.executiveSummary and $.business.intendedUse, but specific edits versus baseline are not determinable from this run.\\n- ⚠️Clarifications around non-goals and out-of-scope scenarios (e.g., production deployment without hardening) are documented under $.business.nonGoals and $.business.outOfScopeUse; exact "
+      }
+    }
+  ],
+  "llm": {
+    "provider": "openai",
+    "model": "gpt-5.1",
+    "requestDigest": "3eda96509a29ec3eac5a54c49931ba81d67a9fc3f183fd4d03cc4f62ac8ad219",
+    "responseDigest": "4213832bcc36dfc2b63440b1f45d6ab7382fc876b83c9c9c2734820a31086af0",
+    "metrics": {
+      "promptTokens": 9198,
+      "completionTokens": 4804,
+      "latencyMs": 117553.57398800028
+    }
+  }
+}

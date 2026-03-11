@@ -1,0 +1,2089 @@
+{
+  "promptId": "extractor.v1",
+  "promptMetadata": {
+    "id": "extractor.v1",
+    "audience": "card-fact-extractor",
+    "version": 1,
+    "max_tokens": 2000,
+    "citations": "required",
+    "sampling": {
+      "temperature": 0.1,
+      "top_p": 0.9
+    }
+  },
+  "promptDigest": "8a91e21e8f23fa987b4d317a64ec69d108cbdd57717dbebe8472a868b04a0f6a",
+  "mode": "llm",
+  "facts": [
+    {
+      "jsonPath": "$.business.executiveSummary",
+      "jsonPointer": "/business/executiveSummary",
+      "proposedValue": "This project implements Bayesian hierarchical modelling at scale for retail sales forecasting. Using NumPyro on top of JAX, it fits a Gamma-Poisson hierarchical model over thousands of stores and days in the Rossmann Store Sales dataset from Kaggle. The pipeline downloads raw store and sales CSVs, performs feature engineering and dummy-encoding in pandas, and converts them into a time-series cube suitable for vectorized probabilistic inference. The resulting model captures global and store-specific effects (such as weekday, promotions, and holidays), produces posterior predictive distributions, and is compared against a conventional linear regression baseline.",
+      "source": {
+        "kind": "inferred"
+      },
+      "repoSources": [
+        {
+          "path": "README.md",
+          "startLine": 1,
+          "endLine": 40,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "docs"
+        },
+        {
+          "path": "notebooks/01-preprocessing.ipynb",
+          "startLine": 1,
+          "endLine": 120,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "notebooks/02-model.ipynb",
+          "startLine": 1,
+          "endLine": 200,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/model.py",
+          "startLine": 1,
+          "endLine": 120,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.9,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.business.hazardousUseCases",
+      "jsonPointer": "/business/hazardousUseCases",
+      "proposedValue": [
+        "Using the research code and model outputs directly for safety-critical or legally binding decisions (for example, staffing of emergency services or credit approvals) without additional validation, governance, and monitoring.",
+        "Relying on forecasts trained on the Rossmann Store Sales dataset to drive high-stakes decisions in domains unrelated to retail store sales, where the data distribution and risks differ substantially."
+      ],
+      "source": {
+        "kind": "inferred"
+      },
+      "repoSources": [
+        {
+          "path": "README.md",
+          "startLine": 1,
+          "endLine": 40,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "docs"
+        },
+        {
+          "path": "README.md",
+          "startLine": 41,
+          "endLine": 80,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "docs"
+        }
+      ],
+      "confidence": 0.78,
+      "gate": "Warn"
+    },
+    {
+      "jsonPath": "$.business.intendedUse",
+      "jsonPointer": "/business/intendedUse",
+      "proposedValue": "The primary intended use is as a research and educational example of scalable Bayesian hierarchical modelling for count time-series, demonstrating how to implement a Gamma-Poisson hierarchical model with NumPyro and JAX on the Rossmann store-level sales task. It is designed for experimentation in notebooks rather than for direct production deployment.",
+      "source": {
+        "kind": "inferred"
+      },
+      "repoSources": [
+        {
+          "path": "README.md",
+          "startLine": 1,
+          "endLine": 40,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "docs"
+        },
+        {
+          "path": "notebooks/02-model.ipynb",
+          "startLine": 1,
+          "endLine": 80,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.9,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.business.nonGoals",
+      "jsonPointer": "/business/nonGoals",
+      "proposedValue": [
+        "Providing a fully production-ready forecasting service or API for retail operations.",
+        "Building a generic forecasting platform applicable to arbitrary domains beyond the Rossmann Store Sales example.",
+        "Delivering a comprehensive MLOps stack with monitoring, retraining, and automated deployment; the focus is on modelling and experimentation in notebooks."
+      ],
+      "source": {
+        "kind": "inferred"
+      },
+      "repoSources": [
+        {
+          "path": "README.md",
+          "startLine": 24,
+          "endLine": 72,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "docs"
+        },
+        {
+          "path": "notebooks/02-model.ipynb",
+          "startLine": 1,
+          "endLine": 60,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.82,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.business.outOfScopeUse",
+      "jsonPointer": "/business/outOfScopeUse",
+      "proposedValue": [
+        "Directly deploying this example codebase in a production environment without additional engineering, testing, and monitoring.",
+        "Using the model outside the context of historical store-level sales data with similar structure to the Rossmann Store Sales dataset, for example on domains with very different feature semantics.",
+        "Treating the example changelog and documentation templates as production governance records without project-specific adaptation."
+      ],
+      "source": {
+        "kind": "inferred"
+      },
+      "repoSources": [
+        {
+          "path": "README.md",
+          "startLine": 24,
+          "endLine": 72,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "docs"
+        },
+        {
+          "path": "CHANGELOG.rst",
+          "startLine": 1,
+          "endLine": 20,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.8,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.business.useCase",
+      "jsonPointer": "/business/useCase",
+      "proposedValue": "Forecasting daily store-level sales for a retail chain using a Bayesian hierarchical Gamma-Poisson model, trained on the Rossmann Store Sales Kaggle dataset, to capture both global effects (such as weekday and promotions) and store-specific patterns.",
+      "source": {
+        "kind": "inferred"
+      },
+      "repoSources": [
+        {
+          "path": "notebooks/01-preprocessing.ipynb",
+          "startLine": 40,
+          "endLine": 120,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "notebooks/03-evaluation.ipynb",
+          "startLine": 80,
+          "endLine": 180,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/model.py",
+          "startLine": 60,
+          "endLine": 140,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.92,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.business.userPopulations",
+      "jsonPointer": "/business/userPopulations",
+      "currentValue": [],
+      "proposedValue": [
+        "Data scientists and researchers interested in Bayesian hierarchical modelling and probabilistic programming with NumPyro and JAX.",
+        "Machine learning practitioners who want to study scalable approaches to count time-series forecasting on retail sales data.",
+        "Students and readers of the accompanying blog post who run the notebooks to understand the modelling and inference pipeline."
+      ],
+      "source": {
+        "kind": "inferred"
+      },
+      "repoSources": [
+        {
+          "path": "README.md",
+          "startLine": 1,
+          "endLine": 40,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "docs"
+        },
+        {
+          "path": "docs/index.rst",
+          "startLine": 1,
+          "endLine": 60,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.86,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.devInsight.architecture.dataFlow",
+      "jsonPointer": "/devInsight/architecture/dataFlow",
+      "proposedValue": [
+        "Raw Rossmann Store Sales CSVs (store.csv, train.csv) are downloaded from Kaggle into data/raw using kaggle.api.dataset_download_files in the preprocessing notebook.",
+        "store.csv and train.csv are loaded into pandas, merged on Store, sorted by Store and Date, and augmented with engineered fields such as numeric StateHoliday, Assortment, StoreType, StoreId, Timestep, and StoreVariant while dropping unused competition and promo interval columns.",
+        "Categorical variables (DayOfWeek, StoreVariant, StateHoliday) are dummy-encoded via bhm_at_scale.preprocess.encode; rows with Open == 0 have Sales set to NaN, and Open is then dropped before columns are reordered to put StoreId and Timestep first and Sales last.",
+        "The encoded DataFrame is saved to data/preprocessed/edf.csv and converted into a three-dimensional numpy array cube X indexed by [StoreId, Timestep, feature/target] using bhm_at_scale.preprocess.make_cube; X is split into X_train and X_test and persisted as .npz files.",
+        "X_train and X_test are loaded as JAX DeviceArray objects and passed to the Gamma-Poisson hierarchical model defined in bhm_at_scale.model via the ModelHandler.fit SVI training loop, which performs JAX-jitted optimization using lax.fori_loop.",
+        "After training, optimizer/model state is serialized to data/result/optim_state.pickle; posterior samples and predictions are generated with ModelHandler.predict and predictive_model, summarized via bhm_at_scale.utils.summary, stats_to_df, and preds_to_df, and exported as CSVs (e.g., coef_mus.csv, stats.csv, train_preds.csv, test_preds.csv) for downstream visualization in notebooks and bhm_at_scale.plot."
+      ],
+      "source": {
+        "kind": "inferred"
+      },
+      "repoSources": [
+        {
+          "path": "notebooks/01-preprocessing.ipynb",
+          "startLine": 20,
+          "endLine": 140,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/preprocess.py",
+          "startLine": 1,
+          "endLine": 120,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/handler.py",
+          "startLine": 1,
+          "endLine": 200,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "notebooks/02-model.ipynb",
+          "startLine": 40,
+          "endLine": 200,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/utils.py",
+          "startLine": 1,
+          "endLine": 200,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "notebooks/03-evaluation.ipynb",
+          "startLine": 80,
+          "endLine": 200,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.94,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.devInsight.architecture.depsSummary",
+      "jsonPointer": "/devInsight/architecture/depsSummary",
+      "currentValue": [],
+      "proposedValue": [
+        "Core language and environment: Python >=3.8 managed via Conda (environment.yaml, environment.lock.yaml).",
+        "Numerical and data processing: numpy, scipy, pandas (for array math, statistics, and tabular feature engineering).",
+        "Probabilistic modelling and optimization: jax, jaxlib, numpyro (Gamma-Poisson hierarchical model, SVI, JAX JIT).",
+        "Classical machine learning baseline: scikit-learn (LinearRegression used as a conventional Poisson-style regression comparator).",
+        "Visualization and reporting: matplotlib, seaborn, daft (for plotting time series, densities, and graphical model diagrams).",
+        "Experiment tooling and data access: jupyterlab for notebooks and kaggle API for downloading the Rossmann Store Sales dataset."
+      ],
+      "source": {
+        "kind": "extracted"
+      },
+      "repoSources": [
+        {
+          "path": "environment.yaml",
+          "startLine": 1,
+          "endLine": 40,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "config"
+        },
+        {
+          "path": "environment.lock.yaml",
+          "startLine": 1,
+          "endLine": 140,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "config"
+        },
+        {
+          "path": "notebooks/01-preprocessing.ipynb",
+          "startLine": 1,
+          "endLine": 80,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "notebooks/02-model.ipynb",
+          "startLine": 1,
+          "endLine": 80,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "notebooks/03-evaluation.ipynb",
+          "startLine": 1,
+          "endLine": 80,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.95,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.devInsight.architecture.publicApis",
+      "jsonPointer": "/devInsight/architecture/publicApis",
+      "proposedValue": [
+        {
+          "name": "ModelHandler",
+          "path": "bhm_at_scale.handler.ModelHandler",
+          "file": "src/bhm_at_scale/handler.py"
+        },
+        {
+          "name": "ModelHandler.fit",
+          "path": "bhm_at_scale.handler.ModelHandler.fit",
+          "file": "src/bhm_at_scale/handler.py"
+        },
+        {
+          "name": "ModelHandler.predict",
+          "path": "bhm_at_scale.handler.ModelHandler.predict",
+          "file": "src/bhm_at_scale/handler.py"
+        },
+        {
+          "name": "hierarchical_model",
+          "path": "bhm_at_scale.model.model",
+          "file": "src/bhm_at_scale/model.py"
+        },
+        {
+          "name": "global_guide",
+          "path": "bhm_at_scale.model.guide",
+          "file": "src/bhm_at_scale/model.py"
+        },
+        {
+          "name": "local_guide",
+          "path": "bhm_at_scale.model.local_guide",
+          "file": "src/bhm_at_scale/model.py"
+        },
+        {
+          "name": "predictive_model",
+          "path": "bhm_at_scale.model.predictive_model",
+          "file": "src/bhm_at_scale/model.py"
+        },
+        {
+          "name": "encode",
+          "path": "bhm_at_scale.preprocess.encode",
+          "file": "src/bhm_at_scale/preprocess.py"
+        },
+        {
+          "name": "make_cube",
+          "path": "bhm_at_scale.preprocess.make_cube",
+          "file": "src/bhm_at_scale/preprocess.py"
+        },
+        {
+          "name": "plot_sales_preds",
+          "path": "bhm_at_scale.plot.plot_sales_preds",
+          "file": "src/bhm_at_scale/plot.py"
+        },
+        {
+          "name": "PlotStore",
+          "path": "bhm_at_scale.plot.PlotStore",
+          "file": "src/bhm_at_scale/plot.py"
+        },
+        {
+          "name": "plot_densities",
+          "path": "bhm_at_scale.plot.plot_densities",
+          "file": "src/bhm_at_scale/plot.py"
+        },
+        {
+          "name": "summary",
+          "path": "bhm_at_scale.utils.summary",
+          "file": "src/bhm_at_scale/utils.py"
+        },
+        {
+          "name": "stats_to_df",
+          "path": "bhm_at_scale.utils.stats_to_df",
+          "file": "src/bhm_at_scale/utils.py"
+        },
+        {
+          "name": "preds_to_df",
+          "path": "bhm_at_scale.utils.preds_to_df",
+          "file": "src/bhm_at_scale/utils.py"
+        },
+        {
+          "name": "make_intervals",
+          "path": "bhm_at_scale.utils.make_intervals",
+          "file": "src/bhm_at_scale/utils.py"
+        },
+        {
+          "name": "reorder_cols",
+          "path": "bhm_at_scale.utils.reorder_cols",
+          "file": "src/bhm_at_scale/utils.py"
+        }
+      ],
+      "source": {
+        "kind": "inferred"
+      },
+      "repoSources": [
+        {
+          "path": "src/bhm_at_scale/handler.py",
+          "startLine": 1,
+          "endLine": 200,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/model.py",
+          "startLine": 1,
+          "endLine": 260,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/preprocess.py",
+          "startLine": 1,
+          "endLine": 120,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/plot.py",
+          "startLine": 1,
+          "endLine": 220,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/utils.py",
+          "startLine": 1,
+          "endLine": 220,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.93,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.devInsight.codeOverview.components",
+      "jsonPointer": "/devInsight/codeOverview/components",
+      "currentValue": [],
+      "proposedValue": [
+        {
+          "name": "Data Preprocessing",
+          "summary": "Downloads the Rossmann Store Sales Kaggle dataset, cleans and merges store metadata, performs basic feature engineering and dummy-encoding of categorical variables, and constructs a time-series cube for model input.",
+          "keyFiles": [
+            "notebooks/01-preprocessing.ipynb",
+            "src/bhm_at_scale/preprocess.py",
+            "src/bhm_at_scale/utils.py"
+          ]
+        },
+        {
+          "name": "Hierarchical Sales Model",
+          "summary": "Defines a Gamma-Poisson hierarchical model over stores, days, and features using NumPyro plates, along with corresponding guides and a predictive model for posterior sampling.",
+          "keyFiles": [
+            "src/bhm_at_scale/model.py",
+            "notebooks/02-model.ipynb"
+          ]
+        },
+        {
+          "name": "Training & Inference Handler",
+          "summary": "Wraps NumPyro SVI with a ModelHandler class that manages JAX PRNG keys, optimizer construction, JIT-compiled training loops, checkpointing of optimizer state, and prediction via Predictive.",
+          "keyFiles": [
+            "src/bhm_at_scale/handler.py",
+            "notebooks/02-model.ipynb"
+          ]
+        },
+        {
+          "name": "Visualization & Evaluation",
+          "summary": "Provides utilities and notebooks to visualize predictive performance, uncertainty intervals, global weekday and promotion effects, and to compare the hierarchical model to a scikit-learn linear regression baseline.",
+          "keyFiles": [
+            "src/bhm_at_scale/plot.py",
+            "notebooks/03-evaluation.ipynb",
+            "notebooks/02-model.ipynb"
+          ]
+        }
+      ],
+      "source": {
+        "kind": "inferred"
+      },
+      "repoSources": [
+        {
+          "path": "notebooks/01-preprocessing.ipynb",
+          "startLine": 1,
+          "endLine": 140,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "notebooks/02-model.ipynb",
+          "startLine": 1,
+          "endLine": 220,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "notebooks/03-evaluation.ipynb",
+          "startLine": 1,
+          "endLine": 220,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/handler.py",
+          "startLine": 1,
+          "endLine": 200,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/model.py",
+          "startLine": 1,
+          "endLine": 260,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/plot.py",
+          "startLine": 1,
+          "endLine": 220,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/preprocess.py",
+          "startLine": 1,
+          "endLine": 120,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/utils.py",
+          "startLine": 1,
+          "endLine": 220,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.92,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.devInsight.codeOverview.entrypoints",
+      "jsonPointer": "/devInsight/codeOverview/entrypoints",
+      "proposedValue": [
+        "Running Jupyter notebooks in notebooks/01-preprocessing.ipynb, 02-model.ipynb, and 03-evaluation.ipynb to execute the full data-to-model-to-evaluation pipeline.",
+        "Importing bhm_at_scale.handler.ModelHandler together with bhm_at_scale.model.model and bhm_at_scale.model.guide to train the hierarchical model from Python code.",
+        "Using bhm_at_scale.preprocess.encode and bhm_at_scale.preprocess.make_cube to transform tabular store-level sales data into model-ready arrays.",
+        "Using bhm_at_scale.plot.PlotStore and bhm_at_scale.plot.plot_sales_preds to visualize sales histories and predictive intervals for individual stores."
+      ],
+      "source": {
+        "kind": "inferred"
+      },
+      "repoSources": [
+        {
+          "path": "notebooks/01-preprocessing.ipynb",
+          "startLine": 1,
+          "endLine": 40,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "notebooks/02-model.ipynb",
+          "startLine": 20,
+          "endLine": 80,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "notebooks/03-evaluation.ipynb",
+          "startLine": 80,
+          "endLine": 160,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.9,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.devInsight.codeOverview.languages",
+      "jsonPointer": "/devInsight/codeOverview/languages",
+      "proposedValue": [
+        "Python"
+      ],
+      "source": {
+        "kind": "inferred"
+      },
+      "repoSources": [
+        {
+          "path": "environment.yaml",
+          "startLine": 1,
+          "endLine": 20,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "config"
+        },
+        {
+          "path": "setup.cfg",
+          "startLine": 1,
+          "endLine": 40,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/model.py",
+          "startLine": 1,
+          "endLine": 40,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.99,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.devInsight.qualitySignals.complexityHints",
+      "jsonPointer": "/devInsight/qualitySignals/complexityHints",
+      "proposedValue": [
+        "The training loop in ModelHandler._fit uses JAX JIT compilation and lax.fori_loop over epochs, indicating careful optimization for performance on large time-series cubes.",
+        "The Gamma-Poisson hierarchical model employs multiple NumPyro plates (features, stores, days) and TransformReparam with TransformedDistribution to stabilize inference, which increases conceptual and implementation complexity.",
+        "Custom guides (global guide and local_guide) are defined to handle scenarios with full historical data and new stores with limited history, reflecting non-trivial inference design."
+      ],
+      "source": {
+        "kind": "inferred"
+      },
+      "repoSources": [
+        {
+          "path": "src/bhm_at_scale/handler.py",
+          "startLine": 60,
+          "endLine": 160,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/model.py",
+          "startLine": 60,
+          "endLine": 260,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "notebooks/02-model.ipynb",
+          "startLine": 80,
+          "endLine": 200,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.93,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.governance.policies",
+      "jsonPointer": "/governance/policies",
+      "proposedValue": [
+        "Source code is licensed under the GNU General Public License v2.0 or later (GPL-2.0-or-later), as indicated by LICENSE.txt and the license metadata in setup.cfg, which affects how the code can be reused or integrated into proprietary systems."
+      ],
+      "source": {
+        "kind": "extracted"
+      },
+      "repoSources": [
+        {
+          "path": "LICENSE.txt",
+          "startLine": 1,
+          "endLine": 30,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "setup.cfg",
+          "startLine": 5,
+          "endLine": 20,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "README.md",
+          "startLine": 3,
+          "endLine": 12,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "docs"
+        }
+      ],
+      "confidence": 0.96,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.meta.links",
+      "jsonPointer": "/meta/links",
+      "proposedValue": {
+        "repo": "https://github.com/FlorianWilhelm/bhm-at-scale",
+        "demo": "",
+        "dataset": "https://www.kaggle.com/pratyushakar/rossmann-store-sales"
+      },
+      "source": {
+        "kind": "inferred"
+      },
+      "repoSources": [
+        {
+          "path": "setup.cfg",
+          "startLine": 5,
+          "endLine": 16,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "README.md",
+          "startLine": 1,
+          "endLine": 20,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "docs"
+        },
+        {
+          "path": "notebooks/01-preprocessing.ipynb",
+          "startLine": 30,
+          "endLine": 70,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.95,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.meta.maturity",
+      "jsonPointer": "/meta/maturity",
+      "proposedValue": "PoC",
+      "source": {
+        "kind": "inferred"
+      },
+      "repoSources": [
+        {
+          "path": "README.md",
+          "startLine": 1,
+          "endLine": 40,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "docs"
+        },
+        {
+          "path": "docs/index.rst",
+          "startLine": 1,
+          "endLine": 40,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.88,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.meta.owners",
+      "jsonPointer": "/meta/owners",
+      "proposedValue": [
+        {
+          "name": "Florian Wilhelm",
+          "role": "Author and Maintainer"
+        }
+      ],
+      "source": {
+        "kind": "inferred"
+      },
+      "repoSources": [
+        {
+          "path": "AUTHORS.rst",
+          "startLine": 1,
+          "endLine": 10,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "setup.cfg",
+          "startLine": 5,
+          "endLine": 12,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.9,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.meta.title",
+      "jsonPointer": "/meta/title",
+      "currentValue": "New ML System Card",
+      "proposedValue": "Bayesian Hierarchical Modelling at Scale",
+      "source": {
+        "kind": "extracted"
+      },
+      "repoSources": [
+        {
+          "path": "README.md",
+          "startLine": 1,
+          "endLine": 4,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "docs"
+        },
+        {
+          "path": "setup.cfg",
+          "startLine": 1,
+          "endLine": 8,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.98,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.mlCore.artifactURIs",
+      "jsonPointer": "/mlCore/artifactURIs",
+      "proposedValue": {
+        "model": "data/result/optim_state.pickle",
+        "dockerImage": ""
+      },
+      "source": {
+        "kind": "extracted"
+      },
+      "repoSources": [
+        {
+          "path": "notebooks/02-model.ipynb",
+          "startLine": 80,
+          "endLine": 140,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.9,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.mlCore.baselines",
+      "jsonPointer": "/mlCore/baselines",
+      "proposedValue": [
+        "Scikit-Learn LinearRegression fitted on log-transformed sales for a single store as a conventional Poisson-style regression baseline, compared against the Bayesian hierarchical model."
+      ],
+      "source": {
+        "kind": "extracted"
+      },
+      "repoSources": [
+        {
+          "path": "notebooks/02-model.ipynb",
+          "startLine": 140,
+          "endLine": 220,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.92,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.mlCore.datasets",
+      "jsonPointer": "/mlCore/datasets",
+      "proposedValue": [
+        {
+          "name": "Rossmann Store Sales (Kaggle)",
+          "uri": "https://www.kaggle.com/pratyushakar/rossmann-store-sales",
+          "license": "See Kaggle dataset page"
+        }
+      ],
+      "source": {
+        "kind": "extracted"
+      },
+      "repoSources": [
+        {
+          "path": "notebooks/01-preprocessing.ipynb",
+          "startLine": 30,
+          "endLine": 70,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.93,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.mlCore.failureModes",
+      "jsonPointer": "/mlCore/failureModes",
+      "proposedValue": [
+        "The model assumes that relationships between features (such as weekday, promotions, and holidays) and log sales are relatively stable over the training and forecasting horizons; it may underperform under strong distribution shifts not represented in the Rossmann training data.",
+        "Features are padded with zeros for missing values in the cube (via jnp.nan_to_num), and closed days have Sales set to NaN before filtering; unexpected patterns of missingness or mis-specified closed days may lead to biased estimates.",
+        "Local_guide-based adaptation for new stores with few observations relies on the global priors learned from historical stores; if new stores differ substantially in behaviour from the training population, forecasts may be miscalibrated."
+      ],
+      "source": {
+        "kind": "inferred"
+      },
+      "repoSources": [
+        {
+          "path": "src/bhm_at_scale/model.py",
+          "startLine": 80,
+          "endLine": 160,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/preprocess.py",
+          "startLine": 80,
+          "endLine": 120,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "notebooks/02-model.ipynb",
+          "startLine": 120,
+          "endLine": 220,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.64,
+      "gate": "Require"
+    },
+    {
+      "jsonPath": "$.mlCore.features",
+      "jsonPointer": "/mlCore/features",
+      "proposedValue": [
+        "DayOfWeek_1–DayOfWeek_7: dummy-encoded weekday indicators derived from the original DayOfWeek column.",
+        "Promo: binary indicator of whether a promotion is running on a given day.",
+        "StateHoliday_0–StateHoliday_3: dummy-encoded state holiday categories mapped from the original StateHoliday field.",
+        "SchoolHoliday: indicator for school holidays.",
+        "Promo2: indicator for a secondary promotion program.",
+        "StoreVariant_11, StoreVariant_13, StoreVariant_21, StoreVariant_22, StoreVariant_23, StoreVariant_31, StoreVariant_33, StoreVariant_41, StoreVariant_43: categorical encodings combining StoreType and Assortment into store variant groups.",
+        "StoreId: contiguous numeric identifier for each store, used as an index dimension in the cube.",
+        "Timestep: per-store time index (within-store cumulative day count).",
+        "Sales: target variable representing daily store sales, modelled as a Gamma-Poisson count."
+      ],
+      "source": {
+        "kind": "extracted"
+      },
+      "repoSources": [
+        {
+          "path": "notebooks/01-preprocessing.ipynb",
+          "startLine": 60,
+          "endLine": 140,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/preprocess.py",
+          "startLine": 40,
+          "endLine": 120,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/model.py",
+          "startLine": 40,
+          "endLine": 100,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.96,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.mlCore.problem",
+      "jsonPointer": "/mlCore/problem",
+      "proposedValue": "Probabilistic time-series regression / forecasting of daily store-level sales counts using a Gamma-Poisson hierarchical model over stores, days, and engineered features.",
+      "source": {
+        "kind": "inferred"
+      },
+      "repoSources": [
+        {
+          "path": "src/bhm_at_scale/model.py",
+          "startLine": 40,
+          "endLine": 120,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "notebooks/02-model.ipynb",
+          "startLine": 40,
+          "endLine": 120,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.95,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.mlCore.qualities",
+      "jsonPointer": "/mlCore/qualities",
+      "proposedValue": [
+        "The Gamma-Poisson hierarchical structure allows sharing of statistical strength across stores, yielding reasonable coefficient estimates even for stores with few observations, as demonstrated by local_guide and coefficient comparisons in the modelling notebook.",
+        "Posterior predictive samples are summarized into means and credible intervals (5%, 25%, 75%, 95%), providing uncertainty estimates for sales forecasts rather than point predictions only.",
+        "Global effects such as weekday and promotion impacts are visualized and compared to per-store mean effects, supporting interpretability of how the model uses key features."
+      ],
+      "source": {
+        "kind": "inferred"
+      },
+      "repoSources": [
+        {
+          "path": "notebooks/02-model.ipynb",
+          "startLine": 100,
+          "endLine": 220,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "notebooks/03-evaluation.ipynb",
+          "startLine": 120,
+          "endLine": 220,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/utils.py",
+          "startLine": 1,
+          "endLine": 120,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        }
+      ],
+      "confidence": 0.9,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.mlCore.training",
+      "jsonPointer": "/mlCore/training",
+      "proposedValue": {
+        "framework": "NumPyro (JAX)",
+        "frameworkVersion": "0.7.2",
+        "hyperparams": {
+          "svi_loss": "Trace_ELBO(num_particles=1)",
+          "optimizer": "Adam via numpyro.optim",
+          "initial_training": {
+            "n_epochs": 5000,
+            "lr": 0.1
+          },
+          "fine_tuning": {
+            "n_epochs": 1000,
+            "lr": 0.001
+          },
+          "local_adaptation": {
+            "n_epochs": 1000,
+            "lr": 0.1
+          },
+          "batching": "full-batch over all stores and days in X"
+        },
+        "hardware": "Local Python 3.8 environment (Conda) with JAX 0.2.19 / jaxlib 0.1.71 and NumPyro 0.7.2, suitable for CPU-based SVI training."
+      },
+      "source": {
+        "kind": "extracted"
+      },
+      "repoSources": [
+        {
+          "path": "notebooks/02-model.ipynb",
+          "startLine": 40,
+          "endLine": 140,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "src/bhm_at_scale/handler.py",
+          "startLine": 1,
+          "endLine": 120,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "code"
+        },
+        {
+          "path": "environment.lock.yaml",
+          "startLine": 80,
+          "endLine": 140,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc",
+          "kind": "config"
+        }
+      ],
+      "confidence": 0.94,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.provenance.changelog[0]",
+      "jsonPointer": "/provenance/changelog/0",
+      "proposedValue": {
+        "date": "2026-03-11T10:29:03.512Z",
+        "summary": "ML System Card run run-2026-03-11-10-28-37 observed 37 changed files",
+        "files": [
+          {
+            "path": ".coveragerc"
+          },
+          {
+            "path": ".gitignore"
+          },
+          {
+            "path": ".isort.cfg"
+          },
+          {
+            "path": ".pre-commit-config.yaml"
+          },
+          {
+            "path": "AUTHORS.rst"
+          },
+          {
+            "path": "CHANGELOG.rst"
+          },
+          {
+            "path": "LICENSE.txt"
+          },
+          {
+            "path": "README.md"
+          },
+          {
+            "path": "data/.gitignore"
+          },
+          {
+            "path": "data/external/.gitignore"
+          },
+          {
+            "path": "data/interim/.gitignore"
+          },
+          {
+            "path": "data/preprocessed/.gitignore"
+          },
+          {
+            "path": "data/raw/.gitignore"
+          },
+          {
+            "path": "data/result/.gitignore"
+          },
+          {
+            "path": "docs/Makefile"
+          },
+          {
+            "path": "docs/_static/.gitignore"
+          },
+          {
+            "path": "docs/authors.rst"
+          },
+          {
+            "path": "docs/changelog.rst"
+          },
+          {
+            "path": "docs/conf.py"
+          },
+          {
+            "path": "docs/index.rst"
+          },
+          {
+            "path": "docs/license.rst"
+          },
+          {
+            "path": "docs/ml_system_card.yaml"
+          },
+          {
+            "path": "docs/stakeholders.yaml"
+          },
+          {
+            "path": "environment.lock.yaml"
+          },
+          {
+            "path": "environment.yaml"
+          },
+          {
+            "path": "notebooks/01-preprocessing.ipynb"
+          },
+          {
+            "path": "notebooks/02-model.ipynb"
+          },
+          {
+            "path": "notebooks/03-evaluation.ipynb"
+          },
+          {
+            "path": "setup.cfg"
+          },
+          {
+            "path": "setup.py"
+          },
+          {
+            "path": "src/bhm_at_scale/__init__.py"
+          },
+          {
+            "path": "src/bhm_at_scale/handler.py"
+          },
+          {
+            "path": "src/bhm_at_scale/model.py"
+          },
+          {
+            "path": "src/bhm_at_scale/plot.py"
+          },
+          {
+            "path": "src/bhm_at_scale/preprocess.py"
+          },
+          {
+            "path": "src/bhm_at_scale/utils.py"
+          },
+          {
+            "path": "tests/conftest.py"
+          }
+        ],
+        "runId": "run-2026-03-11-10-28-37",
+        "headSha": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+      },
+      "source": {
+        "kind": "extracted"
+      },
+      "repoSources": [
+        {
+          "path": ".coveragerc",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": ".gitignore",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": ".isort.cfg",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": ".pre-commit-config.yaml",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "AUTHORS.rst",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "CHANGELOG.rst",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "LICENSE.txt",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "README.md",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "data/.gitignore",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "data/external/.gitignore",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "data/interim/.gitignore",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "data/preprocessed/.gitignore",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "data/raw/.gitignore",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "data/result/.gitignore",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "docs/Makefile",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "docs/_static/.gitignore",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "docs/authors.rst",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "docs/changelog.rst",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "docs/conf.py",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "docs/index.rst",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "docs/license.rst",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "docs/ml_system_card.yaml",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "docs/stakeholders.yaml",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "environment.lock.yaml",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "environment.yaml",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "notebooks/01-preprocessing.ipynb",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "notebooks/02-model.ipynb",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "notebooks/03-evaluation.ipynb",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "setup.cfg",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "setup.py",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "src/bhm_at_scale/__init__.py",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "src/bhm_at_scale/handler.py",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "src/bhm_at_scale/model.py",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "src/bhm_at_scale/plot.py",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "src/bhm_at_scale/preprocess.py",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "src/bhm_at_scale/utils.py",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "tests/conftest.py",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        }
+      ],
+      "confidence": 0.7,
+      "gate": "Warn",
+      "verifierNotes": "Review high-change volume"
+    }
+  ],
+  "deterministicFallbackFacts": [
+    {
+      "jsonPath": "$.meta.title",
+      "jsonPointer": "/meta/title",
+      "currentValue": "New ML System Card",
+      "proposedValue": "ML System Card (GitHub-native, PR-first)",
+      "source": {
+        "kind": "extracted"
+      },
+      "repoSources": [
+        {
+          "path": "README.md",
+          "startLine": 1,
+          "endLine": 1,
+          "kind": "docs",
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        }
+      ],
+      "confidence": 0.95,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.business.userPopulations",
+      "jsonPointer": "/business/userPopulations",
+      "currentValue": [],
+      "proposedValue": [
+        "Data Scientist",
+        "ML Engineer",
+        "Product Manager",
+        "Governance, Compliance & Ethics Officer",
+        "Data Engineer",
+        "Software Developer",
+        "UX Researcher",
+        "Project Manager",
+        "Domain Expert"
+      ],
+      "source": {
+        "kind": "extracted"
+      },
+      "repoSources": [
+        {
+          "path": "docs/stakeholders.yaml",
+          "startLine": 2,
+          "endLine": 2,
+          "kind": "config",
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        }
+      ],
+      "confidence": 0.8,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.devInsight.codeOverview.components",
+      "jsonPointer": "/devInsight/codeOverview/components",
+      "currentValue": [],
+      "proposedValue": [
+        {
+          "name": "03-evaluation",
+          "summary": "Jupyter Notebook Experiment/Analysis",
+          "keyFiles": [
+            "notebooks/03-evaluation.ipynb"
+          ]
+        },
+        {
+          "name": "02-model",
+          "summary": "Jupyter Notebook Experiment/Analysis",
+          "keyFiles": [
+            "notebooks/02-model.ipynb"
+          ]
+        },
+        {
+          "name": "01-preprocessing",
+          "summary": "Jupyter Notebook Experiment/Analysis",
+          "keyFiles": [
+            "notebooks/01-preprocessing.ipynb"
+          ]
+        },
+        {
+          "name": "conf",
+          "summary": "Python Script Module",
+          "keyFiles": [
+            "docs/conf.py"
+          ]
+        },
+        {
+          "name": "utils",
+          "summary": "Python Script Module",
+          "keyFiles": [
+            "src/bhm_at_scale/utils.py"
+          ]
+        },
+        {
+          "name": "preprocess",
+          "summary": "Python Script Module",
+          "keyFiles": [
+            "src/bhm_at_scale/preprocess.py"
+          ]
+        },
+        {
+          "name": "plot",
+          "summary": "Python Script Module",
+          "keyFiles": [
+            "src/bhm_at_scale/plot.py"
+          ]
+        },
+        {
+          "name": "model",
+          "summary": "Python Script Module",
+          "keyFiles": [
+            "src/bhm_at_scale/model.py"
+          ]
+        },
+        {
+          "name": "handler",
+          "summary": "Python Script Module",
+          "keyFiles": [
+            "src/bhm_at_scale/handler.py"
+          ]
+        },
+        {
+          "name": "__init__",
+          "summary": "Python Script Module",
+          "keyFiles": [
+            "src/bhm_at_scale/__init__.py"
+          ]
+        }
+      ],
+      "source": {
+        "kind": "extracted"
+      },
+      "repoSources": [
+        {
+          "path": "notebooks/03-evaluation.ipynb",
+          "startLine": 1,
+          "endLine": 1,
+          "kind": "config",
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "notebooks/02-model.ipynb",
+          "startLine": 1,
+          "endLine": 1,
+          "kind": "config",
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "notebooks/01-preprocessing.ipynb",
+          "startLine": 1,
+          "endLine": 1,
+          "kind": "config",
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "docs/conf.py",
+          "startLine": 1,
+          "endLine": 1,
+          "kind": "code",
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "src/bhm_at_scale/utils.py",
+          "startLine": 1,
+          "endLine": 1,
+          "kind": "code",
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "src/bhm_at_scale/preprocess.py",
+          "startLine": 1,
+          "endLine": 1,
+          "kind": "code",
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "src/bhm_at_scale/plot.py",
+          "startLine": 1,
+          "endLine": 1,
+          "kind": "code",
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "src/bhm_at_scale/model.py",
+          "startLine": 1,
+          "endLine": 1,
+          "kind": "code",
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "src/bhm_at_scale/handler.py",
+          "startLine": 1,
+          "endLine": 1,
+          "kind": "code",
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "src/bhm_at_scale/__init__.py",
+          "startLine": 1,
+          "endLine": 1,
+          "kind": "code",
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        }
+      ],
+      "confidence": 0.8,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.devInsight.architecture.depsSummary",
+      "jsonPointer": "/devInsight/architecture/depsSummary",
+      "currentValue": [],
+      "proposedValue": [
+        "numpy",
+        "pandas",
+        "matplotlib",
+        "seaborn",
+        "scikit-learn",
+        "jax",
+        "numpyro"
+      ],
+      "source": {
+        "kind": "extracted"
+      },
+      "repoSources": [
+        {
+          "path": "environment.yaml",
+          "startLine": 9,
+          "endLine": 9,
+          "kind": "config",
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "setup.py",
+          "startLine": 1,
+          "endLine": 1,
+          "kind": "code",
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        }
+      ],
+      "confidence": 0.85,
+      "gate": "OK"
+    },
+    {
+      "jsonPath": "$.provenance.changelog[0]",
+      "jsonPointer": "/provenance/changelog/0",
+      "proposedValue": {
+        "date": "2026-03-11T10:29:03.512Z",
+        "summary": "ML System Card run run-2026-03-11-10-28-37 observed 37 changed files",
+        "files": [
+          {
+            "path": ".coveragerc"
+          },
+          {
+            "path": ".gitignore"
+          },
+          {
+            "path": ".isort.cfg"
+          },
+          {
+            "path": ".pre-commit-config.yaml"
+          },
+          {
+            "path": "AUTHORS.rst"
+          },
+          {
+            "path": "CHANGELOG.rst"
+          },
+          {
+            "path": "LICENSE.txt"
+          },
+          {
+            "path": "README.md"
+          },
+          {
+            "path": "data/.gitignore"
+          },
+          {
+            "path": "data/external/.gitignore"
+          },
+          {
+            "path": "data/interim/.gitignore"
+          },
+          {
+            "path": "data/preprocessed/.gitignore"
+          },
+          {
+            "path": "data/raw/.gitignore"
+          },
+          {
+            "path": "data/result/.gitignore"
+          },
+          {
+            "path": "docs/Makefile"
+          },
+          {
+            "path": "docs/_static/.gitignore"
+          },
+          {
+            "path": "docs/authors.rst"
+          },
+          {
+            "path": "docs/changelog.rst"
+          },
+          {
+            "path": "docs/conf.py"
+          },
+          {
+            "path": "docs/index.rst"
+          },
+          {
+            "path": "docs/license.rst"
+          },
+          {
+            "path": "docs/ml_system_card.yaml"
+          },
+          {
+            "path": "docs/stakeholders.yaml"
+          },
+          {
+            "path": "environment.lock.yaml"
+          },
+          {
+            "path": "environment.yaml"
+          },
+          {
+            "path": "notebooks/01-preprocessing.ipynb"
+          },
+          {
+            "path": "notebooks/02-model.ipynb"
+          },
+          {
+            "path": "notebooks/03-evaluation.ipynb"
+          },
+          {
+            "path": "setup.cfg"
+          },
+          {
+            "path": "setup.py"
+          },
+          {
+            "path": "src/bhm_at_scale/__init__.py"
+          },
+          {
+            "path": "src/bhm_at_scale/handler.py"
+          },
+          {
+            "path": "src/bhm_at_scale/model.py"
+          },
+          {
+            "path": "src/bhm_at_scale/plot.py"
+          },
+          {
+            "path": "src/bhm_at_scale/preprocess.py"
+          },
+          {
+            "path": "src/bhm_at_scale/utils.py"
+          },
+          {
+            "path": "tests/conftest.py"
+          }
+        ],
+        "runId": "run-2026-03-11-10-28-37",
+        "headSha": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+      },
+      "source": {
+        "kind": "extracted"
+      },
+      "repoSources": [
+        {
+          "path": ".coveragerc",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": ".gitignore",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": ".isort.cfg",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": ".pre-commit-config.yaml",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "AUTHORS.rst",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "CHANGELOG.rst",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "LICENSE.txt",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "README.md",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "data/.gitignore",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "data/external/.gitignore",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "data/interim/.gitignore",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "data/preprocessed/.gitignore",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "data/raw/.gitignore",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "data/result/.gitignore",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "docs/Makefile",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "docs/_static/.gitignore",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "docs/authors.rst",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "docs/changelog.rst",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "docs/conf.py",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "docs/index.rst",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "docs/license.rst",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "docs/ml_system_card.yaml",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "docs/stakeholders.yaml",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "environment.lock.yaml",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "environment.yaml",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "notebooks/01-preprocessing.ipynb",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "notebooks/02-model.ipynb",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "notebooks/03-evaluation.ipynb",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "setup.cfg",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "setup.py",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "src/bhm_at_scale/__init__.py",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "src/bhm_at_scale/handler.py",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "src/bhm_at_scale/model.py",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "src/bhm_at_scale/plot.py",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "src/bhm_at_scale/preprocess.py",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "src/bhm_at_scale/utils.py",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        },
+        {
+          "path": "tests/conftest.py",
+          "startLine": 1,
+          "endLine": 1,
+          "commit": "a8b7dd8f30461410bb091c4731366aac0cb6c6cc"
+        }
+      ],
+      "confidence": 0.7,
+      "gate": "Warn",
+      "verifierNotes": "Review high-change volume"
+    }
+  ],
+  "message": "Extractor exhausted retries; review low-confidence facts.",
+  "analysisArtifact": "docs/.analysis/run-2026-03-11-10-28-37.json",
+  "generatedAt": "2026-03-11T10:33:00.554Z",
+  "attempts": 1,
+  "retryReasons": [
+    "Raise confidence to >= 65% for: $.mlCore.failureModes",
+    "Resolve Require-gated facts: $.mlCore.failureModes"
+  ],
+  "llm": {
+    "provider": "openai",
+    "model": "gpt-5.1",
+    "requestDigest": "43a8f65092a3d288ed6f46c740a7b5dfd23e05a1c3179fddf17441a249625929",
+    "responseDigest": "05515553925142efdd211a453dcb66e1426b2676ff3f76a143d8bb8edf435e12",
+    "metrics": {
+      "promptTokens": 28826,
+      "completionTokens": 13963,
+      "latencyMs": 236476.133288
+    },
+    "promptPreview": "You are an evidence-driven extractor responsible for proposing ML System Card facts with precise JSON output.\n\nContext:\n- Work only with the supplied evidence table chunks; do not hallucinate values.\n- Prefer quoting measured values exactly as they appear in the repository.\n- Include anchors for every fact. If a fact is derived from multiple snippets, cite each snippet.\n- Never rewrite content that is already identical in the base card.\n- Exception: If the base card contains placeholders (e.g. \"To be determined\") or describes \"ML System Card\" instead of the target repository, you MUST propose a new value.\n- If explicit text is missing for a field, INFER the value from the repository context (e.g. README description) and mark source.kind as 'inferred'.\n\nInputs:\nRun ID: run-2026-03-11-10-28-37\nBase SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nHead SHA: a8b7dd8f30461410bb091c4731366aac0cb6c6cc\nChanged files (37): .coveragerc, .gitignore, .isort.cfg, .pre-commit-config.yaml, AUTHORS.rst, CHANGELOG.rst, LICENSE.txt, README.md, data/.gitignore, data/external/.gitignore, data/interim/.gitignore, data/preprocessed/.gitignore, data/raw/.gitignore, data/result/.gitignore, docs/Makefile, docs/_static/.gitignore, docs/authors.rst, docs/changelog.rst, docs/conf.py, docs/index.rst, docs/license.rst, docs/ml_system_card.yaml, docs/stakeholders.yaml, environment.lock.yaml, environment.yaml, notebooks/01-preprocessing.ipynb, notebooks/02-model.ipynb, notebooks/03-evaluation.ipynb, setup.cfg, setup.py, src/bhm_at_scale/__init__.py, src/bhm_at_scale/handler.py, src/bhm_at_scale/model.py, src/bhm_at_scale/plot.py, src/bhm_at_scale/preprocess.py, src/bhm_at_scale/utils.py, tests/conftest.py\nGenerated at: 2026-03-11T10:29:03.507Z\n$schema: ../lib/ml_system_card.schema.json\nmeta:\n  title: New ML System Card\n  language: en\n  owners: []\n  tags: []\n  links: {}\n  createdAt: '2026-03-11T10:28:10.794Z'\n  lastUpdated: '2026-03-11T10:28:10.794Z'\nbusiness:\n  nonGoals: []\n  kpis: []\n  outOfScopeUse",
+    "contentPreview": "{\n  \"facts\": [\n    {\n      \"jsonPath\": \"$.business.executiveSummary\",\n      \"proposedValue\": \"This project implements Bayesian hierarchical modelling at scale for retail sales forecasting. Using NumPyro on top of JAX, it fits a Gamma-Poisson hierarchical model over thousands of stores and days in the Rossmann Store Sales dataset from Kaggle. The pipeline downloads raw store and sales CSVs, performs feature engineering and dummy-encoding in pandas, and converts them into a time-series cube suitable for vectorized probabilistic inference. The resulting model captures global and store-specific effects (such as weekday, promotions, and holidays), produces posterior predictive distributions, and is compared against a conventional linear regression baseline.\",\n      \"confidence\": 0.9,\n      \"source\": { \"kind\": \"inferred\" },\n      \"repoSources\": [\n        { \"path\": \"README.md\", \"startLine\": 1, \"endLine\": 40 },\n        { \"path\": \"notebooks/01-preprocessing.ipynb\", \"startLine\": 1, \"endLine\": 120 },\n        { \"path\": \"notebooks/02-model.ipynb\", \"startLine\": 1, \"endLine\": 200 },\n        { \"path\": \"src/bhm_at_scale/model.py\", \"startLine\": 1, \"endLine\": 120 }\n      ]\n    },\n    {\n      \"jsonPath\": \"$.business.hazardousUseCases\",\n      \"proposedValue\": [\n        \"Using the research code and model outputs directly for safety-critical or legally binding decisions (for example, staffing of emergency services or credit approvals) without additional validation, governance, and monitoring.\",\n        \"Relying on forecasts trained on the Rossmann Store Sales dataset to drive high-stakes decisions in domains unrelated to retail store sales, where the data distribution and risks differ substantially.\"\n      ],\n      \"confidence\": 0.78,\n      \"source\": { \"kind\": \"inferred\" },\n      \"repoSources\": [\n        { \"path\": \"README.md\", \"startLine\": 1, \"endLine\": 40 },\n        { \"path\": \"README.md\", \"startLine\": 41, \"endLine\": 80 }\n      ]\n    },\n    {\n      \"jsonPath\": \"$.business.intendedUse\",\n  "
+  }
+}

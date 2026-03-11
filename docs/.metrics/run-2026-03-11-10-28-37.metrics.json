@@ -43,5 +43,22 @@
   "decision_edited_pct": 0,
   "decision_rejected_pct": 0,
   "decision_undecided_pct": 0,
-  "decisions_path": "/home/runner/work/bhm-at-scale-ml-system-card/bhm-at-scale-ml-system-card/docs/.proposals/run-2026-03-11-10-28-37.decisions.json"
+  "decisions_path": "/home/runner/work/bhm-at-scale-ml-system-card/bhm-at-scale-ml-system-card/docs/.proposals/run-2026-03-11-10-28-37.decisions.json",
+  "apply_success": 1,
+  "schema_valid": 1,
+  "yaml_hash": "0850621f813948ddc91347fa9e57a7a44a20040f9206b6acceb9dc791c9e0337",
+  "apply_attempts_until_success": 1,
+  "receipt_path": "/home/runner/work/bhm-at-scale-ml-system-card/bhm-at-scale-ml-system-card/docs/.card_runs/2026-03-11-0850621.json",
+  "accepted_nontrivial_count": 27,
+  "accepted_nontrivial_with_anchor_count": 27,
+  "anchor_compliance_accepted_nontrivial": 1,
+  "resolvable_anchor_count": 97,
+  "total_evaluated_anchor_count": 113,
+  "anchor_resolvability_rate_accepted": 0.8584070796460177,
+  "populated_leaf_count": 215,
+  "populated_leaf_anchored_count": 181,
+  "anchored_field_coverage_leaf": 0.8418604651162791,
+  "added_lines": 1287,
+  "removed_lines": 37,
+  "msc_diff_lines": 1324
 }
